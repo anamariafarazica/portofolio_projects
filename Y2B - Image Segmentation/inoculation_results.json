@@ -1,0 +1,102 @@
+{
+  "image": "test_image_18",
+  "cv_results": {
+    "0": {
+      "length_pixels": 397.59797974644675,
+      "root_tip": [
+        399,
+        900
+      ],
+      "attachment_point": [
+        371,
+        514
+      ],
+      "num_points": 387
+    },
+    "1": {
+      "length_pixels": 190.94112549695444,
+      "root_tip": [
+        883,
+        672
+      ],
+      "attachment_point": [
+        871,
+        491
+      ],
+      "num_points": 182
+    },
+    "2": {
+      "length_pixels": 140.94112549695427,
+      "root_tip": [
+        1400,
+        572
+      ],
+      "attachment_point": [
+        1365,
+        452
+      ],
+      "num_points": 132
+    },
+    "3": {
+      "length_pixels": 396.0954544295055,
+      "root_tip": [
+        1944,
+        888
+      ],
+      "attachment_point": [
+        1899,
+        518
+      ],
+      "num_points": 371
+    },
+    "4": {
+      "length_pixels": 484.45079348883326,
+      "root_tip": [
+        2433,
+        969
+      ],
+      "attachment_point": [
+        2421,
+        523
+      ],
+      "num_points": 449
+    }
+  },
+  "inoculation_results": [
+    {
+      "plant_id": "0",
+      "success": true,
+      "iterations": 310,
+      "error": 0.000478537011521079,
+      "adjusted": false
+    },
+    {
+      "plant_id": "1",
+      "success": true,
+      "iterations": 253,
+      "error": 0.000497383003618696,
+      "adjusted": false
+    },
+    {
+      "plant_id": "2",
+      "success": true,
+      "iterations": 253,
+      "error": 0.0004917063417238519,
+      "adjusted": false
+    },
+    {
+      "plant_id": "3",
+      "success": true,
+      "iterations": 259,
+      "error": 0.0004963033285891643,
+      "adjusted": false
+    },
+    {
+      "plant_id": "4",
+      "success": true,
+      "iterations": 250,
+      "error": 0.0004899325961308997,
+      "adjusted": false
+    }
+  ]
+}

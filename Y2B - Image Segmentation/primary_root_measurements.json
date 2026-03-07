@@ -1,0 +1,64 @@
+{
+  "test_image_18": {
+    "0": {
+      "length_pixels": 397.59797974644675,
+      "root_tip": [
+        399,
+        900
+      ],
+      "attachment_point": [
+        371,
+        514
+      ],
+      "num_points": 387
+    },
+    "1": {
+      "length_pixels": 190.94112549695444,
+      "root_tip": [
+        883,
+        672
+      ],
+      "attachment_point": [
+        871,
+        491
+      ],
+      "num_points": 182
+    },
+    "2": {
+      "length_pixels": 140.94112549695427,
+      "root_tip": [
+        1400,
+        572
+      ],
+      "attachment_point": [
+        1365,
+        452
+      ],
+      "num_points": 132
+    },
+    "3": {
+      "length_pixels": 396.0954544295055,
+      "root_tip": [
+        1944,
+        888
+      ],
+      "attachment_point": [
+        1899,
+        518
+      ],
+      "num_points": 371
+    },
+    "4": {
+      "length_pixels": 484.45079348883326,
+      "root_tip": [
+        2433,
+        969
+      ],
+      "attachment_point": [
+        2421,
+        523
+      ],
+      "num_points": 449
+    }
+  }
+}

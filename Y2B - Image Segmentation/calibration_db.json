@@ -1,0 +1,50 @@
+{
+  "test_image_12": {
+    "dish_center_x": 0.49214659685863876,
+    "dish_center_y": 0.48216072024008005,
+    "dish_width": 0.6577820085673489,
+    "dish_height": 0.924974991663888,
+    "calibration": {
+      "plate_x_min": 0.053,
+      "plate_x_max": 0.183,
+      "plate_y_min": -0.026,
+      "plate_y_max": 0.198
+    }
+  },
+  "test_image_13": {
+    "dish_center_x": 0.49202760590195144,
+    "dish_center_y": 0.48353293413173654,
+    "dish_width": 0.6575440266539743,
+    "dish_height": 0.9231536926147704,
+    "calibration": {
+      "plate_x_min": 0.046,
+      "plate_x_max": 0.176,
+      "plate_y_min": -0.026,
+      "plate_y_max": 0.198
+    }
+  },
+  "test_image_18": {
+    "dish_center_x": 0.4890528319847692,
+    "dish_center_y": 0.479707252162342,
+    "dish_width": 0.6425511661113755,
+    "dish_height": 0.9121756487025948,
+    "calibration": {
+      "plate_x_min": 0.043,
+      "plate_x_max": 0.173,
+      "plate_y_min": -0.026,
+      "plate_y_max": 0.198
+    }
+  },
+  "test_image_17": {
+    "dish_center_x": 0.49214659685863876,
+    "dish_center_y": 0.48369926813040587,
+    "dish_width": 0.6577820085673489,
+    "dish_height": 0.9228210246174318,
+    "calibration": {
+      "plate_x_min": 0.055,
+      "plate_x_max": 0.185,
+      "plate_y_min": -0.026,
+      "plate_y_max": 0.198
+    }
+  }
+}
