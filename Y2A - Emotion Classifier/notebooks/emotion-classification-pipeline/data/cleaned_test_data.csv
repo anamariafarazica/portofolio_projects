@@ -1,0 +1,1211 @@
+Sentence,Emotion,Label
+"for the last several years, chef ramsay",neutral,4
+has traveled all across america.,happiness,3
+you are in denial.,anger,0
+no.,anger,0
+and encountered some memorable owners.,happiness,3
+wake up!,surprise,6
+you wake up!,surprise,6
+one being more stubborn.,anger,0
+i'm telling you one last time.,anger,0
+than the next.,neutral,4
+it was fresh.,happiness,3
+do it again.,anger,0
+"they're not crap, and they're delicious.",anger,0
+why don't you get the fuck out of my restaurant?,anger,0
+want me to go?,fear,2
+i would love you to go.,happiness,3
+"but tonight, on kitchen nightmares,",surprise,6
+you're nuts.,anger,0
+completely.,neutral,4
+at an italian restaurant in denver.,neutral,4
+denver's best pizza.,happiness,3
+there's a huge mistake on the awning.,anger,0
+chef ramsay faces off against the most stubborn,anger,0
+owner he has ever met.,happiness,3
+what the hell are you guys doing?,anger,0
+"pete is clearly living in the past,",sadness,5
+clinging to positive reviews from 20 years ago.,sadness,5
+"we are not in 1985, pete.",neutral,4
+"his wife, paulette, and son, josh,",neutral,4
+have fought a losing battle.,sadness,5
+pete!,surprise,6
+get lost.,anger,0
+trying to get through to him.,anger,0
+but pete simply refuses to listen,anger,0
+to them or anyone else.,neutral,4
+just shut up.,anger,0
+including chef ramsay.,neutral,4
+you're sinking.,fear,2
+i know i'm not.,sadness,5
+the food is absolutely appalling.,disgust,1
+have you any idea how bad that tasted?,disgust,1
+the portions are enormous.,happiness,3
+it looks like a giant diaper stuffed with meatballs.,disgust,1
+it seems the only thing bigger than pete's ego is his pizza.,disgust,1
+i'll let you take that in.,neutral,4
+"tonight, chef ramsay pulls out all the stops.",surprise,6
+we are now just going so far backwards.,sadness,5
+"as he tries to save a restaurant, you're in denial.",sadness,5
+i am disagreeing with you.,anger,0
+and a family as well.,happiness,3
+stop.,anger,0
+stop!,fear,2
+what is that?,surprise,6
+you're serving rotten fruit.,disgust,1
+"they're not crap, and they're delicious.",anger,0
+then wake up!,anger,0
+you wake up!,surprise,6
+shut the place down.,anger,0
+get out of here!,anger,0
+that is amazing.,happiness,3
+that's embarrassing!,sadness,5
+"oh, god!",fear,2
+thank you so much.,happiness,3
+thank you so much.,happiness,3
+"denver, colorado, known as the mile high city,",neutral,4
+"is home to almost 2,500 restaurants.",happiness,3
+located just seven miles from the city center,neutral,4
+"is pantaleon's, opened in 1985 by pete and his wife, paulette.",happiness,3
+i'm from an island in greece.,happiness,3
+"when i first got to the us, i was a chef in another place.",neutral,4
+"i wanted to buy a place of my own,",happiness,3
+because my pizza is the best in the whole world.,happiness,3
+i'm paulette.,neutral,4
+"pete and i own this, and we're married.",happiness,3
+"when we first opened, we did have wonderful reviews.",happiness,3
+we just got award after award after award.,happiness,3
+my signature on the pizza is my crust.,happiness,3
+"back in the 90s, it was busy.",happiness,3
+but my grandfather thinks he's still in the 90s.,sadness,5
+i think my pizza is awesome.,happiness,3
+pete is stuck in a time warp.,fear,2
+"i'm 100 people, man, come on, by myself.",happiness,3
+that's a long time ago.,sadness,5
+have a slow lunch.,neutral,4
+we used to be back.,sadness,5
+"now, we have no customers.",sadness,5
+i cannot pinpoint the reason.,neutral,4
+"i've been telling pete for years we need to change things,",anger,0
+but he doesn't listen.,anger,0
+i'm getting some bad feedback on your pizza.,disgust,1
+so what are you going to do?,neutral,4
+my food is not the problem.,anger,0
+"my table's saying that it's too soggy, too soft on the dough.",sadness,5
+there's got to be something else.,sadness,5
+look at that.,surprise,6
+it's nasty.,disgust,1
+it's not crust at all.,sadness,5
+it's all grease and crust.,disgust,1
+ponte leonis has the worst pizza in denver.,disgust,1
+my grandpa's pizza is like a white wall tire.,happiness,3
+it's mushy.,disgust,1
+that's disgusting.,disgust,1
+"god forbid, if you said anything about his pizza, forget it.",anger,0
+"he'll be like, eh, you don't know what you're talking about.",disgust,1
+that's pretty bad.,disgust,1
+just shut up.,anger,0
+"your veggie pizzas, they're a little soggy.",sadness,5
+"ok, quit, quit waiting.",anger,0
+"i want to change things about the place,",disgust,1
+but my father shoots down every one of my ideas.,anger,0
+"it's ridiculous, man.",anger,0
+this is your system.,neutral,4
+really?,surprise,6
+"yeah, really.",anger,0
+just shut up.,anger,0
+"i feel frustrated because i want to help my parents,",anger,0
+but there's only so much that i can do to help them.,sadness,5
+the restaurant does put a tremendous amount,happiness,3
+of stress on our family.,sadness,5
+we are just making ends meet.,sadness,5
+"if it keeps up like this, i could see",fear,2
+us shutting down in a year or so.,fear,2
+"if we don't get this restaurant going,",fear,2
+we're going to have to sell our home.,sadness,5
+we're going to have to find jobs.,fear,2
+"and at our age, that is not going to be easy.",sadness,5
+"we got to make it work, or we got to get out of it.",neutral,4
+that's it.,neutral,4
+this restaurant has been my life for the last 28 years.,happiness,3
+i put everything in this place that i ever had.,sadness,5
+"if the restaurant fails, it will feel like my life was nothing.",sadness,5
+thank you.,happiness,3
+good luck.,happiness,3
+appreciate it.,happiness,3
+"pantiglianis, wow.",surprise,6
+"denver's best pizza, that is a bold statement.",surprise,6
+hello.,neutral,4
+how are you?,neutral,4
+hello.,neutral,4
+nice to see you.,happiness,3
+"hey, chef.",neutral,4
+i'm excited.,happiness,3
+"i'm excited, too.",happiness,3
+"denver's best pizza, that's a big statement.",surprise,6
+your first name is?,neutral,4
+pete.,neutral,4
+there he is.,surprise,6
+there he is.,surprise,6
+"hello, chef.",neutral,4
+"how are you, sir?",neutral,4
+good to see you.,happiness,3
+whereabouts in italy are you from?,neutral,4
+i'm not italian.,neutral,4
+who said that i am?,surprise,6
+greek.,neutral,4
+"oh, greek.",surprise,6
+got you now.,happiness,3
+who's this?,neutral,4
+"that's my son, josh.",happiness,3
+"josh, how are you, bud?",happiness,3
+good to see you.,happiness,3
+"good, let's catch up with you and pete, yeah?",happiness,3
+where should we go?,neutral,4
+"right here, sir.",neutral,4
+shall we?,happiness,3
+nice to meet you.,neutral,4
+nice to meet you.,neutral,4
+hope they don't make an ass out of themselves.,fear,2
+one thing about pete that i struggle with,sadness,5
+is his inability to change.,sadness,5
+it has absolutely hindered things.,anger,0
+so you have the best pizza in denver.,happiness,3
+i do.,happiness,3
+that's a bold statement.,surprise,6
+congratulations.,happiness,3
+when did you receive that?,neutral,4
+1985.,neutral,4
+so you've had the best pizza in town since 1985.,happiness,3
+that's incredible.,surprise,6
+i think i do.,neutral,4
+"well, actually, i don't think i do.",neutral,4
+i know i do.,neutral,4
+where did you train?,neutral,4
+in new york.,neutral,4
+there is a city with great pizzas.,happiness,3
+yes.,neutral,4
+but mine is better.,happiness,3
+ok.,neutral,4
+right.,neutral,4
+"ok, great.",happiness,3
+and you opened in 1985?,neutral,4
+"march 10th of 85, it was monday, we opened up.",neutral,4
+"you know your dates well, for an old boy.",happiness,3
+an old boy?,surprise,6
+"you know, an old boy isn't like a charming old man.",neutral,4
+right.,neutral,4
+how hands-on is this one?,neutral,4
+completely.,neutral,4
+completely.,neutral,4
+"still, seven days a week?",surprise,6
+"no, we're closed two days.",sadness,5
+you're closed two days a week?,surprise,6
+sunday and monday are closed.,neutral,4
+and why are you closed on sunday?,neutral,4
+sunday?,neutral,4
+because i want to watch football.,happiness,3
+are you nuts?,surprise,6
+do you have any idea how many pizzas,neutral,4
+get ordered on a sunday just in football season?,neutral,4
+we did open last sunday in 86.,neutral,4
+congratulations.,happiness,3
+86?,surprise,6
+so how has that affected the business?,neutral,4
+"closed two days a week, sunday, monday?",surprise,6
+nobody knows we're open.,sadness,5
+"i mean, we're closed in the afternoon.",neutral,4
+the restaurant closes?,surprise,6
+seriously?,surprise,6
+because he has to have his nap.,neutral,4
+his have his what?,surprise,6
+nap.,neutral,4
+siesta.,neutral,4
+sleep.,neutral,4
+"that's kind of a european thing,",neutral,4
+"that, you know, the siesta deal.",neutral,4
+restaurant closes because pete wants a nap?,surprise,6
+"yeah, like they do in greece.",neutral,4
+"in england, too.",neutral,4
+"no, no, we don't close in the afternoon.",anger,0
+"no, you don't do that.",anger,0
+no.,anger,0
+did you do any delivery?,neutral,4
+no.,anger,0
+wow.,surprise,6
+yes.,neutral,4
+that's another problem.,sadness,5
+"the other things, you don't listen to anyone.",anger,0
+"i mean, you don't listen to me.",anger,0
+"it's like if he starts doing something one way,",anger,0
+you can't get him off of it.,anger,0
+she's a princess in controlling.,disgust,1
+how old is josh?,neutral,4
+33.,neutral,4
+and he must be geared up now to take over the business when,neutral,4
+you take a back seat somewhere.,sadness,5
+"well, in terms of what's the plan, is he the head chef now?",neutral,4
+no.,anger,0
+no.,anger,0
+he still is.,neutral,4
+"as long as i'm in here, i am.",sadness,5
+ok.,neutral,4
+"talking about pizzas, right?",neutral,4
+denver's best pizza.,happiness,3
+what the heck are you laughing about?,anger,0
+"well, i'd expect josh, by now, literally five or six",neutral,4
+years at the helm.,neutral,4
+why can't you let go?,anger,0
+i don't know.,neutral,4
+when do you think you're going to let go?,sadness,5
+who knows?,neutral,4
+"for the last two years, i've seen it on a downhill slide.",sadness,5
+"and now, like a tuesday night, i might have two tables.",neutral,4
+i've seen it with no tables.,neutral,4
+wow.,surprise,6
+nearly 30 years of business.,happiness,3
+have you put money away?,neutral,4
+no.,anger,0
+no.,anger,0
+"you can't retire, no.",anger,0
+we got into trouble.,fear,2
+we refinanced our home two or three times.,neutral,4
+this is crazy.,surprise,6
+that's what i feel like.,sadness,5
+wow.,surprise,6
+so i'm going to get up to speed with the food.,neutral,4
+i'm dying to taste that pizza.,happiness,3
+"i know it's late in the afternoon,",neutral,4
+"but are you going for a nap, or are you with us?",neutral,4
+he's staying.,neutral,4
+"oh, he's staying, ok.",neutral,4
+he's staying today.,neutral,4
+"ok, good.",happiness,3
+nap time.,neutral,4
+paulette always knocks me.,anger,0
+"she thinks she knows everything, which she doesn't.",anger,0
+how'd it go?,neutral,4
+she didn't let me show her one word.,anger,0
+"josh, come around, but let's catch up.",happiness,3
+"because i've done it for 37 years,",happiness,3
+i think i know what i'm doing.,happiness,3
+i didn't realize things were that tough for mom and dad.,sadness,5
+it's actually gotten to a point where,sadness,5
+i'm embarrassed of the place.,sadness,5
+right.,neutral,4
+i think change is the biggest problem.,fear,2
+you're happy with the pizzas?,neutral,4
+wow.,surprise,6
+so the fat?,neutral,4
+"oh, absolutely.",happiness,3
+it sounds like a very stubborn man.,neutral,4
+yeah.,neutral,4
+i have a lot more ideas.,happiness,3
+has he started to pass the reins over on them?,neutral,4
+"no, seriously.",anger,0
+"no, no, absolutely not.",anger,0
+why is that?,neutral,4
+"i don't know what's going to make him, if ever.",sadness,5
+"it's always been three more years, three more years.",sadness,5
+it's crazy.,surprise,6
+"yeah, it is.",neutral,4
+it's been really crazy.,surprise,6
+coming up.,surprise,6
+holy cow.,surprise,6
+isn't that ridiculous?,surprise,6
+chef ramsay begins his research.,neutral,4
+it's like the pizza that ate denver.,happiness,3
+and discovers the biggest portions,surprise,6
+he has seen in a long time.,neutral,4
+that looks like a giant diaper.,disgust,1
+you won't believe how stubborn pete really is.,anger,0
+it was the worst pizza in denver.,disgust,1
+i disagree with you.,anger,0
+so stubborn.,anger,0
+i may even leave.,fear,2
+that he may push his family out of the restaurant for good.,anger,0
+i'm out of here.,sadness,5
+"clearly, this family is divided.",sadness,5
+paulette and son josh feel that the restaurant,neutral,4
+is stuck in the past.,sadness,5
+while pete feels there is absolutely,neutral,4
+nothing wrong with his food.,neutral,4
+it's time for chef ramsay to find out for himself.,surprise,6
+"how are you, darling?",happiness,3
+"i'm good, how are you?",neutral,4
+so your first name is?,neutral,4
+celestina.,neutral,4
+"celestina, that's a beautiful name.",happiness,3
+and what do you think the problems,neutral,4
+are with the restaurants?,neutral,4
+there's a few different problems.,fear,2
+"when it comes to pete and paulette,",neutral,4
+they butt heads a lot on how things should be run.,anger,0
+"she wants changes, and pete wants things his way.",anger,0
+wow.,surprise,6
+"anyway, let me have a quick look at the menu.",neutral,4
+and there's another letter here.,surprise,6
+everything is homemade.,happiness,3
+we cook for you just like mama did.,happiness,3
+that's nice to know.,happiness,3
+"darling, this order.",neutral,4
+"i want to go for a sausage pizza, please.",neutral,4
+a toasted meatball hero.,happiness,3
+"and pete's own, and then i'll go for the linguine",neutral,4
+of clam as well.,neutral,4
+"thank you, my darling.",happiness,3
+no problem.,happiness,3
+"my god, look at the dining room.",surprise,6
+"i mean, it's got as much atmosphere in here",disgust,1
+as it is in a hospital room.,sadness,5
+"i mean, it is sad.",sadness,5
+"here's this, pete.",neutral,4
+okey dokey.,neutral,4
+ok.,neutral,4
+i'm not nervous for chef ramsay to taste my food.,neutral,4
+"well, let's put it this way.",neutral,4
+it's going to go to heaven today.,sadness,5
+how is it?,neutral,4
+"the meatball sandwich, the meatballs",happiness,3
+are a bit of cat food.,neutral,4
+"oh, shit, really?",surprise,6
+i want to know where the fuck you were eating cat food.,anger,0
+wrong story.,anger,0
+holy shit.,surprise,6
+paulette.,neutral,4
+yes.,neutral,4
+what is that behind your head?,surprise,6
+that's a hologram.,surprise,6
+freaking me out.,fear,2
+you know what a lot of people are afraid of that?,fear,2
+that's a clown.,disgust,1
+"oh, god.",fear,2
+how long has that been up there?,surprise,6
+"oh, probably about 15 years.",neutral,4
+whose idea was that?,surprise,6
+that's spooky.,fear,2
+that's mine.,anger,0
+"oh, my god.",surprise,6
+where's the calzone?,neutral,4
+i lost it.,anger,0
+really?,surprise,6
+"no, it's done.",neutral,4
+get it out.,fear,2
+"no, it's not. i just checked it.",anger,0
+it's done. it's done.,happiness,3
+"i just fucking checked it, like, two seconds ago.",anger,0
+it's going to burn in the bottom.,fear,2
+get it out.,fear,2
+that's pretty bad.,sadness,5
+that's disgusting.,disgust,1
+"shut up, all of you, yeah?",anger,0
+perfect.,happiness,3
+let's go.,happiness,3
+"chef's calzone, yeehaw.",happiness,3
+"ok, here's pete's calzone.",neutral,4
+jesus.,surprise,6
+do i look like one of the denver broncos,surprise,6
+that can eat this thing?,neutral,4
+it looks huge.,surprise,6
+"thank you, darling.",happiness,3
+what he's doing with these portions?,neutral,4
+"i mean, they're hideous.",disgust,1
+how much filling does he put in there?,neutral,4
+jesus.,surprise,6
+raw onion.,neutral,4
+paulette.,neutral,4
+yes.,neutral,4
+jesus.,surprise,6
+how much is he putting in there?,neutral,4
+look at all that pepperoni.,happiness,3
+"i mean, the slices are still jammed together.",anger,0
+yeah.,neutral,4
+i've never seen a calzone so full.,surprise,6
+"i mean, the filling's cold.",sadness,5
+that is hideous.,disgust,1
+i don't like that either.,disgust,1
+i've been wanting to take that calzone,happiness,3
+and fling it like a frisbee for about 20 years.,happiness,3
+"pete, i got some critiques for you.",fear,2
+are you kidding me?,surprise,6
+"listen to me, damn it.",anger,0
+"the complaint is it's so full, it's cold.",disgust,1
+shut up.,anger,0
+it's going to be a wake-up call from pete.,surprise,6
+"see, perfect.",happiness,3
+i put my pizza up against anybody in the country.,happiness,3
+no denver or colorado in the country.,surprise,6
+that's how confident i am about my pizza.,happiness,3
+let's go.,happiness,3
+"ok, here we go.",neutral,4
+here's your sausage pizza.,neutral,4
+holy crap.,surprise,6
+isn't that ridiculous?,surprise,6
+it's like the pizza that ate denver.,happiness,3
+yeah.,neutral,4
+shit.,anger,0
+ok.,neutral,4
+i'll let you take that in.,neutral,4
+thank you.,happiness,3
+man.,neutral,4
+oh my god.,surprise,6
+dripping in grease.,disgust,1
+"and the oil, the grease coming out of that.",disgust,1
+"the oil in there, the grease.",neutral,4
+that's gross.,disgust,1
+he said it's too greasy.,disgust,1
+just exactly what i feel.,neutral,4
+"oh, shut up.",anger,0
+i don't want to hear it.,anger,0
+"honestly, the best pizza in denver.",happiness,3
+"i mean, does that look like the best pizza?",surprise,6
+"trust me, i can tell you.",happiness,3
+it doesn't taste good.,disgust,1
+"celestina, the dough is so thick.",anger,0
+"why, i mean, it's just like a loaf of bread.",surprise,6
+it's like a baguette in there.,happiness,3
+that's our thin crust.,happiness,3
+that's the thin crust?,surprise,6
+stop.,anger,0
+wow.,surprise,6
+seriously?,surprise,6
+a lot of people get upset with me for that when they ask,sadness,5
+"for the thin crust, and i bring them the thin crust.",neutral,4
+wow.,surprise,6
+did you touch that?,fear,2
+the dough is raw.,sadness,5
+"oh, wow, it is.",surprise,6
+raw pastry.,neutral,4
+"my god, what a mess.",anger,0
+"darling, i'm done.",sadness,5
+all righty.,neutral,4
+add dressing.,neutral,4
+"ok, i'll let him know.",neutral,4
+messy.,disgust,1
+that is definitely not the best pizza in denver.,disgust,1
+let's get that right.,neutral,4
+"hey, pete, he wanted me to show you the dough.",neutral,4
+what's wrong with that pizza?,fear,2
+he said the pizza was doughy on the inside and greasy.,disgust,1
+"it is doughy, look.",neutral,4
+really?,surprise,6
+"i agree with him, too.",happiness,3
+are you kidding me?,surprise,6
+"i don't know what the chef is talking about,",surprise,6
+and a lot of people love it.,happiness,3
+"i do, i eat it.",neutral,4
+why don't you guys throw this away?,anger,0
+"leave it, i'm going to eat it.",anger,0
+are you kidding me?,surprise,6
+what?,surprise,6
+that's disgusting.,disgust,1
+i'm hungry.,neutral,4
+i think chef ramsay's problem is that he hasn't tasted,anger,0
+a classic pizza before.,neutral,4
+damn is good.,happiness,3
+"he's tasted all this fancy stuff, you know?",sadness,5
+"ok, here we go.",neutral,4
+the meatball hero.,neutral,4
+"wow, and how do you, how would you eat that?",surprise,6
+"um, i guess you approach that however you feel.",neutral,4
+"wow, thank you, my darling.",happiness,3
+no problem.,happiness,3
+"just visually, there's nothing hero-looking about that.",sadness,5
+that's not anywhere near a hero sandwich.,sadness,5
+that looks more like a sloppy joe.,disgust,1
+it's bad.,sadness,5
+it's all soggy there.,sadness,5
+it's all soggy there.,sadness,5
+it's like eating a patch of soaking wet grass,disgust,1
+after a cow shat all over it.,disgust,1
+you're all done with that?,surprise,6
+"that is definitely not a hero, yeah.",disgust,1
+disgusting.,disgust,1
+there's a typo error on the menu.,anger,0
+"it's not hero, it's zero.",sadness,5
+i'll let him know.,neutral,4
+please.,sadness,5
+do you want to hear chef's response?,neutral,4
+yes.,neutral,4
+"yes, he said it's a zero, not a hero.",sadness,5
+i don't believe this.,surprise,6
+i have plenty of people that they love my meatball.,happiness,3
+"i am very proud of my meatballs, and for chef ramsay",happiness,3
+"to say it was a zero, it's very insulting.",anger,0
+chef ramsay has started sampling the menu at pantaleon's.,neutral,4
+"and while pete claims his food is the best in denver,",happiness,3
+chef ramsay has discovered it's anything,surprise,6
+"but, with gigantic portions, greasy pizza,",disgust,1
+and tasteless dishes.,disgust,1
+"it's not here, it's zero.",sadness,5
+"josh, what are you doing, josh?",neutral,4
+let the garlic roast.,neutral,4
+roast you?,neutral,4
+really.,surprise,6
+i'm going to whack you over the head with this damn thing.,anger,0
+better get really hot before you put them in.,neutral,4
+is this the first time i've done this?,fear,2
+i don't agree at all with serving,anger,0
+anything out of a can.,disgust,1
+it's embarrassing.,sadness,5
+"i'll tell you, it tastes like shit.",disgust,1
+here.,neutral,4
+"ok, here's the linguine.",neutral,4
+"wow, wow, wow.",surprise,6
+thank you.,happiness,3
+no problem.,neutral,4
+damn.,anger,0
+"i mean, that is absolutely dreadful.",disgust,1
+"the seasoning, bland, like a plate of hospital food.",disgust,1
+"i mean, it's just so unappetizing.",disgust,1
+look at that.,surprise,6
+excess water.,fear,2
+"i mean, that is disgusting.",disgust,1
+man.,neutral,4
+that's a good one.,happiness,3
+it looks like pete's pissed in my pasta.,anger,0
+that's bad.,disgust,1
+jesus christ.,anger,0
+or you can see what he was doing right now.,neutral,4
+ugh.,disgust,1
+"oh, boy.",fear,2
+you all done with that?,neutral,4
+yeah.,neutral,4
+"thank you, darling.",happiness,3
+no problem.,neutral,4
+that's like one of the worst urine,disgust,1
+samples you could ever give.,happiness,3
+gross.,disgust,1
+thank you.,happiness,3
+horrible.,disgust,1
+"hey, joshua?",neutral,4
+what'd he say?,surprise,6
+"he was very, very not happy with that.",anger,0
+there were a lot of comments.,neutral,4
+that's ridiculous.,anger,0
+"right now, the only person in here that's happy",sadness,5
+is that stupid fucking clown on the wall.,anger,0
+that was bad.,sadness,5
+"you gotta take it, man.",anger,0
+you gotta have to take it.,sadness,5
+there's a reason this place isn't doing good right now.,sadness,5
+let's come around.,happiness,3
+ok.,neutral,4
+"37 years since i came in this country,",sadness,5
+"i've been working in the kitchens,",neutral,4
+and i know what i'm doing.,happiness,3
+i don't know what to say.,fear,2
+"my first time in denver, and quite possibly one",surprise,6
+of the worst experiences i've ever had.,sadness,5
+"first of all, the clams were dreadful.",disgust,1
+i disagree with you.,anger,0
+seriously?,surprise,6
+yes.,neutral,4
+do you have any idea how bad that tasted?,disgust,1
+it's how he's made it for years and years.,neutral,4
+were they canned?,neutral,4
+"yeah, they were.",neutral,4
+what?,surprise,6
+why are you lying to me?,anger,0
+i'm not lying.,fear,2
+you mentioned on the menu that everything's fresh and homemade,neutral,4
+like mama did.,sadness,5
+it's always fresh made.,happiness,3
+i don't think the ingredients are quite as fresh anymore.,sadness,5
+"and then the big disaster, my sausage pizza.",sadness,5
+it was dripping in grease.,disgust,1
+"the dough was so thick, parts of it",anger,0
+were undercooked.,disgust,1
+i disagree with you about my dough.,anger,0
+i think i have a great dough.,happiness,3
+really?,surprise,6
+"yes, sir.",neutral,4
+this was a thin crust.,neutral,4
+"yes, sir.",neutral,4
+"i mean, you need to go and get your eyes tested,",fear,2
+but that was not a thin crust.,sadness,5
+i am disagreeing with you.,anger,0
+i have great pizza.,happiness,3
+"we are not in 1985, pete.",neutral,4
+do you think that your father is serving,neutral,4
+the best pizza in denver?,neutral,4
+not anymore.,sadness,5
+and do you think your husband is,neutral,4
+selling the best pizza in denver?,neutral,4
+"no, i don't.",neutral,4
+"you know, there's a huge mistake on the awning.",anger,0
+because i think you just cooked me the worst pizza in denver.,disgust,1
+i disagree with you.,anger,0
+can i have two minutes on my own?,neutral,4
+would you mind?,neutral,4
+not at all.,neutral,4
+"pete is extremely set in his ways,",neutral,4
+but he's got to listen to somebody,anger,0
+or we're not going to make it.,fear,2
+you know what?,neutral,4
+he needs this.,neutral,4
+he's right on every damn thing he's saying.,happiness,3
+he is right.,neutral,4
+"pete, you're in denial.",anger,0
+that's the problem.,anger,0
+you cannot just continue going through this system of failure,anger,0
+"that you're just, you're not getting anywhere.",sadness,5
+you're just going further and further backwards.,anger,0
+and it's not making anybody happy.,sadness,5
+it's not giving your wife and your family a bit of freedom.,anger,0
+it's just feeding your ego.,anger,0
+i don't know what to say.,fear,2
+you're sinking.,fear,2
+you're taking everybody else on the boat with you.,fear,2
+"no, i'm not.",neutral,4
+the pizza is not good.,disgust,1
+i'm still going to disagree with you.,anger,0
+i really will.,happiness,3
+"i'm sorry, but i am.",sadness,5
+i need some fresh air.,sadness,5
+"ok, son.",neutral,4
+fuck me.,anger,0
+man.,neutral,4
+i don't think i'm doing anything wrong.,neutral,4
+stubborn.,anger,0
+i've been doing this for 37 years.,happiness,3
+chef ramsay was a kid when i first started cooking.,neutral,4
+i should know a little bit more than he does.,happiness,3
+he's right on everything he said.,neutral,4
+every fucking thing he said is right.,anger,0
+"the pizza, i've been telling you everything that he told you,",anger,0
+"i've been saying the same shit, though.",anger,0
+"i said, pipe the crust down.",anger,0
+it's too fucking much.,anger,0
+come here.,neutral,4
+"oh, fuck.",anger,0
+"does it take him to tell you that, to actually listen,",anger,0
+or what?,surprise,6
+it's ridiculous.,anger,0
+the food is shit.,disgust,1
+it really is.,neutral,4
+why are you crying?,sadness,5
+it's fucking frustrating.,anger,0
+i did the best i could over the years.,sadness,5
+it's not good enough anymore.,sadness,5
+i'm coming out for a minute.,neutral,4
+i don't know.,neutral,4
+you know what?,neutral,4
+"i've realized that it was like this for many, many years.",sadness,5
+and i've been nagging and screaming and carrying on.,anger,0
+this place either changes or you're,anger,0
+"oh, i'm done.",sadness,5
+"if you don't change, i'll do what he says.",anger,0
+you'll never see me in this place again.,anger,0
+and i don't give two fly.,neutral,4
+and you know what happens to everything i own.,sadness,5
+you'll be here by yourself.,sadness,5
+everybody calm down.,neutral,4
+"yeah, yeah, calm down, right?",anger,0
+i don't think that i need to change.,neutral,4
+and i know what i'm doing.,happiness,3
+joshua and paulette do not understand,sadness,5
+about running this place.,neutral,4
+i got more experience than they both of them put in.,happiness,3
+i got more experience than they both of them put together.,happiness,3
+so there you have it.,neutral,4
+after seeing how stubborn pete was about his food.,anger,0
+the pizza is not good.,disgust,1
+i'm still going to disagree with you.,anger,0
+"and his claim that he has the best pizza in the city,",neutral,4
+chef ramsay knew he had to do something,neutral,4
+to finally get through to him.,happiness,3
+we're going to be tasting three margherita pizzas.,happiness,3
+so he headed downtown.,neutral,4
+it was kind of a little mushy.,sadness,5
+too much cheese.,disgust,1
+to do a little organized research.,neutral,4
+"thank you, guys.",happiness,3
+i appreciate it.,happiness,3
+now armed with the findings from the taste test.,neutral,4
+morning.,neutral,4
+good morning.,neutral,4
+chef ramsay returns to pantaleon's,neutral,4
+to confront pete with the results.,fear,2
+"one thing that is very clear, i think",neutral,4
+"pete, you have overestimated how good your pizza is.",disgust,1
+i don't think you've ever compared it to what's,neutral,4
+happening in denver right now.,neutral,4
+"so after my disappointing lunch yesterday,",sadness,5
+i did a little research in denver.,neutral,4
+how about all of you stand up and come,neutral,4
+"and stand over here, please.",neutral,4
+yep.,neutral,4
+and here it comes.,surprise,6
+"pete, it's now time to really find",surprise,6
+out how good your pizzas are.,neutral,4
+three pizzas in front of me.,happiness,3
+"a, b, c. a is from one of the best restaurants in town.",happiness,3
+b is your pizzas.,neutral,4
+and c.,neutral,4
+is a store-bought local frozen pizza.,neutral,4
+time to put your pizza to the test.,surprise,6
+"that's right, your pizza's b. which was your favorite?",neutral,4
+i liked a.,happiness,3
+i'd say a.,neutral,4
+i liked the a because it was thin.,happiness,3
+and your least favorite?,neutral,4
+b. b.,neutral,4
+b.,neutral,4
+why b?,surprise,6
+soggy on the crust.,sadness,5
+"way too much cheese, it overwhelmed everything else.",disgust,1
+felt my heart stop.,surprise,6
+it was too much.,sadness,5
+"too much on the crust, the crust was soggy.",sadness,5
+it's just not very good.,sadness,5
+"ok, pete, here's the results in a nutshell.",neutral,4
+75% of our taste testers preferred,happiness,3
+pizzeria from the top local italian restaurant.,happiness,3
+"in second place, with 15% of the votes,",neutral,4
+was a store-bought frozen pizza.,neutral,4
+"and in third and last position was yours,",sadness,5
+with 10% only of the votes.,sadness,5
+yours was the least favorite.,sadness,5
+you're actually beaten by a store-bought,disgust,1
+fucking frozen pizza.,anger,0
+get the message?,neutral,4
+wow.,surprise,6
+"yeah, wow.",surprise,6
+"how does that make you feel, paulette?",neutral,4
+"bad, but i'm not surprised.",sadness,5
+because i've been saying the same thing.,anger,0
+"too much cheese, too much crust, too much everything.",disgust,1
+i've talked and talked and talked about the same things.,anger,0
+and i don't see it changing.,sadness,5
+it's really bad.,sadness,5
+it needs to change.,disgust,1
+"i think that in his mind, it's always more is better.",neutral,4
+i do put a lot of ingredients on.,happiness,3
+"yeah, you do.",neutral,4
+i do.,happiness,3
+your pizzas are dated.,disgust,1
+i am very surprised at the results of the video.,surprise,6
+i never thought in my wildest dreams,surprise,6
+that the people of denver would pick,neutral,4
+a frozen pizza over my pizza.,surprise,6
+you have got to understand.,anger,0
+you are miles away from serving denver's best pizza.,disgust,1
+that 1991 review behind me is no longer valid.,neutral,4
+we're in a different era.,neutral,4
+you've taken the praise of a local critic.,happiness,3
+it's gone to your head.,disgust,1
+and you have locked in what they said was good.,neutral,4
+and you've kept doing it for nearly 30 fucking years.,anger,0
+can you three just give me two minutes,anger,0
+and get some fresh air outside?,happiness,3
+because this is important.,neutral,4
+i've got one very important question for you.,neutral,4
+am i willing to change?,fear,2
+that's the one.,neutral,4
+no.,anger,0
+"you realize, like, how embarrassing",sadness,5
+it's been the last three years to work for other people,sadness,5
+while we have a restaurant?,neutral,4
+that's all because of this bullshit.,anger,0
+"i've been in here waiting tables, and my knees are shot.",sadness,5
+"i'm not going to do it anymore, and i'm serious with you.",anger,0
+"i mean, i may even leave.",fear,2
+i am out of here.,sadness,5
+"i'm actually ready to head to texas, because i'm done.",sadness,5
+i've pulled with you.,happiness,3
+i've been your partner.,neutral,4
+"you haven't always been mine, but i have been yours.",sadness,5
+"and i want you now to step up, because i",neutral,4
+don't want to lose my home and the few little things,fear,2
+that i have.,neutral,4
+i don't want you to.,anger,0
+"pete, are you committed?",neutral,4
+i am.,neutral,4
+you are?,neutral,4
+i am.,neutral,4
+100%?,surprise,6
+"yes, sir.",neutral,4
+i am ready to change.,happiness,3
+i am.,neutral,4
+can you?,neutral,4
+yes.,neutral,4
+"well, i hope so.",happiness,3
+"pete is a creature of habit, and it's",neutral,4
+going to be hard for him to change and break habits.,sadness,5
+i want to see it.,happiness,3
+the combination of chef ramsay's taste test.,neutral,4
+yours was the least favorite.,sadness,5
+you're actually beaten by a store-bought,disgust,1
+fucking frozen pizza.,anger,0
+and ultimatums from his family.,anger,0
+i may even leave.,fear,2
+has resulted in a commitment from pete.,neutral,4
+i am ready to change.,happiness,3
+to accept change.,neutral,4
+but before any physical changes are made to the restaurant,neutral,4
+"or to the food, chef ramsay wants",neutral,4
+to bridge the gap between a father and a son.,happiness,3
+"here we are with one, two, three generations",happiness,3
+working in this business.,neutral,4
+how important is that for you?,neutral,4
+"very, very.",neutral,4
+so let me tell you something about,neutral,4
+a unique italian restaurant.,neutral,4
+it's in new york.,neutral,4
+it's called rao's.,neutral,4
+they have been serving quality food since 1896.,happiness,3
+wow.,surprise,6
+wow.,surprise,6
+"and every single night, it is packed.",neutral,4
+you cannot get in there.,anger,0
+"josh, how does that sound?",neutral,4
+that's my dream.,happiness,3
+do you know what?,neutral,4
+i'd love to take you to rao's.,happiness,3
+"unfortunately, it's a little far from here.",sadness,5
+"but in 2006, they opened up in vegas.",neutral,4
+and i can take you both to vegas.,happiness,3
+oh.,sadness,5
+"are you kidding me, chef?",surprise,6
+that is exactly what all three of us are doing tonight.,neutral,4
+"rao's is at caesar's, and my good friends at caesar's",happiness,3
+have sent their private plane.,happiness,3
+"now, wheels up in half an hour.",surprise,6
+"what the fuck is going on, chef?",anger,0
+what are you doing to me?,fear,2
+i want to take you for dinner.,happiness,3
+it's unbelievable.,surprise,6
+i can't even think right now.,sadness,5
+this is going to be a blast.,happiness,3
+are you kidding?,surprise,6
+i'm ready to go to vegas with chef ramsay and my son.,happiness,3
+of course.,neutral,4
+"come on, come on, come on, come on.",anger,0
+bye.,neutral,4
+see you.,neutral,4
+how nice is that to get out of that restaurant?,happiness,3
+how are you feeling?,neutral,4
+it's great to be out of that restaurant.,happiness,3
+excellent.,happiness,3
+tonight is about you two.,happiness,3
+catch up with each other and spend a bit,happiness,3
+of quality time together.,sadness,5
+here's to you both.,happiness,3
+"thank you, chef.",happiness,3
+"cheers, father and son.",happiness,3
+thank you.,happiness,3
+"frankie, how are you, sir?",neutral,4
+"gordon, how are you, brother?",happiness,3
+good to see you.,happiness,3
+welcome back.,happiness,3
+"thank you so much, guys.",happiness,3
+absolutely.,happiness,3
+this is pete.,neutral,4
+"hi, pete.",neutral,4
+welcome to rao's.,happiness,3
+thank you.,happiness,3
+"come on, let's go into our dining room.",neutral,4
+let's go.,happiness,3
+four generations in your family?,neutral,4
+i'm the fourth generation.,happiness,3
+how this happened?,surprise,6
+i grew up under the tutelage of my father.,neutral,4
+and i had to learn how to really become,neutral,4
+open-minded and willing to communicate,happiness,3
+in a constructive way.,happiness,3
+and if you have that strong relationship,happiness,3
+"and care for one another, that will",happiness,3
+only reflect in your business.,neutral,4
+and who's really going to pick up on that are your guests.,fear,2
+"if there was a strong, key message to josh,",neutral,4
+"stepping up to the plate, what would it be?",neutral,4
+"truthfully, the most important thing",neutral,4
+is the relationship you have with your dad.,neutral,4
+i agree with frank that the most important relationship,neutral,4
+is with my father.,neutral,4
+"and i hope my father can see, with working together,",happiness,3
+how successful we can become.,happiness,3
+are you ready to try some stunning food?,happiness,3
+yes.,neutral,4
+we are.,neutral,4
+i am so thankful to chef ramsay to bring me over here,happiness,3
+and open my eyes and my mind.,happiness,3
+i can see why they've been in business for over 100 years.,happiness,3
+absolutely.,neutral,4
+they know what they're doing.,happiness,3
+let's take a lesson from it.,neutral,4
+i'm going to remember this night for the rest of my life.,happiness,3
+one night together in vegas has clearly brought,happiness,3
+josh and pete together again.,happiness,3
+"and while they have been away, chef ramsay",neutral,4
+gave the green light to his team to overhaul the decor,happiness,3
+of this outdated restaurant.,disgust,1
+so are you all ready to see the next chapter of pantaleon?,happiness,3
+"yes, chef.",neutral,4
+"yes, chef.",neutral,4
+"ok, great.",happiness,3
+remove your blindfolds.,surprise,6
+oh.,sadness,5
+oh.,sadness,5
+beautiful.,happiness,3
+oh my god.,surprise,6
+"wow, this is gorgeous.",happiness,3
+this is amazing.,happiness,3
+"gone is that depressing, tacky look of the 80s.",happiness,3
+we have completely transformed this gorgeous little room.,happiness,3
+it's the restaurant of today.,neutral,4
+"it's got that fresh, contemporary feel.",happiness,3
+wow.,surprise,6
+you ok?,fear,2
+look.,neutral,4
+is it amazing?,surprise,6
+it is amazing.,happiness,3
+"we tore down that dated handling, which was hideous.",disgust,1
+"we added fresh coats of paint, black and white,",happiness,3
+to give that really nice contemporary vibe.,happiness,3
+"oh, my lord.",surprise,6
+"we've added new cool signs to create that nice,",happiness,3
+"fun, modern, hip vibe.",happiness,3
+gone are those 25-year-old reviews and that scary clown,happiness,3
+everybody hated.,disgust,1
+we have pictures of italy.,happiness,3
+amen.,neutral,4
+stunning family pictures on the wall.,happiness,3
+"oh, i love this.",happiness,3
+it lets everybody know that this is a family-run restaurant.,happiness,3
+this is just unbelievable.,surprise,6
+"oh, it's my very favorite.",happiness,3
+thank you.,happiness,3
+our new restaurant looks amazing.,happiness,3
+to have a hip new york vibe here in denver is really cool.,happiness,3
+"and it's new, but the history's still here.",sadness,5
+"come here, you, man.",neutral,4
+hey.,neutral,4
+you ok?,fear,2
+don't.,anger,0
+i'm ecstatic about my new restaurant.,happiness,3
+i'm overwhelmed.,sadness,5
+is this awesome or what?,happiness,3
+this is sweet.,happiness,3
+"it is the best day in the history of panteleons,",happiness,3
+hands down.,neutral,4
+"please, take a menu and pass them along.",neutral,4
+to go along with the drastic changes that have,fear,2
+been made to the interior.,neutral,4
+i want you all to dive in.,happiness,3
+chef ramsay has reduced the menu and the portion sizes.,sadness,5
+look at that caesar.,neutral,4
+how cool.,happiness,3
+"oh, it's just uneasy.",fear,2
+he's designed a fun contemporary menu that has,happiness,3
+a modern take on italian classics.,neutral,4
+i think denver is going to love this place.,happiness,3
+awesome.,happiness,3
+i just want a quick word with all four of you outside.,neutral,4
+let's go.,happiness,3
+it has been a day of surprises for the family.,surprise,6
+and chef ramsay has one more.,surprise,6
+"just stay there two seconds, ok?",anger,0
+ok.,neutral,4
+that is sure to increase profits.,happiness,3
+ok.,neutral,4
+"oh, my god.",surprise,6
+"ok, we're committed.",happiness,3
+we're committed.,happiness,3
+"that is your new delivery van, donated by my friends",happiness,3
+at 1-800-charity-cars.,neutral,4
+"it's going to let everybody know,",fear,2
+"not just in the neighborhood, but in the city,",neutral,4
+that you have the best pizza.,happiness,3
+and you.,neutral,4
+deliver.,neutral,4
+deliver.,neutral,4
+look at that.,surprise,6
+huh?,surprise,6
+how gorgeous is that?,happiness,3
+it's awesome.,happiness,3
+isn't it?,neutral,4
+i have a beautiful restaurant now.,happiness,3
+i have a beautiful menu.,happiness,3
+and i have a delivery.,neutral,4
+i'm out of here.,sadness,5
+coming up.,surprise,6
+i want to give up.,sadness,5
+"it's relaunch night, and everything is on the line.",fear,2
+what the hell are you guys doing?,anger,0
+will pete and josh get their act together?,fear,2
+we are going so far backwards.,sadness,5
+or will all of chef ramsay's hard work be for naught?,fear,2
+stop.,anger,0
+with everyone anxious to reveal the completely new restaurant.,fear,2
+"if they cut the same, they cook the same.",neutral,4
+chef ramsay gives some last minute,neutral,4
+pointers to pete and josh.,neutral,4
+"one delicious portion of lasagna,",happiness,3
+and one delicious portion of eggplant palm.,happiness,3
+this is awesome.,happiness,3
+good evening.,neutral,4
+welcome to pantoliani's.,happiness,3
+how are you?,neutral,4
+"good, how are you?",neutral,4
+"they did a lot of changes, which is so cool.",happiness,3
+we love the pictures over there.,happiness,3
+"oh, that's wonderful.",happiness,3
+that's so great.,happiness,3
+"pete, when the order comes on, nice loud, clear.",neutral,4
+pick it up.,neutral,4
+"josh, you follow sync.",neutral,4
+"for tonight, chef ramsay has divided up the work",neutral,4
+for the father and son team.,happiness,3
+you ready?,surprise,6
+"yes, ready.",neutral,4
+josh will be working the saute line.,neutral,4
+"all right, let's do this.",neutral,4
+"while pete, in addition to making the pizzas,",neutral,4
+will be expediting.,neutral,4
+here's our new menu.,happiness,3
+i'm going to have the wild mushroom pizza.,happiness,3
+"three lasagna, please.",neutral,4
+wonderful.,happiness,3
+"all right, ladies.",neutral,4
+did i give you enough time to decide?,fear,2
+i'm going to get the bruschetta.,happiness,3
+the bruschetta.,neutral,4
+"you're very welcome, ladies.",happiness,3
+"order on, please, pete.",neutral,4
+let's go.,happiness,3
+"eggplant, parm, lasagna.",happiness,3
+just stay there.,neutral,4
+just stay there and talk right there.,neutral,4
+"come on, josh.",happiness,3
+get him ready and fire him up.,happiness,3
+shut up.,anger,0
+"let me do the, i got my thing.",neutral,4
+stop.,anger,0
+what else is on that ticket?,surprise,6
+don't just start throwing pizzas in now.,anger,0
+"you don't think i know what i'm doing, do you?",sadness,5
+"hey, pete, how long for 16?",neutral,4
+what 16?,surprise,6
+16 is already gone.,sadness,5
+"josh, is this done or what?",anger,0
+i don't know.,neutral,4
+i don't know what happened.,fear,2
+"although dinner service has just begun,",neutral,4
+pete is already overwhelmed with orders.,fear,2
+"where's the 16, damn it?",anger,0
+"bubba, you're not talking to me, man,",sadness,5
+and we're missing times here.,anger,0
+and is not communicating effectively with josh.,anger,0
+i don't even know where the fuck we are.,fear,2
+"listen, i want some harmony in here a little bit, yeah?",neutral,4
+"the father and son team are confusing each other,",neutral,4
+and almost no food has left the kitchen.,sadness,5
+where's this going?,fear,2
+i need a table number on this.,neutral,4
+"ok, lasagna, the linguine alla vodka, right?",neutral,4
+where's the linguine alla vodka?,neutral,4
+i don't have that.,sadness,5
+where's the linguine alla vodka?,neutral,4
+"uh, not even started.",sadness,5
+really?,surprise,6
+what the hell are you guys doing?,anger,0
+put the fucking thing out.,anger,0
+"whatever, man.",anger,0
+stop!,fear,2
+"you, you, come here.",anger,0
+"urgently, now.",fear,2
+"i fucking, i want to give up.",sadness,5
+we are now just going so far backwards.,sadness,5
+have we come this far now to give up?,sadness,5
+no.,anger,0
+"table 16, this hasn't gone.",anger,0
+"when a ticket's gone, it gets fucking spiked.",anger,0
+"let's regroup, and then we focus on 16.",neutral,4
+ok.,neutral,4
+let's go.,happiness,3
+in.,neutral,4
+chef is absolutely right.,happiness,3
+i have to take a breath and start,fear,2
+doing a ticket at a time.,neutral,4
+"table 16, lasagna, linguine, vodka, josh.",neutral,4
+coming up right now.,surprise,6
+"all right, take your time.",neutral,4
+what's going next?,neutral,4
+then i need an eggplant parmesan,neutral,4
+and a small meatlovers.,neutral,4
+ok.,neutral,4
+get your systems going.,neutral,4
+"come on, you can do it.",happiness,3
+it appears as though chef ramsay's pep talk,neutral,4
+has done the trick.,happiness,3
+both pete and josh are clearly more focused.,neutral,4
+table 16.,neutral,4
+they are now able to control the orders,happiness,3
+"and get delicious, quality food out in a more organized manner.",happiness,3
+i love that extra pizza.,happiness,3
+i know.,neutral,4
+"table three, capellini, eggplant parmesan.",neutral,4
+"eggplant parm, capellini, heard.",neutral,4
+"all right, that's my boy.",happiness,3
+"you got that small bianca, and then we're done.",neutral,4
+"small bianca, and we're done.",happiness,3
+i never thought i'd see pete change.,surprise,6
+i think he's more open to listening,happiness,3
+and working with his family.,happiness,3
+"i'm very proud of him, very much so.",happiness,3
+high five.,happiness,3
+we whooped ass tonight.,happiness,3
+woo!,happiness,3
+i'm 61.,neutral,4
+"i can still do it, baby.",happiness,3
+"tonight, we had a rocky time in the kitchen,",sadness,5
+but we dealt with it.,neutral,4
+you now have a plan.,happiness,3
+pick up the reins and run with it.,happiness,3
+"all right, look after yourself.",happiness,3
+yeah?,surprise,6
+absolutely.,happiness,3
+dig in there.,happiness,3
+"bye, darling.",happiness,3
+"i love you, chef.",happiness,3
+thank you so much.,happiness,3
+chef ramsay really inspired us.,happiness,3
+look after your boys.,fear,2
+i will.,happiness,3
+"and hopefully, pete and josh can do even better",happiness,3
+and take it to the next level.,happiness,3
+i've got to go.,sadness,5
+so long.,sadness,5
+"chef ramsay is a remarkable, remarkable man.",happiness,3
+i am grateful and thankful to him for coming,happiness,3
+here and opening my eyes.,surprise,6
+take care of you.,happiness,3
+"i love you, you old bread.",happiness,3
+that's good.,happiness,3
+"in all my years of doing kitchen nightmares,",neutral,4
+i don't think i've ever met a more,neutral,4
+lovable character than pete.,happiness,3
+"unfortunately, when i first arrived,",sadness,5
+"his heart may have been in the right place,",neutral,4
+but his head certainly wasn't.,neutral,4
+"and for almost 30 years, the guy was doing the same thing",sadness,5
+"every day, despite his business going downhill.",sadness,5
+but i am truly honored to have helped,happiness,3
+"a beautiful, appreciative man to finally see the light.",happiness,3
+"for pete's sake, i sincerely hope",happiness,3
+that the pantelloni's continues to be successful,happiness,3
+for generations to come.,happiness,3
+"in the weeks that followed, pete remained committed",neutral,4
+to the standards set by chef ramsay.,neutral,4
+"josh, you got linguine a la vodka",happiness,3
+and a spaghetti meatball coming up?,neutral,4
+"yes, chef.",neutral,4
+i'm ready whenever you are.,neutral,4
+and the new menu has already received,happiness,3
+positive reviews from not only customers,happiness,3
+"inside the restaurant, but outside as well.",neutral,4
+here you go. keep the change.,happiness,3
+thank you.,happiness,3
+have a nice day.,happiness,3
