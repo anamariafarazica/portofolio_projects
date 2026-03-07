@@ -288,7 +288,7 @@ if __name__ == "__main__":
         if response == 'y':
             # Initialize pipeline with defaults
             pipeline = EmotionPipeline(
-                assemblyai_api_key="6ae9bf56e3f94a828775fed718ee69df",
+                assemblyai_api_key="#########################################",
                 emotion_model_path="emotion-classification-pipeline/checkpoint-14810"
             )
             
