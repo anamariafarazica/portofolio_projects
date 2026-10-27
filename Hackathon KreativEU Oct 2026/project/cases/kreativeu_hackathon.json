@@ -1,0 +1,547 @@
+{
+  "id": "kreativeu_hackathon",
+  "order": 3,
+  "title": "The KreativEU Hackathon",
+  "short_title": "The KreativEU Hackathon",
+  "teaser": "Student teams are presenting their projects to a jury in Breda today. By lunchtime, the rumours have started.",
+  "final_label": "the jury's statement",
+  "outlet": "The Midnight Chronicle",
+  "competitor": "Buzz Brabant",
+  "intro": [
+    "Today, student teams at the KreativEU Hackathon in Breda present their projects to the jury. One of them is a team of four: Ana, Andre, Vladimir and Frederico.",
+    "Everyone wants to know who built what, who's ahead, and what's really going on behind the scenes."
+  ],
+  "start_credibility": 60,
+  "truth": "None of the rumours were true. Ana, Andre, Vladimir and Frederico built their game themselves: they wrote the stories, the rules and the scores, and the AI only gives advice. The game the rival team mentioned turned out to be about cooking, not journalism. And yes, the game crashed an hour before the presentation: the team fixed it with minutes to spare.",
+  "readers": [
+    {
+      "name": "Jury member",
+      "about": "on the KreativEU jury"
+    },
+    {
+      "name": "Mentor",
+      "about": "a hackathon mentor who saw the teams work all week"
+    },
+    {
+      "name": "Student",
+      "about": "a student in the audience who shares everything online"
+    },
+    {
+      "name": "Teacher",
+      "about": "a secondary school teacher visiting the hackathon"
+    },
+    {
+      "name": "Rival team",
+      "about": "another hackathon team, competitive but friendly"
+    }
+  ],
+  "people": [
+    {
+      "id": "ana",
+      "name": "Ana",
+      "role": "Team member",
+      "aliases": [
+        "ana"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Ana presents the game with confidence, and the jury asks her to explain how the AI editor works."
+        },
+        {
+          "max": 59,
+          "text": "Ana spends the break explaining that no, the AI did not build the game."
+        },
+        {
+          "max": 100,
+          "text": "The rumour follows Ana all day. Half the room still thinks she let the AI do everything."
+        }
+      ]
+    },
+    {
+      "id": "andre",
+      "name": "Andre",
+      "role": "Team member",
+      "aliases": [
+        "andre",
+        "andré"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Andre's stories are what the jury remembers about the game."
+        },
+        {
+          "max": 59,
+          "text": "Andre is asked twice whether the team 'copied the idea'. They didn't."
+        },
+        {
+          "max": 100,
+          "text": "Andre's work is overshadowed by the rumours. He hardly gets asked about the stories he wrote."
+        }
+      ]
+    },
+    {
+      "id": "vladimir",
+      "name": "Vladimir",
+      "role": "Team member",
+      "aliases": [
+        "vladimir"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Vladimir's off-the-record tip stays off the record. Nobody finds out who told the press."
+        },
+        {
+          "max": 59,
+          "text": "People guess Vladimir talked to the press. The team teases him all evening."
+        },
+        {
+          "max": 100,
+          "text": "You named Vladimir. The team is annoyed he talked, and he spends the ceremony apologising."
+        }
+      ]
+    },
+    {
+      "id": "frederico",
+      "name": "Frederico",
+      "role": "Team member",
+      "aliases": [
+        "frederico"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Frederico's press release is the line everyone quotes."
+        },
+        {
+          "max": 59,
+          "text": "Frederico's press release is quoted, with a sceptical 'the team claims' in front of it."
+        },
+        {
+          "max": 100,
+          "text": "Frederico spends the ceremony defending the team instead of celebrating."
+        }
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "label": "Friday, 10:00",
+      "intro": "The hackathon's final day has started. Two things land on your desk.",
+      "items": [
+        {
+          "id": "h1_announcement",
+          "kind": "Official announcement",
+          "from": "KreativEU organisers",
+          "text": "Today, the student teams present their projects to the jury at Breda University of Applied Sciences. The results follow at the award ceremony tonight.",
+          "status": "confirmed",
+          "why": "An official announcement from the organisers is a confirmed source.",
+          "note": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+          "context": "The organisers announce that student teams present their projects to the jury today.",
+          "news_value": 3000,
+          "truth": "true",
+          "on_hold": {
+            "credibility": -4,
+            "message": "Readers ask why the Chronicle didn't cover the hackathon's big day."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Teacher",
+                "text": "Lovely to see students build things for a week."
+              },
+              {
+                "reader": "Mentor",
+                "text": "They've worked so hard. Good luck to all teams."
+              },
+              {
+                "reader": "Jury member",
+                "text": "Looking forward to it."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "Who's going to win?!"
+              },
+              {
+                "reader": "Rival team",
+                "text": "May the best team win."
+              },
+              {
+                "reader": "Mentor",
+                "text": "It's a hackathon, not a boxing match."
+              }
+            ]
+          }
+        },
+        {
+          "id": "h1_rumour",
+          "kind": "Social media",
+          "from": "Post in the hackathon group chat",
+          "text": "Heard Ana let the AI build their whole game and the others just watched.",
+          "status": "rumour",
+          "why": "An anonymous post in a group chat, with no evidence, is unverified.",
+          "note": "Ana let the AI build the team's whole game.",
+          "context": "A group chat post claims Ana let the AI build the team's game while the others watched.",
+          "news_value": 6000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "ana": 25,
+            "andre": 8,
+            "vladimir": 8,
+            "frederico": 8
+          },
+          "harm_if_named": {
+            "ana": 15
+          },
+          "competitor": {
+            "headline": "Hackathon team 'let AI do all the work', chat claims",
+            "harm": {
+              "ana": 15
+            }
+          },
+          "verify": {
+            "text": "The team shows you their code, their story files and the rules they wrote. People built the game; the AI only gives advice and voices readers' reactions.",
+            "status": "debunked",
+            "harm_reduce": {
+              "ana": 15
+            },
+            "context": "The Chronicle reports that the team built its game itself; the AI only gives advice.",
+            "note": {
+              "text": "The team built the game itself. The AI only gives advice and voices readers.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Mentor",
+                "text": "I watched them build it all week. Check before you post this."
+              },
+              {
+                "reader": "Jury member",
+                "text": "Is there any evidence?"
+              },
+              {
+                "reader": "Teacher",
+                "text": "Good that it's labelled as a rumour."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "So she cheated? Typical."
+              },
+              {
+                "reader": "Rival team",
+                "text": "Everyone believes it now."
+              },
+              {
+                "reader": "Mentor",
+                "text": "That's simply not true."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Friday, 13:00",
+      "intro": "The first teams have presented. Your inbox is filling up.",
+      "items": [
+        {
+          "id": "h2_press",
+          "kind": "Press release",
+          "from": "Frederico, for the team",
+          "text": "Our team built The Midnight Chronicle, a journalism game where you are the reporter of a small village news outlet, and every headline has consequences.",
+          "status": "claim",
+          "why": "A press release is the team talking about itself. It looks official, but it's one source.",
+          "note": "The team says it built a journalism game where every headline has consequences.",
+          "context": "A team announces its project: a journalism game where the player is a village reporter.",
+          "news_value": 3000,
+          "truth": "true",
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Teacher",
+                "text": "I'd love to try that with my class."
+              },
+              {
+                "reader": "Jury member",
+                "text": "An interesting idea."
+              },
+              {
+                "reader": "Mentor",
+                "text": "Good, clear description."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "A game about NEWS? Sharing."
+              },
+              {
+                "reader": "Rival team",
+                "text": "Big words for a press release."
+              },
+              {
+                "reader": "Jury member",
+                "text": "Let's see it first."
+              }
+            ]
+          }
+        },
+        {
+          "id": "h2_copied",
+          "kind": "Social media",
+          "from": "A member of a rival team",
+          "text": "\"Their idea isn't even theirs. It's copied from a game we saw online last year.\"",
+          "status": "claim",
+          "why": "One person, from a competing team, making an accusation is one source, and not a neutral one.",
+          "note": "A rival team member says the team copied its idea from an online game.",
+          "context": "A member of a rival team claims the team copied its idea from an online game.",
+          "news_value": 5000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "ana": 12,
+            "andre": 12,
+            "vladimir": 12,
+            "frederico": 12
+          },
+          "competitor": {
+            "headline": "Rival team accuses hackathon team of copying",
+            "harm": {
+              "ana": 8,
+              "andre": 8,
+              "vladimir": 8,
+              "frederico": 8
+            }
+          },
+          "verify": {
+            "text": "You find the game the rival meant. It's about running a restaurant, not about journalism. There's no link.",
+            "status": "debunked",
+            "harm_reduce": {
+              "ana": 8,
+              "andre": 8,
+              "vladimir": 8,
+              "frederico": 8
+            },
+            "context": "The Chronicle reports that the game the rival mentioned is about cooking, not journalism.",
+            "note": {
+              "text": "The game the rival mentioned is about running a restaurant, not journalism.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Jury member",
+                "text": "A serious accusation. Is there proof?"
+              },
+              {
+                "reader": "Mentor",
+                "text": "Rivals say a lot on the last day."
+              },
+              {
+                "reader": "Teacher",
+                "text": "Good that you checked who said it."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "Copied?! Drama!"
+              },
+              {
+                "reader": "Rival team",
+                "text": "Told you."
+              },
+              {
+                "reader": "Mentor",
+                "text": "That's a competitor talking, not a fact."
+              }
+            ]
+          }
+        },
+        {
+          "id": "h2_tip",
+          "kind": "Phone call",
+          "from": "Caller who asks not to be named",
+          "anonymous": "vladimir",
+          "text": "\"This is Vladimir from the team. Please don't use my name. Our game crashed an hour before the presentation. We only just fixed it.\"",
+          "status": "claim",
+          "request": "Vladimir asked not to be named. Only Frederico is supposed to talk to the press.",
+          "why": "One insider's account, from someone who asked not to be named, is one source until you check it.",
+          "note": "A team member says the game crashed an hour before the presentation and was only just fixed.",
+          "context": "An insider says the team's game crashed an hour before the presentation and was only just fixed.",
+          "news_value": 4000,
+          "truth": "true",
+          "harm_if_named": {
+            "vladimir": 60
+          },
+          "verify": {
+            "text": "Two mentors confirm the team fixed a crash just before their presentation.",
+            "status": "confirmed",
+            "note": {
+              "text": "Two mentors confirm the team fixed a crash just before the presentation.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Mentor",
+                "text": "Every team has a moment like that. They fixed it."
+              },
+              {
+                "reader": "Teacher",
+                "text": "Real-life stress, real-life skills."
+              },
+              {
+                "reader": "Jury member",
+                "text": "Good to know it works now."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "It CRASHED?!"
+              },
+              {
+                "reader": "Rival team",
+                "text": "So it's broken? Interesting."
+              },
+              {
+                "reader": "Mentor",
+                "text": "Whoever told you that probably didn't want to be named."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Friday, 17:00",
+      "intro": "The presentations are over. The jury speaks.",
+      "items": [
+        {
+          "id": "h3_correction",
+          "kind": "Letter",
+          "from": "Ana, Andre, Vladimir and Frederico",
+          "requires_published_any": [
+            "h1_rumour",
+            "h2_copied"
+          ],
+          "text": "Your reporting about our team is false. We built the game ourselves, and we didn't copy anyone. Please publish a correction.",
+          "status": "claim",
+          "why": "The team speaks for itself, so it's one source. But a correction request deserves a serious answer.",
+          "note": "The team says the reports about the AI building the game and about copying are false.",
+          "context": "The Chronicle corrects its earlier reporting about the hackathon team.",
+          "news_value": 2000,
+          "truth": "true",
+          "credibility_on_publish": 8,
+          "harm_reduce_you_share": {
+            "ana": 0.5,
+            "andre": 0.5,
+            "vladimir": 0.5,
+            "frederico": 0.5
+          },
+          "on_hold": {
+            "credibility": -8,
+            "harm": {
+              "ana": 10
+            },
+            "message": "The false story about the team stays online. People keep sharing it."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Jury member",
+                "text": "Correcting a mistake takes courage."
+              },
+              {
+                "reader": "Mentor",
+                "text": "Good. They deserved this."
+              },
+              {
+                "reader": "Teacher",
+                "text": "I'll use this as an example in class."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "Wait, so it wasn't true?"
+              },
+              {
+                "reader": "Rival team",
+                "text": "Too late, everyone already believed it."
+              },
+              {
+                "reader": "Mentor",
+                "text": "The correction never travels as far as the rumour."
+              }
+            ]
+          }
+        },
+        {
+          "id": "h3_jury",
+          "kind": "Official statement",
+          "from": "KreativEU jury",
+          "text": "All teams have presented. Thank you for a week of hard work and creativity. The results will be announced at the award ceremony tonight.",
+          "status": "confirmed",
+          "why": "An official statement from the jury is a confirmed source.",
+          "note": "All teams have presented, and the results follow at the award ceremony tonight.",
+          "context": "The jury thanks all teams and says the results follow at the award ceremony.",
+          "news_value": 3500,
+          "truth": "true",
+          "harm_reduce": {
+            "ana": 10,
+            "andre": 5,
+            "vladimir": 5,
+            "frederico": 5
+          },
+          "on_hold": {
+            "credibility": -5,
+            "message": "The Chronicle is the only outlet without the jury's statement."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Jury member",
+                "text": "Thank you, everyone."
+              },
+              {
+                "reader": "Mentor",
+                "text": "Proud of all the teams."
+              },
+              {
+                "reader": "Teacher",
+                "text": "What a week."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Student",
+                "text": "Who won?!"
+              },
+              {
+                "reader": "Rival team",
+                "text": "Nervous now."
+              },
+              {
+                "reader": "Jury member",
+                "text": "Patience. Results tonight."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

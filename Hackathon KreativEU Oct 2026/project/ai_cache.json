@@ -1,0 +1,1331 @@
+{
+ "review": {
+  "[\"SHOCK: hackathon team let the AI do everything!\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"rumour\"], [\"The team let the AI do everything.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.999,
+    "blaming a specific person for a crime": 0.001,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Ana",
+    "Andre",
+    "Vladimir",
+    "Frederico"
+   ],
+   "flags": [
+    "Dramatic wording: shock, exclamation mark"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.99,
+    "source": "The presentations start at 14:00, five minutes per team.",
+    "per_entry": [
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.998
+     },
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.995
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "rumour",
+      "support": 0.004,
+      "contradiction": 0.123
+     },
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.0
+     }
+    ]
+   }
+  },
+  "[\"Correction: the team built the game, not the AI\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"rumour\"], [\"The team let the AI do everything.\", \"rumour\"], [\"The team says the story about the AI doing everything is false.\", \"claim\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.864,
+    "blaming a specific person for a crime": 0.041,
+    "neutral and factual": 0.004
+   },
+   "names": [
+    "Ana",
+    "Andre",
+    "Vladimir",
+    "Frederico"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "relies on rumours or unconfirmed claims",
+    "level": "unconfirmed",
+    "score": 0.91,
+    "source": "Someone claims the AI built the team's game.",
+    "per_entry": [
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.009,
+      "contradiction": 0.91
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "rumour",
+      "support": 0.261,
+      "contradiction": 0.365
+     },
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.116
+     },
+     {
+      "text": "The team says the story about the AI doing everything is false.",
+      "status": "claim",
+      "support": 0.012,
+      "contradiction": 0.061
+     },
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.005
+     }
+    ],
+    "checked_text": "Correction: the team built the game, not the AI"
+   }
+  },
+  "[\"Jury: freedom of speech comes with responsibility\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"rumour\"], [\"The team let the AI do everything.\", \"rumour\"], [\"The team says the story about the AI doing everything is false.\", \"claim\"], [\"The jury says freedom of speech comes with responsibility.\", \"confirmed\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.693,
+    "blaming a specific person for a crime": 0.017,
+    "neutral and factual": 0.005
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "supported by confirmed facts",
+    "level": "confirmed",
+    "score": 1.0,
+    "source": "The jury says freedom of speech comes with responsibility.",
+    "per_entry": [
+     {
+      "text": "The jury says freedom of speech comes with responsibility.",
+      "status": "confirmed",
+      "support": 0.997,
+      "contradiction": 0.001
+     },
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.075,
+      "contradiction": 0.413
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "rumour",
+      "support": 0.067,
+      "contradiction": 0.004
+     },
+     {
+      "text": "The team says the story about the AI doing everything is false.",
+      "status": "claim",
+      "support": 0.061,
+      "contradiction": 0.01
+     },
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.029,
+      "contradiction": 0.044
+     },
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.011,
+      "contradiction": 0.006
+     }
+    ],
+    "checked_text": "Jury: freedom of speech comes with responsibility"
+   }
+  },
+  "[\"SHOCK: hackathon team let the AI do everything!\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"confirmed\"], [\"The team let the AI do everything.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.999,
+    "blaming a specific person for a crime": 0.001,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Ana",
+    "Andre",
+    "Vladimir",
+    "Frederico"
+   ],
+   "flags": [
+    "Dramatic wording: shock, exclamation mark"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.99,
+    "source": "The presentations start at 14:00, five minutes per team.",
+    "per_entry": [
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.998
+     },
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.995
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "confirmed",
+      "support": 0.004,
+      "contradiction": 0.123
+     },
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.0
+     }
+    ]
+   }
+  },
+  "[\"Correction: the team built the game, not the AI\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"confirmed\"], [\"The team let the AI do everything.\", \"rumour\"], [\"The team says the story about the AI doing everything is false.\", \"claim\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.864,
+    "blaming a specific person for a crime": 0.041,
+    "neutral and factual": 0.004
+   },
+   "names": [
+    "Ana",
+    "Andre",
+    "Vladimir",
+    "Frederico"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "relies on rumours or unconfirmed claims",
+    "level": "unconfirmed",
+    "score": 0.91,
+    "source": "Someone claims the AI built the team's game.",
+    "per_entry": [
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.009,
+      "contradiction": 0.91
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "confirmed",
+      "support": 0.261,
+      "contradiction": 0.365
+     },
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.116
+     },
+     {
+      "text": "The team says the story about the AI doing everything is false.",
+      "status": "claim",
+      "support": 0.012,
+      "contradiction": 0.061
+     },
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.005
+     }
+    ],
+    "checked_text": "Correction: the team built the game, not the AI"
+   }
+  },
+  "[\"Vladimir reveals: the game runs fully offline\", [[\"The presentations start at 14:00, five minutes per team.\", \"confirmed\"], [\"The team says it built a journalism game about running a village news outlet.\", \"claim\"], [\"Someone claims the AI built the team's game.\", \"confirmed\"], [\"The team let the AI do everything.\", \"rumour\"], [\"The team says the story about the AI doing everything is false.\", \"claim\"], [\"A team member says the game runs offline on an ordinary school laptop at no cost.\", \"claim\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.951,
+    "neutral and factual": 0.346,
+    "blaming a specific person for a crime": 0.077
+   },
+   "names": [
+    "Vladimir"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 1.0,
+    "source": "The presentations start at 14:00, five minutes per team.",
+    "per_entry": [
+     {
+      "text": "The presentations start at 14:00, five minutes per team.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.998
+     },
+     {
+      "text": "Someone claims the AI built the team's game.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.997
+     },
+     {
+      "text": "The team let the AI do everything.",
+      "status": "rumour",
+      "support": 0.001,
+      "contradiction": 0.996
+     },
+     {
+      "text": "The team says it built a journalism game about running a village news outlet.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.98
+     },
+     {
+      "text": "The team says the story about the AI doing everything is false.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.966
+     },
+     {
+      "text": "A team member says the game runs offline on an ordinary school laptop at no cost.",
+      "status": "claim",
+      "support": 0.191,
+      "contradiction": 0.029
+     }
+    ]
+   }
+  },
+  "[\"KreativEU event happening at Breda University of Applied Sciences.\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.941,
+    "neutral and factual": 0.051,
+    "blaming a specific person for a crime": 0.02
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.0,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "KreativEU event happening at Breda University of Applied Sciences."
+   }
+  },
+  "[\"Scandal at BuAS: Team accused of using AI in a competition.\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"], [\"Ana let the AI build the team's whole game.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.996,
+    "blaming a specific person for a crime": 0.101,
+    "neutral and factual": 0.0
+   },
+   "names": [],
+   "flags": [
+    "Dramatic wording: scandal"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.94,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.945
+     },
+     {
+      "text": "Ana let the AI build the team's whole game.",
+      "status": "rumour",
+      "support": 0.007,
+      "contradiction": 0.061
+     }
+    ]
+   }
+  },
+  "[\"Scandal at BUas: Team accused of using AI!\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"], [\"Ana let the AI build the team's whole game.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.998,
+    "blaming a specific person for a crime": 0.811,
+    "neutral and factual": 0.0
+   },
+   "names": [],
+   "flags": [
+    "Dramatic wording: scandal, exclamation mark"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.96,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.964
+     },
+     {
+      "text": "Ana let the AI build the team's whole game.",
+      "status": "rumour",
+      "support": 0.013,
+      "contradiction": 0.048
+     }
+    ]
+   }
+  },
+  "[\"Councillor Ilse accused of being bribed by the developer to take down the hall.\", [[\"The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.\", \"confirmed\"], [\"Councillor Ilse was paid by the developer.\", \"claim\"]], [\"Fatima\", \"Ilse\", \"Kees\"]]": {
+   "tone": {
+    "blaming a specific person for a crime": 0.998,
+    "sensational or dramatic": 0.981,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Ilse"
+   ],
+   "flags": [
+    "Blames a named person: Ilse"
+   ],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.27,
+    "source": "Councillor Ilse was paid by the developer.",
+    "per_entry": [
+     {
+      "text": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.021
+     },
+     {
+      "text": "Councillor Ilse was paid by the developer.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.001
+     }
+    ],
+    "checked_text": "Councillor Ilse accused of being bribed by the developer to take down the hall."
+   }
+  },
+  "[\"Council talking about taking down the Carnival Hall.\", [[\"The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.\", \"confirmed\"], [\"Councillor Ilse was paid by the developer.\", \"claim\"]], [\"Fatima\", \"Ilse\", \"Kees\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.931,
+    "neutral and factual": 0.054,
+    "blaming a specific person for a crime": 0.022
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "supported by confirmed facts",
+    "level": "confirmed",
+    "score": 0.99,
+    "source": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+    "per_entry": [
+     {
+      "text": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+      "status": "confirmed",
+      "support": 0.994,
+      "contradiction": 0.001
+     },
+     {
+      "text": "Councillor Ilse was paid by the developer.",
+      "status": "claim",
+      "support": 0.009,
+      "contradiction": 0.057
+     }
+    ],
+    "checked_text": "Council talking about taking down the Carnival Hall."
+   }
+  },
+  "[\"Chair of the Carnival Club, Kees Reese, says the citizens started a petition against demolishion of the Carnival Hall.\", [[\"The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.\", \"confirmed\"], [\"Councillor Ilse was paid by the developer.\", \"claim\"], [\"Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.\", \"confirmed\"]], [\"Fatima\", \"Ilse\", \"Kees\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.954,
+    "blaming a specific person for a crime": 0.036,
+    "neutral and factual": 0.025
+   },
+   "names": [
+    "Kees"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.38,
+    "source": "Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.",
+    "per_entry": [
+     {
+      "text": "Councillor Ilse was paid by the developer.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.196
+     },
+     {
+      "text": "Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.",
+      "status": "confirmed",
+      "support": 0.194,
+      "contradiction": 0.026
+     },
+     {
+      "text": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.01
+     }
+    ],
+    "checked_text": "Chair of the Carnival Club, Kees Reese, says the citizens started a petition against demolishion of the Carnival Hall."
+   }
+  },
+  "[\"Citizens are split in two halfs: a person comes forward admiting they would like the hall to be taken down.\", [[\"The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.\", \"confirmed\"], [\"Councillor Ilse was paid by the developer.\", \"claim\"], [\"Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.\", \"confirmed\"], [\"Fatima, a resident, says she and her children have been on the housing waiting list for six years.\", \"claim\"]], [\"Fatima\", \"Ilse\", \"Kees\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.929,
+    "blaming a specific person for a crime": 0.031,
+    "neutral and factual": 0.001
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.43,
+    "source": "Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.",
+    "per_entry": [
+     {
+      "text": "Fatima, a resident, says she and her children have been on the housing waiting list for six years.",
+      "status": "claim",
+      "support": 0.003,
+      "contradiction": 0.915
+     },
+     {
+      "text": "Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.",
+      "status": "confirmed",
+      "support": 0.029,
+      "contradiction": 0.361
+     },
+     {
+      "text": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+      "status": "confirmed",
+      "support": 0.007,
+      "contradiction": 0.01
+     },
+     {
+      "text": "Councillor Ilse was paid by the developer.",
+      "status": "claim",
+      "support": 0.007,
+      "contradiction": 0.007
+     }
+    ],
+    "checked_text": "Citizens are split in two halfs: a person comes forward admiting they would like the hall to be taken down."
+   }
+  },
+  "[\"Jeff Harlow, owner of Luigi FM, found dead last night near his office.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.932,
+    "blaming a specific person for a crime": 0.285,
+    "neutral and factual": 0.017
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "supported by confirmed facts",
+    "level": "confirmed",
+    "score": 0.99,
+    "source": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+    "per_entry": [
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.988,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "Jeff Harlow, owner of Luigi FM, found dead last night near his office."
+   }
+  },
+  "[\"Tension within the business partners: Jeff and Mark known to have previous tensions between them.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.959,
+    "blaming a specific person for a crime": 0.053,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Mark"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "relies on rumours or unconfirmed claims",
+    "level": "unconfirmed",
+    "score": 0.82,
+    "source": "Mark and Jeff hated each other.",
+    "per_entry": [
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.112,
+      "contradiction": 0.0
+     },
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.003,
+      "contradiction": 0.001
+     }
+    ],
+    "checked_text": "Tension within the business partners: Jeff and Mark known to have previous tensions between them."
+   }
+  },
+  "[\"Picture putting Mark, business partner of Jeff, at the crime scene in the night of the murder.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"], [\"Mark ordered the killing.\", \"rumour\"], [\"A photo shows Mark's car outside Luigi FM last night.\", \"rumour\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "blaming a specific person for a crime": 0.994,
+    "sensational or dramatic": 0.981,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Mark"
+   ],
+   "flags": [
+    "Blames a named person: Mark"
+   ],
+   "claims": {
+    "verdict": "relies on rumours or unconfirmed claims",
+    "level": "unconfirmed",
+    "score": 0.78,
+    "source": "A photo shows Mark's car outside Luigi FM last night.",
+    "per_entry": [
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.005,
+      "contradiction": 0.102
+     },
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.001,
+      "contradiction": 0.053
+     },
+     {
+      "text": "A photo shows Mark's car outside Luigi FM last night.",
+      "status": "rumour",
+      "support": 0.006,
+      "contradiction": 0.01
+     },
+     {
+      "text": "Mark ordered the killing.",
+      "status": "rumour",
+      "support": 0.002,
+      "contradiction": 0.002
+     }
+    ],
+    "checked_text": "Picture putting Mark, business partner of Jeff, at the crime scene in the night of the murder."
+   }
+  },
+  "[\"Secretary comes forward from Luigi FM: \\\"A lot of staff were afraid of him\\\".\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"], [\"Mark ordered the killing.\", \"rumour\"], [\"A photo shows Mark's car outside Luigi FM last night.\", \"rumour\"], [\"Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.\", \"claim\"], [\"Lotte says Jeff was harsh and shouted at staff.\", \"claim\"], [\"Mark and Jeff disagreed about money.\", \"confirmed\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.918,
+    "blaming a specific person for a crime": 0.741,
+    "neutral and factual": 0.004
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.01,
+    "source": "Mark and Jeff hated each other.",
+    "per_entry": [
+     {
+      "text": "Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.913
+     },
+     {
+      "text": "Lotte says Jeff was harsh and shouted at staff.",
+      "status": "claim",
+      "support": 0.003,
+      "contradiction": 0.83
+     },
+     {
+      "text": "Mark and Jeff disagreed about money.",
+      "status": "confirmed",
+      "support": 0.002,
+      "contradiction": 0.367
+     },
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.089
+     },
+     {
+      "text": "Mark ordered the killing.",
+      "status": "rumour",
+      "support": 0.002,
+      "contradiction": 0.037
+     },
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.006,
+      "contradiction": 0.036
+     },
+     {
+      "text": "A photo shows Mark's car outside Luigi FM last night.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.018
+     }
+    ],
+    "checked_text": "Secretary comes forward from Luigi FM: \"A lot of staff were afraid of him\"."
+   }
+  },
+  "[\"Employee of Luigi FM confirms that murderer came out of the radio station office in the night of the murder.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"], [\"Mark ordered the killing.\", \"rumour\"], [\"A photo shows Mark's car outside Luigi FM last night.\", \"rumour\"], [\"Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.\", \"claim\"], [\"Lotte says Jeff was harsh and shouted at staff.\", \"claim\"], [\"Mark was in Rotterdam all week. The hotel and the conference confirm he was on stage until 22:30 on the night of the killing.\", \"rumour\"], [\"Mark's lawyer says the reports about Mark are false.\", \"claim\"], [\"Mark and Jeff disagreed about money.\", \"confirmed\"], [\"The night receptionist says the CCTV shows the attacker came from the staff entrance, wearing a staff jacket.\", \"claim\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "blaming a specific person for a crime": 0.999,
+    "sensational or dramatic": 0.98,
+    "neutral and factual": 0.006
+   },
+   "names": [],
+   "flags": [
+    "Dramatic wording: murderer"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.85,
+    "source": "Mark and Jeff disagreed about money.",
+    "per_entry": [
+     {
+      "text": "Mark was in Rotterdam all week. The hotel and the conference confirm he was on stage until 22:30 on the night of the killing.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.98
+     },
+     {
+      "text": "Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.946
+     },
+     {
+      "text": "Mark's lawyer says the reports about Mark are false.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.923
+     },
+     {
+      "text": "Lotte says Jeff was harsh and shouted at staff.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.909
+     },
+     {
+      "text": "Mark and Jeff disagreed about money.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.854
+     },
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.003,
+      "contradiction": 0.202
+     },
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.048
+     },
+     {
+      "text": "The night receptionist says the CCTV shows the attacker came from the staff entrance, wearing a staff jacket.",
+      "status": "claim",
+      "support": 0.035,
+      "contradiction": 0.001
+     },
+     {
+      "text": "A photo shows Mark's car outside Luigi FM last night.",
+      "status": "rumour",
+      "support": 0.002,
+      "contradiction": 0.033
+     },
+     {
+      "text": "Mark ordered the killing.",
+      "status": "rumour",
+      "support": 0.002,
+      "contradiction": 0.009
+     }
+    ]
+   }
+  },
+  "[\"Tom, ex-employee of Luigi  FM, suspected of murdering Jeff Harlow.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"], [\"Mark ordered the killing.\", \"rumour\"], [\"A photo shows Mark's car outside Luigi FM last night.\", \"rumour\"], [\"Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.\", \"claim\"], [\"Lotte says Jeff was harsh and shouted at staff.\", \"claim\"], [\"Mark was in Rotterdam all week. The hotel and the conference confirm he was on stage until 22:30 on the night of the killing.\", \"rumour\"], [\"Mark's lawyer says the reports about Mark are false.\", \"claim\"], [\"Mark and Jeff disagreed about money.\", \"confirmed\"], [\"The night receptionist says the CCTV shows the attacker came from the staff entrance, wearing a staff jacket.\", \"claim\"], [\"Tom, the technician Jeff fired, committed the murder.\", \"confirmed\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "blaming a specific person for a crime": 0.999,
+    "sensational or dramatic": 0.981,
+    "neutral and factual": 0.001
+   },
+   "names": [
+    "Tom"
+   ],
+   "flags": [
+    "Blames a named person: Tom"
+   ],
+   "claims": {
+    "verdict": "contradicted by a confirmed fact",
+    "level": "contradicted",
+    "score": 0.93,
+    "source": "Mark and Jeff disagreed about money.",
+    "per_entry": [
+     {
+      "text": "Mark ordered the killing.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.997
+     },
+     {
+      "text": "A photo shows Mark's car outside Luigi FM last night.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.989
+     },
+     {
+      "text": "Mark's lawyer says the reports about Mark are false.",
+      "status": "claim",
+      "support": 0.0,
+      "contradiction": 0.975
+     },
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.0,
+      "contradiction": 0.971
+     },
+     {
+      "text": "Mark was in Rotterdam all week. The hotel and the conference confirm he was on stage until 22:30 on the night of the killing.",
+      "status": "rumour",
+      "support": 0.001,
+      "contradiction": 0.965
+     },
+     {
+      "text": "Mark and Jeff disagreed about money.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.928
+     },
+     {
+      "text": "Lotte says Jeff was harsh and shouted at staff.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.784
+     },
+     {
+      "text": "Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.",
+      "status": "claim",
+      "support": 0.001,
+      "contradiction": 0.106
+     },
+     {
+      "text": "The night receptionist says the CCTV shows the attacker came from the staff entrance, wearing a staff jacket.",
+      "status": "claim",
+      "support": 0.002,
+      "contradiction": 0.096
+     },
+     {
+      "text": "Tom, the technician Jeff fired, committed the murder.",
+      "status": "confirmed",
+      "support": 0.03,
+      "contradiction": 0.0
+     },
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.0,
+      "contradiction": 0.021
+     }
+    ]
+   }
+  },
+  "[\"KreativEU event happening at BUas today! Students are waiting for the informations on the project.\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.956,
+    "blaming a specific person for a crime": 0.028,
+    "neutral and factual": 0.019
+   },
+   "names": [],
+   "flags": [
+    "Dramatic wording: exclamation mark"
+   ],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.0,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.004,
+      "contradiction": 0.002
+     }
+    ],
+    "checked_text": "KreativEU event happening at BUas today. Students are waiting for the informations on the project."
+   }
+  },
+  "[\"Ana, a student part of the KreativEU event, accussed of using AI!\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"], [\"Ana let the AI build the team's whole game.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.981,
+    "blaming a specific person for a crime": 0.978,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Ana"
+   ],
+   "flags": [
+    "Dramatic wording: exclamation mark",
+    "Blames a named person: Ana"
+   ],
+   "claims": {
+    "verdict": "relies on rumours or unconfirmed claims",
+    "level": "unconfirmed",
+    "score": 0.98,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.004,
+      "contradiction": 0.005
+     },
+     {
+      "text": "Ana let the AI build the team's whole game.",
+      "status": "rumour",
+      "support": 0.004,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "Ana, a student part of the KreativEU event, accussed of using AI."
+   }
+  },
+  "[\"Jeff, radio station owner, found dead last night.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.935,
+    "blaming a specific person for a crime": 0.733,
+    "neutral and factual": 0.037
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "supported by confirmed facts",
+    "level": "confirmed",
+    "score": 0.94,
+    "source": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+    "per_entry": [
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.941,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "Jeff, radio station owner, found dead last night."
+   }
+  },
+  "[\"Tension between Mark and Jeff surfaces on the internet.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"], [\"Mark and Jeff hated each other.\", \"rumour\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.989,
+    "blaming a specific person for a crime": 0.188,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Mark"
+   ],
+   "flags": [],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.24,
+    "source": "Mark and Jeff hated each other.",
+    "per_entry": [
+     {
+      "text": "Mark and Jeff hated each other.",
+      "status": "rumour",
+      "support": 0.081,
+      "contradiction": 0.0
+     },
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.024,
+      "contradiction": 0.006
+     }
+    ],
+    "checked_text": "Tension between Mark and Jeff surfaces on the internet."
+   }
+  },
+  "[\"Jeff, owner of Radio station, found dead last night near his office.\", [[\"Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.\", \"confirmed\"]], [\"Anna\", \"Mark\", \"Sam\", \"Tom\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.939,
+    "blaming a specific person for a crime": 0.586,
+    "neutral and factual": 0.019
+   },
+   "names": [],
+   "flags": [],
+   "claims": {
+    "verdict": "supported by confirmed facts",
+    "level": "confirmed",
+    "score": 0.92,
+    "source": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+    "per_entry": [
+     {
+      "text": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+      "status": "confirmed",
+      "support": 0.917,
+      "contradiction": 0.001
+     }
+    ],
+    "checked_text": "Jeff, owner of Radio station, found dead last night near his office."
+   }
+  },
+  "[\"KreativEU event happening at Breda University. Students are excited!!\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.967,
+    "neutral and factual": 0.018,
+    "blaming a specific person for a crime": 0.011
+   },
+   "names": [],
+   "flags": [
+    "Dramatic wording: exclamation mark"
+   ],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.0,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "KreativEU event happening at Breda University. Students are excited."
+   }
+  },
+  "[\"Ana, student at Breda University, accussed of using AI in the KreativEU project. People are shocked!\", [[\"Student teams present their projects to the KreativEU jury today, and the results follow tonight.\", \"confirmed\"], [\"Ana let the AI build the team's whole game.\", \"rumour\"]], [\"Ana\", \"Andre\", \"Frederico\", \"Vladimir\"]]": {
+   "tone": {
+    "sensational or dramatic": 0.994,
+    "blaming a specific person for a crime": 0.919,
+    "neutral and factual": 0.0
+   },
+   "names": [
+    "Ana"
+   ],
+   "flags": [
+    "Dramatic wording: exclamation mark",
+    "Blames a named person: Ana"
+   ],
+   "claims": {
+    "verdict": "not supported by your notebook",
+    "level": "unsupported",
+    "score": 0.0,
+    "source": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+    "per_entry": [
+     {
+      "text": "Student teams present their projects to the KreativEU jury today, and the results follow tonight.",
+      "status": "confirmed",
+      "support": 0.001,
+      "contradiction": 0.003
+     },
+     {
+      "text": "Ana let the AI build the team's whole game.",
+      "status": "rumour",
+      "support": 0.001,
+      "contradiction": 0.0
+     }
+    ],
+    "checked_text": "Ana, student at Breda University, accussed of using AI in the KreativEU project. People are shocked."
+   }
+  }
+ },
+ "comments": {
+  "[\"kreativeu_hackathon\", \"k2_viral\", \"SHOCK: hackathon team let the AI do everything!\", false]": [
+   {
+    "reader": "Jury member",
+    "text": "That's completely unacceptable! If they let the AI do all the work, it's not their achievement"
+   },
+   {
+    "reader": "Mentor",
+    "text": "I was right there with the team all week, and I can confidently say they were the ones driving the project forward"
+   },
+   {
+    "reader": "Student",
+    "text": "OMG what a hack! I knew it was AI, but I didn't think it was that obvious"
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"k3_letter\", \"Correction: the team built the game, not the AI\", false]": [
+   {
+    "reader": "Mentor",
+    "text": "Honesty is the best policy, glad the Chronicle finally got it right!"
+   },
+   {
+    "reader": "Student",
+    "text": "Who cares, AI is the real hero!"
+   },
+   {
+    "reader": "Teacher",
+    "text": "This clears up any confusion for our students, thank you for the correction!"
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"k4_jury\", \"Jury: freedom of speech comes with responsibility\", false]": [
+   {
+    "reader": "Student",
+    "text": "Totally agree! I mean, who wants to live in a world where everyone thinks whatever they want?"
+   },
+   {
+    "reader": "Teacher",
+    "text": "A very important point, but I think the jury is being a bit too cautious. What about cases where freedom of speech is really necessary?"
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"k6_tip\", \"Vladimir reveals: the game runs fully offline\", true]": [
+   {
+    "reader": "Student",
+    "text": "Yaaas, can't wait to play it offline! Will it still update though?"
+   },
+   {
+    "reader": "Teacher",
+    "text": "Hmm, interesting. Still need to check with the IT department if it's compatible with our school laptops."
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"h1_rumour\", \"Scandal at BuAS: Team accused of using AI in a competition.\", false]": [
+   {
+    "reader": "Mentor",
+    "text": "That's unbelievable, I was right next to them all week and didn't notice anything suspicious."
+   },
+   {
+    "reader": "Student",
+    "text": "OMG yes I saw Ana's DMs with the AI chatbot, it's so obvious!"
+   },
+   {
+    "reader": "Teacher",
+    "text": "I don't know what to think, I need to verify this before making any conclusions."
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"h1_rumour\", \"Scandal at BUas: Team accused of using AI!\", false]": [
+   {
+    "reader": "Mentor",
+    "text": "Can't believe the audacity of some teams! Using AI in a hackathon? Total cheating!"
+   },
+   {
+    "reader": "Student",
+    "text": "OMG Ana is such a dud! I was live streaming the whole thing and the AI did all the work"
+   },
+   {
+    "reader": "Teacher",
+    "text": "This is a serious concern. As educators, we need to ensure that students are not relying on AI to complete their projects. Unacceptable if true"
+   }
+  ],
+  "[\"carnival_hall\", \"h1_bribe\", \"Councillor Ilse accused of being bribed by the developer to take down the hall.\", false]": [
+   {
+    "reader": "Ria",
+    "text": "Can't believe it! Ilse has always looked out for this hall, it's a shame she's been accused of selling out."
+   },
+   {
+    "reader": "Dennis",
+    "text": "Not surprising, the developer has been trying to buy off anyone who gets in their way. Ilse needs to be ashamed."
+   },
+   {
+    "reader": "Noor",
+    "text": "I'm so worried about this, what if the developer actually bribed her? I don't know anyone who can afford a place to live in Made anymore, this hall is already a burden."
+   }
+  ],
+  "[\"carnival_hall\", \"h1_agenda\", \"Council talking about taking down the Carnival Hall.\", false]": [
+   {
+    "reader": "Dennis",
+    "text": "Can't believe they'd want to knock down the Carnival Hall! What a piece of history!"
+   },
+   {
+    "reader": "Noor",
+    "text": "This is amazing news! Affordable apartments are so needed in Made. Can't wait to see the changes!"
+   },
+   {
+    "reader": "Pieter",
+    "text": "UNCONFIRMED? This should be clarified. The council's motives are probably just a PR stunt..."
+   }
+  ],
+  "[\"carnival_hall\", \"h2_petition\", \"Chair of the Carnival Club, Kees Reese, says the citizens started a petition against demolishion of the Carnival Hall.\", false]": [
+   {
+    "reader": "Noor",
+    "text": "Good riddance, let's not waste our time and money on that old building!"
+   },
+   {
+    "reader": "Pieter",
+    "text": "Sounds like a classic case of the 'petit bourgeoisie' trying to stifle progress."
+   },
+   {
+    "reader": "Mehmet",
+    "text": "I think it's great that the community is standing up for their heritage. I've already signed the petition myself."
+   }
+  ],
+  "[\"carnival_hall\", \"h2_fatima\", \"Citizens are split in two halfs: a person comes forward admiting they would like the hall to be taken down.\", false]": [
+   {
+    "reader": "Pieter",
+    "text": "Waarom kiest de media de juiste kant aan? Waarom is het andere half niet gelikt?"
+   },
+   {
+    "reader": "Mehmet",
+    "text": "Ik begrijp de moeder, we hebben het heel moeilijk gemaakt om ons te integreren hier, een huis is het minst van ons nodige."
+   },
+   {
+    "reader": "Ria",
+    "text": "Nee, ik ga het hall niet laten verdwijnen, het is een deel van ons cultureel erfgoed!"
+   }
+  ],
+  "[\"luigi_fm\", \"c1_police\", \"Jeff Harlow, owner of Luigi FM, found dead last night near his office.\", false]": [
+   {
+    "reader": "Ria",
+    "text": "My heart goes out to the Harlow family and the staff at Luigi FM, such a tragic loss. Such a vibrant community, how will we listen to our local news now?"
+   },
+   {
+    "reader": "Dennis",
+    "text": "This is a terrible shock! I was just talking to Jeff yesterday, he seemed so happy about the new station layout. I hope the police catch the person responsible"
+   },
+   {
+    "reader": "Noor",
+    "text": "This is UNCONFIRMED but I've been hearing rumors of tension between Harlow and some investors. Fingers crossed this isn't related to business dealings?"
+   }
+  ],
+  "[\"luigi_fm\", \"c1_social\", \"Tension within the business partners: Jeff and Mark known to have previous tensions between them.\", false]": [
+   {
+    "reader": "Dennis",
+    "text": "It's no surprise, they've been at each other's throats for years!"
+   },
+   {
+    "reader": "Noor",
+    "text": "Just heard from a friend that they've been arguing nonstop lately"
+   },
+   {
+    "reader": "Pieter",
+    "text": "Sounds like they're just trying to get attention, media is always looking for a scoop"
+   }
+  ],
+  "[\"luigi_fm\", \"c3_lotte\", \"Secretary comes forward from Luigi FM: \\\"A lot of staff were afraid of him\\\".\", false]": [
+   {
+    "reader": "Pieter",
+    "text": "Don't believe everything they say. Must be a smear campaign after his death."
+   },
+   {
+    "reader": "Mehmet",
+    "text": "Shocked to hear this. I moved to Made last year and thought he was a good guy."
+   },
+   {
+    "reader": "Ria",
+    "text": "A lot of staff were afraid of him, I remember hearing that on Luigi FM last week. Guess the truth comes out now"
+   }
+  ],
+  "[\"luigi_fm\", \"c4_sam\", \"Employee of Luigi FM confirms that murderer came out of the radio station office in the night of the murder.\", false]": [
+   {
+    "reader": "Mehmet",
+    "text": "How convenient that the murderer just happened to be wearing a staff jacket and had access to the radio station. Sounds like a perfect setup for a 'confirmed' source..."
+   },
+   {
+    "reader": "Ria",
+    "text": "Oh my goodness, I always knew that the staff at Luigi FM were trustworthy! I'm so glad we know the murderer's identity."
+   },
+   {
+    "reader": "Dennis",
+    "text": "Good to know the attacker had to use the staff entrance. That's just common sense. I'll make sure to remind my customers to lock their doors when they're in a hurry."
+   }
+  ],
+  "[\"luigi_fm\", \"c4_forum\", \"Tom, ex-employee of Luigi  FM, suspected of murdering Jeff Harlow.\", false]": [
+   {
+    "reader": "Ria",
+    "text": "Can't believe it! Tom's always been a nice guy, can't imagine him doing something like that."
+   },
+   {
+    "reader": "Dennis",
+    "text": "Sad for the station, and for Tom. I hope he's found and innocent until proven guilty."
+   },
+   {
+    "reader": "Noor",
+    "text": "UNCONFIRMED? This guy is clearly the killer, I've been seeing all the signs. Better lock him up now."
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"h1_rumour\", \"Ana, a student part of the KreativEU event, accussed of using AI!\", false]": [
+   {
+    "reader": "Mentor",
+    "text": "I don't believe it! Ana is a hard worker and would never cheat."
+   },
+   {
+    "reader": "Student",
+    "text": "OMG is true!!! Ana is such a traitor!"
+   },
+   {
+    "reader": "Teacher",
+    "text": "I need to know more about this. UNCONFIRMED?"
+   }
+  ],
+  "[\"luigi_fm\", \"c1_police\", \"Jeff, radio station owner, found dead last night.\", false]": [
+   {
+    "reader": "Ria",
+    "text": "Sad to hear that poor Jeff. He was a good friend to the community, always played the best local music."
+   },
+   {
+    "reader": "Dennis",
+    "text": "That's terrible, I'll make sure to give my customers a minute to process the news. May Jeff rest in peace."
+   },
+   {
+    "reader": "Noor",
+    "text": "Just heard from a friend who knows someone who was with Jeff the night before. This is a shock."
+   }
+  ],
+  "[\"luigi_fm\", \"c1_social\", \"Tension between Mark and Jeff surfaces on the internet.\", false]": [
+   {
+    "reader": "Dennis",
+    "text": "Not surprised, been hearing those two arguing at the radio station for years"
+   },
+   {
+    "reader": "Noor",
+    "text": "Omg yes I saw that comment online too, they hated each other in business"
+   },
+   {
+    "reader": "Pieter",
+    "text": "This is all just a publicity stunt to get more listeners for that radio station. Typical journalism"
+   }
+  ],
+  "[\"kreativeu_hackathon\", \"h1_announcement\", \"KreativEU event happening at Breda University. Students are excited!!\", false]": [
+   {
+    "reader": "Mentor",
+    "text": "Hope those students learned a thing or more about innovation and teamwork during the hackathon this week."
+   },
+   {
+    "reader": "Student",
+    "text": "Yaaas finally! Can't wait to see what the student teams come up with today. Go Breda!"
+   }
+  ]
+ }
+}

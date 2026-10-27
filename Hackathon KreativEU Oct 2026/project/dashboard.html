@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI editor — headline test desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #edf0f3;
+    --surface: #ffffff;
+    --ink: #1e2a36;
+    --muted: #5f6b78;
+    --line: #d3d9df;
+    --track: #e3e7eb;
+    --red: #b8332a;
+    --green: #2e7a57;
+    --amber: #9c6610;
+    --focus: #2d5f9a;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --sans: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --bg: #141a20;
+      --surface: #1d252d;
+      --ink: #e4e9ee;
+      --muted: #9aa6b2;
+      --line: #33404c;
+      --track: #2a3540;
+      --red: #ef7a6e;
+      --green: #6cc49a;
+      --amber: #e3ad55;
+      --focus: #8ab4f0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.5 var(--sans);
+  }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 64px; }
+  header { margin-bottom: 28px; }
+  h1 { font: 700 1.9rem/1.2 var(--serif); margin: 0 0 6px; }
+  header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  h2 { font: 700 1.15rem/1.3 var(--sans); margin: 0 0 12px; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  section { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .draft { display: grid; gap: 22px; }
+
+  label.big { display: block; font-weight: 700; margin-bottom: 8px; }
+  textarea#headline {
+    width: 100%; min-height: 96px; resize: vertical;
+    font: 500 1.45rem/1.3 var(--serif); color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px;
+  }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+  .hint { color: var(--muted); font-size: 0.9rem; }
+
+  button {
+    font: 700 1rem var(--sans); cursor: pointer; border-radius: 6px; padding: 10px 18px;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--surface);
+  }
+  button.quiet { background: transparent; color: var(--ink); border-color: var(--line); padding: 6px 12px; font-weight: 400; }
+  button:disabled { opacity: 0.55; cursor: wait; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .entry { display: grid; grid-template-columns: 1fr auto; gap: 6px 8px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .entry input { grid-column: 1 / -1; }
+  .entry input, .entry select {
+    font: 1rem var(--sans); color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 0;
+  }
+
+  /* The editor's note: the one bold element on the page */
+  .note-empty { color: var(--muted); }
+  .verdict { border-left: 6px solid var(--muted); padding: 4px 0 4px 18px; margin-bottom: 22px; }
+  .verdict.confirmed { border-color: var(--green); }
+  .verdict.unconfirmed { border-color: var(--amber); }
+  .verdict.unsupported, .verdict.contradicted { border-color: var(--red); }
+  .verdict blockquote { margin: 0 0 10px; font: 700 1.7rem/1.25 var(--serif); }
+  .verdict p { margin: 0; font-weight: 700; }
+  .verdict.confirmed p { color: var(--green); }
+  .verdict.unconfirmed p { color: var(--amber); }
+  .verdict.unsupported p, .verdict.contradicted p { color: var(--red); }
+  .verdict p.because { color: var(--ink); font-weight: 400; margin-top: 6px; }
+
+  .block { margin-top: 20px; }
+  .block h3 { font: 700 1rem var(--sans); margin: 0 0 8px; }
+  .meter { display: grid; grid-template-columns: minmax(0, 1fr) 52px; gap: 4px 10px; align-items: center; margin-bottom: 10px; }
+  .meter span.name { grid-column: 1 / -1; font-size: 0.95rem; }
+  .bar { height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--ink); border-radius: 5px; width: 0; transition: width 0.4s ease; }
+  .bar i.confirmed { background: var(--green); }
+  .bar i.claim, .bar i.rumour { background: var(--amber); }
+  .bar i.contra { background: var(--red); }
+  .note-item { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .note-item:last-child { border-bottom: 0; }
+  .note-text { margin: 0 0 8px; }
+  .mini { display: grid; grid-template-columns: 96px minmax(0, 1fr) 48px; gap: 10px; align-items: center; font-size: 0.9rem; margin-top: 4px; }
+  .mini span:first-child { color: var(--muted); }
+  .value { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag { display: inline-block; font-size: 0.8rem; border: 1px solid currentColor; border-radius: 4px; padding: 0 6px; margin-right: 6px; }
+  .tag.confirmed { color: var(--green); }
+  .tag.claim, .tag.rumour { color: var(--amber); }
+  .names { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--red); color: var(--red); border-radius: 999px; padding: 2px 12px; font-weight: 700; }
+  .error { color: var(--red); font-weight: 700; }
+  .flags { margin: 0 0 12px; padding-left: 1.2em; color: var(--red); font-weight: 700; }
+  .hint + .meter, .meter + .hint { margin-top: -4px; }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+
+  .history { margin-top: 24px; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 700; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: var(--bg); }
+  td.headline-cell { font-family: var(--serif); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Headline test desk</h1>
+    <p>Write a headline, keep the notebook up to date, and see how the AI editor judges it. Everything runs on your own laptop.</p>
+  </header>
+
+  <div class="layout">
+    <div class="draft">
+      <section>
+        <label class="big" for="headline">Your headline</label>
+        <textarea id="headline" placeholder="For example: Luigi FM owner Jeff stabbed near his office"></textarea>
+        <div class="row">
+          <button id="check">Send to editor</button>
+          <span class="hint">Or press Ctrl + Enter</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Notebook</h2>
+        <p class="hint" style="margin-top:-6px">One fact per line. The status says how sure the player is.</p>
+        <div id="entries"></div>
+        <button class="quiet" id="add">Add entry</button>
+      </section>
+    </div>
+
+    <section aria-live="polite" id="note">
+      <h2>Editor's note</h2>
+      <p class="note-empty">Send a headline to see the editor's verdict, tone scores and which notes support it.</p>
+    </section>
+  </div>
+
+  <section class="history">
+    <h2>Tested headlines</h2>
+    <p class="hint" id="history-empty">Every headline you test appears here, newest first. Select a row to load it again.</p>
+    <div class="table-wrap">
+      <table id="history-table" hidden>
+        <thead>
+          <tr><th>Headline</th><th>Strongest tone</th><th>Named</th><th>Claim check</th><th class="num">Score</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+  // The Luigi FM case. Edit here or in the page; changes in the page last until you reload.
+  const notebook = [
+    { text: "Jeff was found dead near his office at night.", status: "confirmed" },
+    { text: "Jeff was stabbed with a knife.", status: "confirmed" },
+    { text: "Jeff booked a ride home at 22:00.", status: "confirmed" },
+    { text: "The CCTV shows the attacker came from the staff entrance.", status: "confirmed" },
+    { text: "The business partner was in another city all week.", status: "confirmed" },
+    { text: "The business partner had money disputes with Jeff.", status: "claim" },
+    { text: "The business partner ordered the killing.", status: "rumour" },
+    { text: "An employee was fired two weeks ago and left angry.", status: "claim" },
+    { text: "Jeff did not call his wife that night.", status: "claim" },
+  ];
+  const STATUSES = ["confirmed", "claim", "rumour"];
+  const history = [];
+
+  const $ = (sel) => document.querySelector(sel);
+  const el = (tag, props = {}, children = []) => {
+    const node = Object.assign(document.createElement(tag), props);
+    children.forEach((c) => node.append(c));
+    return node;
+  };
+
+  function renderNotebook() {
+    const box = $("#entries");
+    box.replaceChildren();
+    notebook.forEach((entry, i) => {
+      const input = el("input", { value: entry.text, "aria-label": `Notebook entry ${i + 1}` });
+      input.addEventListener("input", () => (entry.text = input.value));
+      const select = el("select", { "aria-label": `Status of entry ${i + 1}` },
+        STATUSES.map((s) => el("option", { value: s, textContent: s, selected: s === entry.status })));
+      select.addEventListener("change", () => (entry.status = select.value));
+      const remove = el("button", { className: "quiet", textContent: "Remove", "aria-label": `Remove entry ${i + 1}` });
+      remove.addEventListener("click", () => { notebook.splice(i, 1); renderNotebook(); });
+      box.append(el("div", { className: "entry" }, [input, select, remove]));
+    });
+  }
+
+  function meter(name, score, cls = "") {
+    const fill = el("i", { className: cls });
+    const row = el("div", { className: "meter" }, [
+      el("span", { className: "name" }, Array.isArray(name) ? name : [name]),
+      el("div", { className: "bar" }, [fill]),
+      el("span", { className: "value", textContent: score.toFixed(2) }),
+    ]);
+    requestAnimationFrame(() => (fill.style.width = `${Math.round(score * 100)}%`));
+    return row;
+  }
+
+  function mini(label, score, cls) {
+    const fill = el("i", { className: cls });
+    requestAnimationFrame(() => (fill.style.width = `${Math.round(score * 100)}%`));
+    return el("div", { className: "mini" }, [
+      el("span", { textContent: label }),
+      el("div", { className: "bar" }, [fill]),
+      el("span", { className: "value", textContent: score.toFixed(2) }),
+    ]);
+  }
+
+  function renderNote(headline, result) {
+    const note = $("#note");
+    const { tone, names, claims } = result;
+    const verdict = el("div", { className: `verdict ${claims.level}` }, [
+      el("blockquote", { textContent: headline }),
+      el("p", { textContent: `${claims.verdict[0].toUpperCase()}${claims.verdict.slice(1)} (${claims.score.toFixed(2)})` }),
+    ]);
+    if (claims.level === "contradicted") {
+      verdict.append(el("p", { className: "because", textContent: `Ruled out by: “${claims.source}”` }));
+    }
+
+    const toneBlock = el("div", { className: "block" }, [el("h3", { textContent: "Tone" })]);
+    const flags = result.flags || [];
+    toneBlock.append(flags.length
+      ? el("ul", { className: "flags" }, flags.map((f) => el("li", { textContent: f })))
+      : el("p", { className: "hint", textContent: "No tone warnings from the editor." }));
+    const BLAME = "blaming a specific person for a crime";
+    Object.entries(tone).sort((a, b) => b[1] - a[1]).forEach(([label, score]) => {
+      const reading = score >= 0.75 ? "likely" : score >= 0.5 ? "possible" : "unlikely";
+      toneBlock.append(meter(`${label} (${reading})`, score));
+      if (label === BLAME && names.length === 0 && score >= 0.3) {
+        toneBlock.append(el("p", { className: "hint", textContent: "No one is named, so this is not counted as an accusation." }));
+      }
+    });
+
+    const nameBlock = el("div", { className: "block" }, [el("h3", { textContent: "People named" })]);
+    nameBlock.append(names.length
+      ? el("div", { className: "names" }, names.map((n) => el("span", { className: "chip", textContent: n })))
+      : el("p", { className: "hint", textContent: "No one is named in this headline." }));
+
+    const supportBlock = el("div", { className: "block" }, [el("h3", { textContent: "What each note says about it" })]);
+    claims.per_entry.forEach((e) => {
+      supportBlock.append(el("div", { className: "note-item" }, [
+        el("p", { className: "note-text" }, [el("span", { className: `tag ${e.status}`, textContent: e.status }), e.text]),
+        mini("Supports", e.support, e.status),
+        mini("Contradicts", e.contradiction, "contra"),
+      ]));
+    });
+
+    note.replaceChildren(el("h2", { textContent: "Editor's note" }), verdict, toneBlock, nameBlock, supportBlock);
+  }
+
+  function renderHistory() {
+    const table = $("#history-table");
+    const body = table.querySelector("tbody");
+    body.replaceChildren();
+    history.forEach((h) => {
+      const [topLabel, topScore] = Object.entries(h.result.tone).sort((a, b) => b[1] - a[1])[0];
+      const row = el("tr", { tabIndex: 0 }, [
+        el("td", { className: "headline-cell", textContent: h.headline }),
+        el("td", { textContent: `${topLabel} (${topScore.toFixed(2)})` }),
+        el("td", { textContent: h.result.names.join(", ") || "No one" }),
+        el("td", { textContent: h.result.claims.verdict }),
+        el("td", { className: "num", textContent: h.result.claims.score.toFixed(2) }),
+      ]);
+      const load = () => { $("#headline").value = h.headline; renderNote(h.headline, h.result); $("#headline").focus(); };
+      row.addEventListener("click", load);
+      row.addEventListener("keydown", (e) => { if (e.key === "Enter") load(); });
+      body.append(row);
+    });
+    table.hidden = history.length === 0;
+    $("#history-empty").hidden = history.length > 0;
+  }
+
+  async function check() {
+    const headline = $("#headline").value.trim();
+    const note = $("#note");
+    const button = $("#check");
+    if (!headline) {
+      note.replaceChildren(el("h2", { textContent: "Editor's note" }), el("p", { className: "error", textContent: "Write a headline first." }));
+      return;
+    }
+    button.disabled = true;
+    button.textContent = "Editor is reading…";
+    try {
+      const response = await fetch("/check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ headline, notebook }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || `Server error ${response.status}`);
+      renderNote(headline, result);
+      history.unshift({ headline, result });
+      renderHistory();
+    } catch (error) {
+      const message = error instanceof TypeError
+        ? "Can't reach the checker. Start it with: python server.py, then open http://localhost:8000"
+        : error.message;
+      note.replaceChildren(el("h2", { textContent: "Editor's note" }), el("p", { className: "error", textContent: message }));
+    } finally {
+      button.disabled = false;
+      button.textContent = "Send to editor";
+    }
+  }
+
+  $("#check").addEventListener("click", check);
+  $("#headline").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); check(); } });
+  $("#add").addEventListener("click", () => {
+    notebook.push({ text: "", status: "claim" });
+    renderNotebook();
+    $("#entries .entry:last-child input").focus();
+  });
+  renderNotebook();
+</script>
+</body>
+</html>

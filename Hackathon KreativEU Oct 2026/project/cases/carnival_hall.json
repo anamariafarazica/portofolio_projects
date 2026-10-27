@@ -1,0 +1,505 @@
+{
+  "id": "carnival_hall",
+  "order": 2,
+  "title": "The Carnival Hall vote",
+  "short_title": "The Carnival Hall vote",
+  "final_label": "the council's decision",
+  "outlet": "The Midnight Chronicle",
+  "competitor": "Buzz Brabant",
+  "intro": [
+    "A new week, a new story. On Thursday, Made's council votes on whether to demolish the old Carnival Hall, home of the village's carnival club since 1928, to build affordable apartments.",
+    "Half the village wants homes. The other half wants to keep ninety years of carnival history. Everyone is reading the Chronicle."
+  ],
+  "start_credibility": 60,
+  "truth": "Nobody was bribed. The petition was real, although about 600 of its signatures came from outside Made. The hall was safe to use, but needed expensive roof repairs. After a public hearing, the council chose a compromise: keep the historic front of the hall and build 28 apartments behind it.",
+  "readers": [
+    {
+      "name": "Ria",
+      "about": "67, has gone to carnival in the hall every year since she was a child"
+    },
+    {
+      "name": "Dennis",
+      "about": "runs a cafe next to the Carnival Hall"
+    },
+    {
+      "name": "Noor",
+      "about": "22, a student who can't find a place to live in Made"
+    },
+    {
+      "name": "Pieter",
+      "about": "sceptical about the media"
+    },
+    {
+      "name": "Mehmet",
+      "about": "moved to Made last year with his family"
+    }
+  ],
+  "people": [
+    {
+      "id": "ilse",
+      "name": "Ilse",
+      "role": "Councillor",
+      "aliases": [
+        "ilse",
+        "councillor",
+        "councilwoman",
+        "alderman",
+        "wethouder"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Ilse steers the council to a compromise and is praised for listening to both sides."
+        },
+        {
+          "max": 59,
+          "text": "Ilse is cleared of any wrongdoing, but she says she will not run for the council again."
+        },
+        {
+          "max": 100,
+          "text": "Ilse is cleared, but receives threats for weeks. She resigns, and the council loses its only member under 40."
+        }
+      ]
+    },
+    {
+      "id": "kees",
+      "name": "Kees",
+      "role": "Chair of the carnival club",
+      "aliases": [
+        "kees",
+        "carnival club",
+        "club chair",
+        "chairman"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Kees leads the first carnival in the restored front hall, with residents of the new apartments invited as guests."
+        },
+        {
+          "max": 59,
+          "text": "Kees keeps the hall, but the club loses members after being called selfish online."
+        },
+        {
+          "max": 100,
+          "text": "Kees steps down after being portrayed as the man who put old traditions above families. The club struggles to find a new chair."
+        }
+      ]
+    },
+    {
+      "id": "fatima",
+      "name": "Fatima",
+      "role": "Resident on the housing waiting list",
+      "aliases": [
+        "fatima",
+        "mother",
+        "resident",
+        "single mother"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Fatima gets one of the new apartments next spring. She joins the carnival club the year after."
+        },
+        {
+          "max": 59,
+          "text": "Fatima is still on the waiting list, and stops speaking about it in public after the comments she received."
+        },
+        {
+          "max": 100,
+          "text": "Fatima was called selfish and 'not really from Made' online. She leaves the village before the apartments are built."
+        }
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "label": "Monday, 09:00",
+      "intro": "The council agenda for Thursday has just been published.",
+      "items": [
+        {
+          "id": "h1_agenda",
+          "kind": "Council agenda",
+          "from": "Made municipality",
+          "text": "On Thursday, the council will vote on a plan to demolish the Carnival Hall, built in 1928, and build 40 affordable apartments on the site.",
+          "status": "confirmed",
+          "note": "The council votes on Thursday on demolishing the Carnival Hall, built in 1928, to build 40 affordable apartments.",
+          "context": "The council will vote on Thursday on demolishing the 1928 Carnival Hall to build 40 affordable apartments.",
+          "news_value": 3500,
+          "truth": "true",
+          "on_hold": {
+            "credibility": -4,
+            "message": "Readers ask why the Chronicle didn't report the biggest vote of the year."
+          },
+          "competitor": {
+            "headline": "Carnival Hall to be bulldozed for flats"
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "I had my first carnival in that hall. I hope they think this through."
+              },
+              {
+                "reader": "Noor",
+                "text": "Forty affordable homes would change my life."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Both sides have a point. Glad you explained the plan."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Ria",
+                "text": "They want to bulldoze our history!"
+              },
+              {
+                "reader": "Noor",
+                "text": "People care more about a party hall than about families."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Calm down, it's a vote, not a demolition."
+              }
+            ]
+          },
+          "why": "An official council document is a confirmed source."
+        },
+        {
+          "id": "h1_bribe",
+          "kind": "Social media",
+          "from": "Post shared 300 times",
+          "text": "Councillor Ilse got paid by the developer. Everyone knows. That's why she wants the hall gone.",
+          "status": "rumour",
+          "note": "Councillor Ilse was paid by the developer.",
+          "context": "A widely shared post claims councillor Ilse was paid by the developer to support demolishing the hall.",
+          "news_value": 5000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "ilse": 30
+          },
+          "harm_if_named": {
+            "ilse": 15
+          },
+          "competitor": {
+            "headline": "Was councillor paid to tear down Carnival Hall?",
+            "harm": {
+              "ilse": 20
+            }
+          },
+          "verify": {
+            "text": "The developer and Ilse both deny it, and there is no record of any payment. The council's integrity office has been asked to look into it.",
+            "status": "rumour",
+            "note": {
+              "text": "There is no record of any payment from the developer to Ilse.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "Why report a rumour at all, even with a label?"
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Hope there's proof before people start believing this."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Ilse grew up here. I don't buy it."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Corruption, obviously. Vote her out."
+              },
+              {
+                "reader": "Ria",
+                "text": "So it's all about money. Disgusting."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Where's the evidence? This is how reputations get destroyed."
+              }
+            ]
+          },
+          "why": "A shared post with no evidence and no named source is unverified."
+        }
+      ]
+    },
+    {
+      "label": "Tuesday, 12:00",
+      "intro": "Both sides are trying to get their story into the paper.",
+      "items": [
+        {
+          "id": "h2_petition",
+          "kind": "Email",
+          "from": "Kees, chair of the carnival club",
+          "text": "You can quote me: \"Demolishing the hall is demolishing ninety years of Made's carnival. Our petition already has 2,300 signatures.\"",
+          "status": "claim",
+          "note": "Kees, chair of the carnival club, says the petition to save the hall has 2,300 signatures.",
+          "context": "The carnival club chair says demolishing the hall erases ninety years of carnival history, and that 2,300 people signed a petition.",
+          "news_value": 3500,
+          "truth": "true",
+          "verify": {
+            "text": "The petition has 2,312 signatures, but about 600 of them are from people who don't live in Made.",
+            "status": "confirmed",
+            "note": {
+              "text": "The petition has 2,312 signatures, about 600 of them from outside Made.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "I signed it. Some things you can't rebuild."
+              },
+              {
+                "reader": "Noor",
+                "text": "2,300 signatures, and how many homes?"
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Interesting to read why the hall matters so much to people here."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Old people choosing parties over young families, again."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Kees is getting abuse in the cafe now. Is that fair?"
+              },
+              {
+                "reader": "Pieter",
+                "text": "Were all those signatures even from Made?"
+              }
+            ]
+          },
+          "why": "The club chair's own claim about his petition is one source, until someone counts the signatures."
+        },
+        {
+          "id": "h2_fatima",
+          "kind": "Phone call",
+          "from": "Fatima, resident",
+          "text": "\"My kids and I have been on the waiting list for a home for six years. I love carnival too. But we need somewhere to live.\"",
+          "status": "claim",
+          "note": "Fatima, a resident, says she and her children have been on the housing waiting list for six years.",
+          "context": "A mother says she and her children have waited six years for a home, and that she loves carnival but needs housing.",
+          "news_value": 3000,
+          "truth": "true",
+          "harm": {
+            "fatima": 10
+          },
+          "harm_if_named": {
+            "fatima": 10
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Mehmet",
+                "text": "Six years. That's the real story here."
+              },
+              {
+                "reader": "Ria",
+                "text": "I never thought about it like that. Can't we have both?"
+              },
+              {
+                "reader": "Noor",
+                "text": "Thank you for giving her a voice."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Pieter",
+                "text": "Turning a mother into a weapon in a political fight. Classy."
+              },
+              {
+                "reader": "Ria",
+                "text": "She isn't even from Made originally, is she?"
+              },
+              {
+                "reader": "Mehmet",
+                "text": "The comments under this are shameful."
+              }
+            ]
+          },
+          "why": "A named resident speaking about her own situation is one source."
+        },
+        {
+          "id": "h2_roof",
+          "kind": "Leaked document",
+          "from": "Sent by an unknown source",
+          "text": "Page 1 of an engineer's report: \"The roof construction shows serious damage.\" A note on top says: the roof could collapse at any time.",
+          "status": "rumour",
+          "note": "The Carnival Hall's roof could collapse at any time.",
+          "context": "A leaked page of an engineer's report, with a note claiming the hall's roof could collapse at any time.",
+          "news_value": 6000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "kees": 15
+          },
+          "competitor": {
+            "headline": "Carnival Hall 'could collapse at any moment', leaked report says",
+            "harm": {
+              "kees": 10
+            }
+          },
+          "verify": {
+            "text": "The full report says the hall is safe to use, but the roof needs 400,000 euros of repairs within five years. The note on top was not part of the report.",
+            "status": "debunked",
+            "harm_reduce": {
+              "kees": 5
+            },
+            "context": "The Chronicle reports that the full engineer's report says the hall is safe, but needs 400,000 euros of roof repairs within five years.",
+            "note": {
+              "text": "The engineer's report says the hall is safe to use but needs 400,000 euros of roof repairs within five years.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "One page and a handwritten note? Show me the full report."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Thanks for being careful. My cafe is next door."
+              },
+              {
+                "reader": "Ria",
+                "text": "If it's dangerous, we need to know."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "So the club put everyone in danger for years?"
+              },
+              {
+                "reader": "Ria",
+                "text": "I'm never setting foot in there again."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Funny how this leaks two days before the vote."
+              }
+            ]
+          },
+          "why": "One page from an unknown sender, with a note someone added on top, is unverified."
+        }
+      ]
+    },
+    {
+      "label": "Thursday, 21:00",
+      "intro": "The public hearing is over. The council has voted.",
+      "items": [
+        {
+          "id": "h3_integrity",
+          "kind": "Email",
+          "from": "Council integrity office",
+          "text": "We have found no evidence of any payment or contact between the developer and councillor Ilse outside official meetings.",
+          "status": "confirmed",
+          "note": "The integrity office found no evidence that Ilse was paid by the developer.",
+          "context": "The council's integrity office says there is no evidence councillor Ilse was paid by the developer.",
+          "news_value": 2000,
+          "truth": "true",
+          "harm_reduce": {
+            "ilse": 15
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Dennis",
+                "text": "So that rumour was nonsense all along."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Good that you published this. Others won't."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "I hope the people who shared that post apologise."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "No evidence isn't the same as innocent."
+              },
+              {
+                "reader": "Ria",
+                "text": "Too late, everyone already believes it."
+              },
+              {
+                "reader": "Pieter",
+                "text": "The correction never travels as far as the rumour."
+              }
+            ]
+          },
+          "why": "An official finding from the council's integrity office is a confirmed source."
+        },
+        {
+          "id": "h3_vote",
+          "kind": "Council decision",
+          "from": "Made municipality",
+          "text": "After a public hearing, the council voted 9 to 6 to keep the historic front of the Carnival Hall as a heritage site and build 28 affordable apartments behind it.",
+          "status": "confirmed",
+          "note": "The council voted 9 to 6 to keep the hall's historic front as a heritage site and build 28 affordable apartments behind it.",
+          "context": "The council voted for a compromise: keep the historic front of the Carnival Hall and build 28 affordable apartments behind it.",
+          "news_value": 4500,
+          "truth": "true",
+          "harm_reduce": {
+            "kees": 10,
+            "fatima": 10
+          },
+          "on_hold": {
+            "credibility": -5,
+            "message": "The Chronicle is the only outlet without the council's decision."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "We keep the hall, and families get homes. I can live with that."
+              },
+              {
+                "reader": "Noor",
+                "text": "28 is less than 40, but it's a start."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "This is what listening to each other looks like."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Twelve families lost their homes for a facade."
+              },
+              {
+                "reader": "Ria",
+                "text": "Half a hall. What a victory."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Honestly, it's a fair deal. Why the drama?"
+              }
+            ]
+          },
+          "why": "The council's official decision is a confirmed source."
+        }
+      ]
+    }
+  ],
+  "teaser": "The council votes on demolishing the 1928 Carnival Hall to build affordable homes. Half the village is furious, the other half is hopeful."
+}

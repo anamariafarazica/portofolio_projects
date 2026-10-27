@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Midnight Chronicle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&family=Special+Elite&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #e9ecef;
+    --surface: #ffffff;
+    --ink: #1e2a36;
+    --muted: #5f6b78;
+    --line: #d3d9df;
+    --track: #dde2e7;
+    --red: #b8332a;
+    --green: #2e7a57;
+    --amber: #9c6610;
+    --others: #8b97a3;
+    --focus: #2d5f9a;
+    --paper: #f7f3ea;
+    --paper-ink: #1b1b1b;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --sans: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --bg: #12171c;
+      --surface: #1c242c;
+      --ink: #e4e9ee;
+      --muted: #9aa6b2;
+      --line: #33404c;
+      --track: #2a3540;
+      --red: #ef7a6e;
+      --green: #6cc49a;
+      --amber: #e3ad55;
+      --others: #6b7885;
+      --focus: #8ab4f0;
+      --paper: #ece6d8;
+      --paper-ink: #1b1b1b;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--sans); }
+  [hidden] { display: none !important; }
+  h1, h2, h3 { margin: 0 0 10px; }
+  h2 { font: 700 1.3rem/1.3 var(--sans); }
+  h3 { font: 700 1rem var(--sans); margin-bottom: 8px; }
+  p { margin: 0 0 12px; }
+  .hint { color: var(--muted); font-size: 0.92rem; }
+  .error { color: var(--red); font-weight: 700; }
+  button {
+    font: 700 1rem var(--sans); cursor: pointer; border-radius: 8px; padding: 10px 18px;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--surface);
+    transition: transform 0.1s ease;
+  }
+  button:hover:not(:disabled) { transform: translateY(-1px); }
+  button.quiet { background: transparent; color: var(--ink); border-color: var(--line); font-weight: 400; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+
+  /* ---------- Title screen ---------- */
+  #title-screen { position: relative; min-height: 100vh; display: grid; place-items: center; overflow: hidden; background: linear-gradient(#0b1422 0%, #16243a 55%, #2a3b57 100%); color: #f2ede3; }
+  #title-screen svg.village { position: absolute; inset: auto 0 0 0; width: 100%; height: 55vh; }
+  .title-card { position: relative; text-align: center; padding: 24px; max-width: 640px; margin-bottom: 18vh; }
+  .title-card .kicker { letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.85rem; opacity: 0.8; }
+  .title-card h1 { font: 800 clamp(2.6rem, 7vw, 4.6rem)/1 var(--serif); margin: 8px 0 14px; }
+  .title-card p { font: 500 1.1rem/1.6 var(--serif); opacity: 0.9; }
+  .title-card .row { justify-content: center; margin-top: 18px; }
+  .title-card button { background: #f2ede3; color: #0f1a2b; border-color: #f2ede3; font-size: 1.1rem; padding: 12px 26px; }
+  .title-card button.quiet { background: transparent; color: #f2ede3; border-color: rgba(242,237,227,0.5); }
+  .title-card #continue:not([hidden]) + #start { background: transparent; color: #f2ede3; border-color: rgba(242,237,227,0.5); }
+  .desk-busy .item .row button, .desk-busy #end-cycle { pointer-events: none; opacity: 0.5; }
+  .howto { text-align: left; background: rgba(15,26,43,0.85); border: 1px solid rgba(242,237,227,0.25); border-radius: 12px; padding: 16px 20px; margin-top: 18px; font: 1rem/1.5 var(--sans); }
+  .howto ul { margin: 0; padding-left: 1.2em; }
+  .blink { animation: blink 1.6s infinite; }
+  @keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0.15; } }
+  .wave { animation: wave 2.4s infinite ease-out; transform-origin: center; transform-box: fill-box; }
+  @keyframes wave { 0% { opacity: 0.7; transform: scale(0.6); } 100% { opacity: 0; transform: scale(1.6); } }
+
+  /* ---------- Game ---------- */
+  main { max-width: 1200px; margin: 0 auto; padding: 18px 20px 64px; }
+  .masthead { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+  .masthead h1 { font: 800 1.8rem/1 var(--serif); margin: 0; }
+  .masthead .story { color: var(--muted); }
+  .clock { font: 700 1.05rem var(--sans); }
+  .status-line { font-size: 0.85rem; color: var(--muted); margin: 0 0 12px; }
+  .status-line.warn { color: var(--amber); }
+
+  .hud { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+  @media (max-width: 700px) { .hud { grid-template-columns: 1fr; } }
+  .meter { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+  .meter .label { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--muted); }
+  .meter .value { font: 700 1.5rem var(--serif); color: var(--ink); }
+  .bar { position: relative; height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; display: flex; margin-top: 6px; }
+  .bar i { display: block; height: 100%; transition: width 0.5s ease; }
+  .bar i.fill { background: var(--ink); }
+  .bar i.interest { background: var(--green); }
+  .bar i.interest.low { background: var(--red); }
+  .bar .tick { position: absolute; top: -2px; bottom: -2px; width: 2px; background: var(--red); }
+  .bar i.you { background: var(--red); }
+  .bar i.others { background: var(--others); }
+
+  /* The office, drawn in SVG. Time of day changes the window. */
+  .office { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 16px; }
+  .office svg { display: block; width: 100%; height: 190px; }
+  .office { --sky1: #9fc7ea; --sky2: #e9f2fa; --village: #6f8396; --light: #ffd66b; }
+  .office.t-morning { --sky1: #f6c9a8; --sky2: #fbe9d6; --village: #7d8a99; }
+  .office.t-day { --sky1: #8fc1ea; --sky2: #e3f0fb; --village: #6f8396; }
+  .office.t-evening { --sky1: #e07b54; --sky2: #f5c58c; --village: #4b3f4f; }
+  .office.t-night { --sky1: #0f1a2b; --sky2: #2a3b57; --village: #0b111b; }
+  .ring { animation: ring 0.5s infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes ring { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg); } 75% { transform: rotate(8deg); } }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+  @media (max-width: 920px) { .layout { grid-template-columns: 1fr; } }
+  .cycle-intro { font: 500 1.08rem/1.6 var(--serif); }
+
+  .item { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; animation: arrive 0.45s ease both; }
+  @keyframes arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .item-head { display: flex; gap: 12px; align-items: start; margin-bottom: 10px; }
+  .icon { flex: none; width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; background: var(--bg); color: var(--ink); }
+  .icon svg { width: 24px; height: 24px; }
+  .item-head .who { flex: 1; min-width: 0; }
+  .kind { font-weight: 700; }
+  .from { color: var(--muted); font-size: 0.92rem; }
+  .tag { display: inline-block; font-size: 0.82rem; border: 1px solid currentColor; border-radius: 4px; padding: 0 7px; white-space: nowrap; }
+  .tag.confirmed { color: var(--green); }
+  .tag.claim, .tag.rumour { color: var(--amber); }
+  .tag.debunked { color: var(--red); }
+  .tag.judged { border-style: dashed; }
+  .tag.pending { color: var(--muted); border-style: dashed; }
+  .judge { background: var(--bg); border-radius: 10px; padding: 12px; margin: 0 0 12px; }
+  .judge-q { font-weight: 700; margin: 0 0 8px; }
+  .judge-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  @media (max-width: 640px) { .judge-options { grid-template-columns: 1fr; } }
+  .judge-option { display: grid; gap: 2px; text-align: left; background: var(--surface); color: var(--ink); border: 2px solid var(--line); font-weight: 400; padding: 8px 10px; }
+  .judge-option span { font-size: 0.82rem; color: var(--muted); }
+  .judge-option.picked.confirmed { border-color: var(--green); }
+  .judge-option.picked.claim, .judge-option.picked.rumour { border-color: var(--amber); }
+  .judge-option.picked strong::after { content: " \2713"; }
+  .judgements { margin: 0; padding-left: 1.2em; }
+  .judgements li { margin-bottom: 6px; }
+  .judgements li.right strong { color: var(--green); }
+  .judgements li.wrong strong { color: var(--red); }
+  .source-text { font: 500 1.1rem/1.6 var(--serif); margin: 0 0 12px; padding-left: 14px; border-left: 3px solid var(--line); }
+  .callout { border-left: 4px solid var(--amber); padding: 4px 0 4px 12px; margin: 0 0 12px; }
+  .callout.check { border-left-color: var(--focus); }
+  .decided { font-weight: 700; margin: 0; }
+  .decided .q { font-family: var(--serif); }
+  .composer { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 14px; }
+  .composer textarea { width: 100%; min-height: 76px; resize: vertical; font: 500 1.25rem/1.3 var(--serif); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+  .editor { background: var(--bg); border-radius: 10px; padding: 12px 14px; margin-top: 12px; }
+  .verdict { font-weight: 700; margin: 0 0 6px; }
+  .verdict.confirmed { color: var(--green); }
+  .verdict.unconfirmed { color: var(--amber); }
+  .verdict.unsupported, .verdict.contradicted { color: var(--red); }
+  .editor ul { margin: 6px 0 0; padding-left: 1.2em; }
+  .editor details { margin-top: 8px; font-size: 0.92rem; }
+  .desk-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+  .person { margin-bottom: 14px; }
+  .pressure { display: grid; grid-template-columns: repeat(20, 1fr); gap: 2px; align-items: end; height: 32px; margin-top: 4px; }
+  .pressure i { display: block; border-radius: 2px 2px 0 0; background: var(--track); transition: background-color 0.3s ease; }
+  .pressure-scale { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .level { font-weight: 700; }
+  .level.l0 { color: #1a8a47; } .level.l1 { color: #4f9a2e; } .level.l2 { color: #a87800; } .level.l3 { color: #d4501f; } .level.l4 { color: #c62828; }
+  @media (prefers-color-scheme: dark) { .level.l0 { color: #4cc27a; } .level.l1 { color: #a3d977; } .level.l2 { color: #f5c542; } .level.l3 { color: #f5874f; } .level.l4 { color: #ff6b5e; } }
+  .person-head { display: flex; justify-content: space-between; gap: 8px; font-size: 0.95rem; }
+  .legend { display: flex; gap: 14px; font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
+  .legend b { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .notes { list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.92rem; }
+  .notes li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .notes li:last-child { border-bottom: 0; }
+  .pages { list-style: none; margin: 0; padding: 0; }
+  .pages li { padding: 8px 0; border-bottom: 1px solid var(--line); font-family: var(--serif); }
+  .pages li:last-child { border-bottom: 0; }
+  .pages small { display: block; font: 0.85rem var(--sans); color: var(--muted); }
+
+  /* ---------- The printed paper ---------- */
+  .paper { background: var(--paper); color: var(--paper-ink); border-radius: 6px; padding: 22px 26px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); margin-bottom: 18px; animation: arrive 0.5s ease both; }
+  .paper-mast { text-align: center; border-bottom: 3px double var(--paper-ink); padding-bottom: 8px; margin-bottom: 14px; }
+  .paper-mast strong { display: block; font: 800 2rem/1 var(--serif); }
+  .paper-mast span { font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .paper-article { padding: 10px 0 14px; border-bottom: 1px solid rgba(0,0,0,0.2); }
+  .paper-article:last-child { border-bottom: 0; }
+  .paper-article h2 { font: 800 1.6rem/1.2 var(--serif); margin: 0 0 4px; }
+  .paper-article.second h2 { font-size: 1.25rem; }
+  .paper-article .meta { font-size: 0.85rem; color: #555; }
+  .label-u { display: inline-block; background: #9c6610; color: #fff; font-size: 0.75rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; margin-right: 6px; vertical-align: 2px; }
+  .feed { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+  .feed li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; background: rgba(255,255,255,0.7); border-radius: 10px; padding: 8px 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 700; }
+  .feed b { display: block; font-size: 0.85rem; }
+  .buzz { background: #ffe14d; color: #111; border-radius: 6px; padding: 12px 16px; margin-bottom: 18px; border: 3px solid #111; }
+  .buzz strong { font: 800 1.1rem var(--sans); text-transform: uppercase; }
+  .buzz li { font: 800 1.05rem/1.3 var(--sans); }
+  .changes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 10px; }
+  .change { background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+  .change strong { display: block; font: 700 1.35rem var(--serif); }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .trust-log { margin: 0; padding-left: 1.2em; }
+  .trust-log li { margin-bottom: 4px; }
+  .summary .editor-says { margin: 0 0 14px; font-size: 1.05rem; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+  .stat { background: var(--bg); border-radius: 10px; padding: 10px 12px; }
+  .stat-line { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .stat-line strong { font: 700 1.6rem var(--serif); }
+  .delta { font-weight: 700; font-size: 1rem; white-space: nowrap; }
+  .delta.good { color: var(--green); }
+  .delta.bad { color: var(--red); }
+  .delta.flat { color: var(--muted); font-weight: 400; font-size: 0.9rem; }
+  .chip .delta { font-size: inherit; color: inherit; }
+  .recap { border-top: 1px solid var(--line); padding: 14px 0 4px; }
+  .recap:first-of-type { border-top: 0; }
+  .recap-head { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+  .recap-head .who { flex: 1; min-width: 0; }
+  .icon.small { width: 34px; height: 34px; border-radius: 8px; }
+  .icon.small svg { width: 20px; height: 20px; }
+  .badge { font-size: 0.85rem; font-weight: 700; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+  .badge.good { background: color-mix(in srgb, var(--green) 15%, transparent); color: var(--green); }
+  .badge.bad { background: color-mix(in srgb, var(--red) 15%, transparent); color: var(--red); white-space: normal; text-align: right; }
+  .badge.muted { background: var(--bg); color: var(--muted); font-weight: 400; }
+  .recap-action { margin: 0 0 8px; }
+  .recap-action .q { font-family: var(--serif); font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+  .chip { font-size: 0.85rem; font-weight: 700; border-radius: 6px; padding: 3px 9px; border: 1px solid currentColor; }
+  .chip.good { color: var(--green); }
+  .chip.bad { color: var(--red); }
+  .chip.muted { color: var(--muted); font-weight: 400; }
+  .recap-notes { margin: 0 0 6px; padding-left: 1.2em; color: var(--muted); font-size: 0.92rem; }
+  .editor-says { border-left: 4px solid var(--red); padding: 6px 0 6px 12px; font-weight: 700; }
+  .editor-says.ok { border-left-color: var(--green); font-weight: 400; }
+
+  /* ---------- Endings ---------- */
+  .stamp { display: inline-block; font: 800 1.4rem var(--sans); letter-spacing: 0.1em; text-transform: uppercase; border: 4px solid currentColor; border-radius: 6px; padding: 2px 12px; transform: rotate(-4deg); margin-bottom: 12px; }
+  .stamp.resolved { color: var(--green); }
+  .stamp.dropped { color: var(--red); }
+  .truth { font: 500 1.1rem/1.65 var(--serif); max-width: 70ch; }
+  .outcome { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .outcome:last-child { border-bottom: 0; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  /* ===================== Cartoon newsroom theme ===================== */
+  :root {
+    --bg: #efe6d2; --surface: #fffaf0; --ink: #23201b; --muted: #6b6253; --line: #23201b; --track: #e2d7c1;
+    --outline: #23201b; --shadow: #23201b; --accent: #ffd23f; --paper: #fbf6ea;
+    --display: "Fredoka", "Atkinson Hyperlegible", system-ui, sans-serif;
+    --type: "Special Elite", "Courier New", Courier, monospace;
+    --blackletter: "UnifrakturMaguntia", "Old English Text MT", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1c1915; --surface: #2a251f; --ink: #f3ecdd; --muted: #b8ad99; --line: #5c5345; --track: #3a342b;
+            --outline: #8a7f6c; --shadow: #000000; --accent: #ffd23f; --paper: #efe7d6; }
+  }
+  body {
+    background-color: var(--bg);
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 9%, transparent) 1.2px, transparent 1.4px);
+    background-size: 16px 16px;
+  }
+  h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: 0.01em; }
+  .nameplate { font-family: var(--blackletter); font-weight: 400; letter-spacing: 0.01em; }
+  .nameplate::before {
+    content: ""; display: inline-block; width: 0.62em; height: 0.62em; margin-right: 0.28em; border-radius: 50%;
+    box-shadow: inset 0.16em -0.07em 0 0 #ffd23f; vertical-align: 0.02em; transform: rotate(-20deg);
+  }
+  .paper-mast strong::before {
+    content: ""; display: inline-block; width: 0.55em; height: 0.55em; margin-right: 0.25em; border-radius: 50%;
+    box-shadow: inset 0.14em -0.06em 0 0 #23201b; vertical-align: 0.04em; transform: rotate(-20deg);
+  }
+
+  /* Chunky outlined panels with an offset "sticker" shadow */
+  .panel, .meter, .item, .stat, .office, .buzz {
+    border: 2.5px solid var(--outline); border-radius: 16px; box-shadow: 4px 4px 0 var(--shadow);
+  }
+  .paper { border: 2.5px solid var(--outline); border-radius: 6px; box-shadow: 6px 6px 0 var(--shadow); }
+  .stat { box-shadow: 3px 3px 0 var(--shadow); }
+  .change { border: 2px solid var(--outline); border-radius: 12px; }
+  .buzz { border-color: #111; box-shadow: 4px 4px 0 #111; transform: rotate(-0.6deg); }
+
+  /* Buttons that press down */
+  button {
+    font-family: var(--display); font-weight: 600; border: 2.5px solid var(--outline); border-radius: 12px;
+    background: var(--accent); color: #23201b; box-shadow: 3px 3px 0 var(--shadow);
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  button:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow); }
+  button:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--shadow); }
+  button.quiet { background: var(--surface); color: var(--ink); border-color: var(--outline); font-weight: 500; }
+  .small-btn { padding: 4px 12px; font-size: 0.9rem; margin-bottom: 8px; box-shadow: 2px 2px 0 var(--shadow); }
+
+  /* Masthead and meters */
+  .masthead h1 { font-size: 2.3rem; }
+  .meter .value, .stat-line strong, .change strong { font-family: var(--display); font-weight: 700; }
+  .bar { border: 2px solid var(--outline); height: 14px; border-radius: 8px; }
+  .office svg :is(rect, path, circle) { stroke: #23201b; stroke-width: 3; stroke-linejoin: round; }
+
+  /* Items on the desk: notes taped to the desk, slightly crooked */
+  .item { position: relative; background: var(--surface); margin-bottom: 20px; }
+  .item:nth-child(odd) { transform: rotate(-0.5deg); }
+  .item:nth-child(even) { transform: rotate(0.5deg); }
+  .item::before {
+    content: ""; position: absolute; top: -10px; left: 50%; width: 90px; height: 20px; margin-left: -45px;
+    background: color-mix(in srgb, var(--accent) 55%, transparent); border: 1.5px solid color-mix(in srgb, var(--outline) 35%, transparent);
+    transform: rotate(-2deg);
+  }
+  .kind { font-family: var(--display); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.95rem; }
+  .icon { border: 2px solid var(--outline); background: var(--accent); color: #23201b; }
+  .source-text { font-family: var(--type); font-weight: 400; font-size: 1.05rem; border-left: 4px solid var(--outline); }
+  .tag { font-family: var(--display); font-weight: 600; border-width: 2px; border-radius: 999px; padding: 1px 10px; }
+
+  /* Reliability choices as rubber stamps */
+  .judge { border: 2px dashed var(--outline); background: transparent; }
+  .judge-q { font-family: var(--display); font-weight: 600; }
+  .judge-option { border: 2.5px solid var(--outline); border-radius: 10px; background: var(--surface); box-shadow: 2px 2px 0 var(--shadow); }
+  .judge-option strong { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.06em; }
+  .judge-option.picked { transform: rotate(-2deg); }
+  .judge-option.picked.confirmed { border-color: var(--green); color: var(--green); box-shadow: 2px 2px 0 var(--green); }
+  .judge-option.picked.claim { border-color: var(--amber); color: var(--amber); box-shadow: 2px 2px 0 var(--amber); }
+  .judge-option.picked.rumour { border-color: var(--red); color: var(--red); box-shadow: 2px 2px 0 var(--red); }
+  .judge-option.picked span { color: inherit; opacity: 0.85; }
+  .composer textarea { border: 2.5px solid var(--outline); border-radius: 10px; background: var(--paper); color: #23201b; font-family: var(--type); }
+  .editor { border: 2px solid var(--outline); background: var(--bg); }
+
+  /* The printed paper */
+  .paper-mast strong { font-family: var(--blackletter); font-weight: 400; font-size: 2.4rem; }
+  .paper-article h2 { font-family: "Literata", Georgia, serif; }
+  .feed li { border: 1.5px solid rgba(0,0,0,0.25); }
+  .avatar { border: 2px solid #23201b; }
+  .stamp { font-family: var(--display); }
+
+  /* Title screen */
+  .extra {
+    display: inline-block; background: var(--accent); color: #23201b; font: 700 1rem var(--display); letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 14px; border: 2.5px solid #0b1422; box-shadow: 3px 3px 0 #0b1422; transform: rotate(-3deg); margin-bottom: 8px;
+  }
+  .title-card { max-width: 920px; }
+  .title-card > p { max-width: 600px; margin-left: auto; margin-right: auto; }
+  .title-card h1.nameplate { font-family: var(--blackletter); font-weight: 400; font-size: clamp(2.3rem, 6.4vw, 4.6rem); line-height: 1.05; margin: 6px 0 10px; text-wrap: balance; }
+  .title-card .kicker { font-family: var(--display); margin-bottom: 12px; }
+  .title-card button { border-color: #0b1422; box-shadow: 3px 3px 0 #0b1422; }
+  .title-card button.quiet, .title-card #continue:not([hidden]) + #start { background: rgba(242,237,227,0.08); color: #f2ede3; border-color: #f2ede3; box-shadow: 3px 3px 0 #0b1422; }
+  .title-card #continue { background: var(--accent); color: #23201b; }
+
+  /* ---------- Clipboard for the incoming notes ---------- */
+  .clipboard {
+    position: relative; margin: 26px 0 18px; padding: 50px 22px 6px; border: 3px solid var(--outline); border-radius: 20px;
+    background-color: #b8834c;
+    background-image: repeating-linear-gradient(100deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 22px), repeating-linear-gradient(80deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 31px);
+    box-shadow: 5px 5px 0 var(--shadow);
+  }
+  .clip {
+    position: absolute; top: -18px; left: 50%; width: 170px; height: 54px; margin-left: -85px; border: 3px solid var(--outline);
+    border-radius: 12px 12px 20px 20px; background: linear-gradient(#eef1f4, #a9b2bc 60%, #8c96a1); box-shadow: 3px 3px 0 var(--shadow);
+  }
+  .clip::before { content: ""; position: absolute; top: 9px; left: 50%; width: 46px; height: 14px; margin-left: -23px; border: 3px solid var(--outline); border-radius: 999px; background: #b8834c; }
+  .clipboard .item { box-shadow: 3px 4px 0 rgba(0,0,0,0.35); }
+  .clipboard .item::before { background: rgba(255, 244, 200, 0.75); }
+  #inbox:empty::after { content: "Nothing on the clipboard."; display: block; color: #fff8e6; padding: 10px 0 20px; text-align: center; }
+
+  /* ---------- Notebook (agenda-style) ---------- */
+  .notebook-tip {
+    position: fixed; right: 22px; bottom: 96px; z-index: 31; max-width: 270px; padding: 14px 16px 12px;
+    background: var(--surface); color: var(--ink); border: 2.5px solid var(--outline); border-radius: 16px;
+    box-shadow: 4px 4px 0 var(--shadow); animation: tip-pop 0.35s ease both;
+  }
+  .notebook-tip p { margin: 0 0 10px; font: 600 1rem/1.4 var(--display); }
+  .notebook-tip::after {
+    content: ""; position: absolute; right: 40px; bottom: -14px; width: 22px; height: 22px; background: var(--surface);
+    border-right: 2.5px solid var(--outline); border-bottom: 2.5px solid var(--outline); transform: rotate(45deg);
+  }
+  @keyframes tip-pop { from { opacity: 0; transform: translateY(10px) scale(0.95); } to { opacity: 1; transform: none; } }
+  .agenda-btn.pulse { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { box-shadow: 3px 3px 0 var(--shadow), 0 0 0 0 rgba(255, 210, 63, 0.7); } 50% { box-shadow: 3px 3px 0 var(--shadow), 0 0 0 10px rgba(255, 210, 63, 0); } }
+  #app { padding-bottom: 90px; }
+  .agenda-btn {
+    position: fixed; right: 22px; bottom: 22px; z-index: 30; display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 10px;
+    border-radius: 16px; font-size: 1.05rem;
+  }
+  .agenda-btn svg { width: 34px; height: 40px; }
+  .a-cover { fill: #b8332a; stroke: #23201b; stroke-width: 3; }
+  .a-spine { fill: #8e261f; stroke: #23201b; stroke-width: 3; }
+  .a-label { fill: #fffaf0; stroke: #23201b; stroke-width: 2; }
+  .a-band { stroke: #23201b; stroke-width: 3; }
+  .a-rings { stroke: #c9ced4; stroke-width: 3; stroke-linecap: round; }
+  .agenda-count { background: #b8332a; color: #fff; border: 2px solid #23201b; border-radius: 999px; min-width: 26px; padding: 0 6px; font-size: 0.85rem; text-align: center; }
+  .agenda-overlay { position: fixed; inset: 0; z-index: 40; background: rgba(20, 16, 10, 0.55); display: grid; place-items: center; padding: 20px; }
+  .agenda-book {
+    position: relative; width: min(1000px, 100%); max-height: calc(100vh - 40px); display: grid; grid-template-columns: 1fr 34px 1fr;
+    background: #b8332a; border: 3px solid #23201b; border-radius: 18px; padding: 16px; box-shadow: 8px 8px 0 #000;
+  }
+  .agenda-page {
+    background-color: #fdf8ec; color: #23201b; overflow: auto; max-height: calc(100vh - 80px); padding: 20px 24px;
+    background-image: repeating-linear-gradient(transparent 0 31px, #d9e3ee 31px 32px);
+    border: 2px solid #23201b;
+  }
+  .agenda-page.left { border-radius: 10px 2px 2px 10px; border-right: 0; }
+  .agenda-page.right { border-radius: 2px 10px 10px 2px; border-left: 0; }
+  .agenda-page h2 { font-family: var(--display); color: #23201b; margin: 0 0 12px; }
+  .agenda-spiral {
+    background: #fdf8ec; border-top: 2px solid #23201b; border-bottom: 2px solid #23201b;
+    background-image: radial-gradient(circle at 50% 50%, #23201b 0 5px, #c9ced4 5px 9px, transparent 9px);
+    background-size: 34px 32px; background-repeat: repeat-y;
+  }
+  .agenda-day { margin-bottom: 14px; }
+  .agenda-date { font: 700 0.95rem var(--display); color: #b8332a; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 4px; }
+  .agenda-date.small { display: block; font-size: 0.8rem; margin: 0; }
+  .agenda-page ul { list-style: none; margin: 0; padding: 0; }
+  .agenda-page li { font-family: var(--type); line-height: 32px; }
+  .agenda-page .tag { line-height: 1.4; vertical-align: 1px; }
+  .agenda-page .tag.confirmed { color: #2e7a57; } .agenda-page .tag.claim, .agenda-page .tag.rumour { color: #9c6610; } .agenda-page .tag.debunked { color: #b8332a; }
+  .agenda-src { color: #6b6253; font-size: 0.88rem; }
+  .agenda-front li { line-height: 1.4; padding: 8px 0; }
+  .agenda-headline { font-family: "Literata", Georgia, serif; font-weight: 700; }
+  .agenda-status { display: inline-block; font: 700 0.85rem var(--display); text-transform: uppercase; letter-spacing: 0.08em; border: 2.5px solid currentColor; border-radius: 6px; padding: 1px 8px; transform: rotate(-3deg); color: #9c6610; }
+  .agenda-status.resolved { color: #2e7a57; } .agenda-status.dropped { color: #b8332a; }
+  .agenda-empty { font-family: var(--type); color: #6b6253; }
+  .agenda-close { position: absolute; top: -16px; right: -12px; width: 42px; height: 42px; padding: 0; font-size: 1.6rem; line-height: 1; border-radius: 50%; z-index: 2; }
+  .agenda-tabs { position: absolute; right: -2px; top: 60px; transform: translateX(100%); display: grid; gap: 6px; }
+  .agenda-tab { border-radius: 0 10px 10px 0; padding: 6px 12px; font-size: 0.85rem; box-shadow: 2px 2px 0 #000; border-left: 0; }
+  .agenda-tab.t0 { background: #ffd23f; } .agenda-tab.t1 { background: #8fd0f0; } .agenda-tab.t2 { background: #a7e08a; } .agenda-tab.t3 { background: #f3a8c8; }
+  .agenda-tab.active { padding-right: 20px; font-weight: 700; }
+  @media (max-width: 760px) {
+    .agenda-book { grid-template-columns: 1fr; padding: 12px; }
+    .agenda-spiral { display: none; }
+    .agenda-page.left, .agenda-page.right { border: 2px solid #23201b; border-radius: 10px; max-height: none; }
+    .agenda-overlay { overflow: auto; place-items: start center; }
+    .agenda-tabs { position: static; transform: none; grid-auto-flow: column; justify-content: start; margin-bottom: 8px; order: -1; }
+    .agenda-tab { border-radius: 10px; border-left: 2.5px solid var(--outline); }
+  }
+
+  /* ---------- Charts ---------- */
+  .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .chart-card { margin: 0; background: var(--bg); border: 2px solid var(--outline); border-radius: 14px; padding: 12px 14px; }
+  .chart-card figcaption { font: 600 1rem var(--display); margin-bottom: 4px; }
+  .chart { width: 100%; height: auto; display: block; }
+  .chart .grid { stroke: var(--line); stroke-opacity: 0.25; stroke-width: 1; }
+  .chart .axis { fill: var(--muted); font: 12px var(--sans); }
+  .chart .axis.strong { font-weight: 700; }
+  .chart .line { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+  .chart .dot { stroke: var(--outline); stroke-width: 2; }
+  .chart .threshold { stroke: var(--red); stroke-width: 2; stroke-dasharray: 6 5; }
+  .chart .threshold-label { fill: var(--red); }
+  .chart .divider { stroke: var(--outline); stroke-width: 1.5; stroke-dasharray: 3 4; }
+  .chart-insight { margin: 6px 0 0; }
+  .chart-legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.88rem; margin-top: 4px; }
+  .chart-legend b { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; border: 1.5px solid var(--outline); }
+
+  /* ---------- Presentation slides ---------- */
+  .slide-head { border-width: 3px; }
+  .slide-title { font-size: clamp(1.9rem, 4vw, 2.6rem); margin: 0 0 2px; }
+  .slide-sub { font: 600 1.25rem var(--display); color: var(--muted); margin: 0 0 12px; }
+  .slide-points { margin: 0; padding-left: 1.3em; font-size: 1.15rem; line-height: 1.55; }
+  .slide-points li { margin-bottom: 6px; }
+  .slide-big { font: 700 2.4rem var(--display); margin: 0 0 8px; }
+  .covers { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .covers span { font: 600 0.85rem var(--display); background: var(--accent); color: #23201b; border: 2px solid var(--outline); border-radius: 999px; padding: 1px 10px; }
+  .steps-flow { list-style: none; counter-reset: step; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin: 0 0 14px; padding: 0; }
+  .steps-flow li { counter-increment: step; position: relative; background: var(--bg); border: 2.5px solid var(--outline); border-radius: 12px; padding: 30px 10px 10px; text-align: center; font: 600 0.98rem/1.3 var(--display); box-shadow: 3px 3px 0 var(--shadow); }
+  .steps-flow li::before { content: counter(step); position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 2px solid var(--outline); font-size: 0.8rem; line-height: 18px; }
+  .layout.single { grid-template-columns: minmax(0, 1fr); max-width: 860px; margin: 0 auto; }
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 14px 0 18px; }
+  .member { display: grid; justify-items: center; gap: 4px; text-align: center; background: var(--bg); border: 2.5px solid var(--outline); border-radius: 16px; padding: 14px 10px; box-shadow: 3px 3px 0 var(--shadow); }
+  .member-face { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 700 1.8rem var(--display); border: 3px solid var(--outline); }
+  .member strong { font: 700 1.2rem var(--display); }
+
+  /* ---------- Case board ---------- */
+  #board { min-height: 100vh; }
+  .board-wrap { max-width: 1000px; margin: 0 auto; padding: 22px 20px 60px; }
+  .board-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .board-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+  .board-stat { background: var(--surface); border: 2px solid var(--outline); border-radius: 999px; padding: 4px 14px; box-shadow: 2px 2px 0 var(--shadow); }
+  #board .nameplate { font-size: 2.6rem; margin: 0; text-align: center; }
+  .board-title { text-align: center; font-size: 1.8rem; margin: 4px 0 2px; }
+  .board-sub { text-align: center; color: var(--muted); margin-bottom: 22px; }
+  .dossiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 220px)); justify-content: center; gap: 22px; margin-bottom: 22px; }
+  .dossier {
+    position: relative; display: grid; justify-items: center; gap: 6px; padding: 14px 10px 12px; background: transparent;
+    color: var(--ink); border: 2.5px solid transparent; box-shadow: none; border-radius: 16px; font-weight: 500;
+  }
+  .dossier:hover:not(:disabled) { transform: translateY(-3px) rotate(-1deg); box-shadow: none; }
+  .dossier.selected { background: var(--surface); border-color: var(--outline); box-shadow: 4px 4px 0 var(--shadow); }
+  .dossier svg { width: 150px; height: auto; }
+  .dossier svg :is(path, rect) { stroke: #23201b; stroke-width: 3; stroke-linejoin: round; }
+  .f-back { fill: #d9a54e; } .f-front { fill: #f0c46c; } .f-paper { fill: #fffaf0; } .f-label { fill: #fffaf0; }
+  .f-lines { stroke: #b9ad97 !important; stroke-width: 3; fill: none; stroke-linecap: round; }
+  .f-label-text { font: 700 15px "Fredoka", system-ui, sans-serif; fill: #23201b; letter-spacing: 0.05em; }
+  .dossier-name { font-family: var(--display); font-weight: 600; font-size: 1.05rem; text-align: center; }
+  .case-stamp {
+    position: absolute; top: 12px; right: 10px; font: 700 0.75rem var(--display); letter-spacing: 0.08em; text-transform: uppercase;
+    border: 2.5px solid currentColor; border-radius: 6px; padding: 1px 8px; transform: rotate(8deg); background: var(--surface);
+  }
+  .case-stamp.new { color: var(--focus); } .case-stamp.progress { color: var(--amber); }
+  .case-stamp.closed { color: var(--green); } .case-stamp.dropped { color: var(--red); }
+  .case-no { font: 700 0.85rem var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
+  .case-title { font-size: 1.9rem; margin: 0 0 10px; }
+  .dossier-detail { max-width: 720px; margin: 0 auto 16px; }
+  #board-foot { justify-content: center; }
+  @media (prefers-reduced-motion: reduce) { .item, .buzz, .judge-option.picked, .case-stamp, .extra { transform: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ================= Title screen ================= -->
+<section id="title-screen">
+  <svg class="village" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="#f2ede3" opacity="0.7">
+      <circle cx="120" cy="60" r="1.6"/><circle cx="260" cy="110" r="1.2"/><circle cx="420" cy="40" r="1.4"/><circle cx="610" cy="90" r="1.1"/>
+      <circle cx="780" cy="50" r="1.5"/><circle cx="930" cy="120" r="1.2"/><circle cx="1080" cy="70" r="1.6"/><circle cx="1160" cy="30" r="1.1"/>
+    </g>
+    <defs><mask id="crescent"><circle cx="1040" cy="200" r="34" fill="#fff"/><circle cx="1056" cy="190" r="30" fill="#000"/></mask></defs>
+    <circle cx="1040" cy="200" r="34" fill="#ffd23f" mask="url(#crescent)"/>
+    <!-- radio mast of Luigi FM -->
+    <g stroke="#55657a" stroke-width="3" fill="none">
+      <path d="M300 420 L330 170 L360 420"/><path d="M309 345 L351 345 M314 290 L346 290 M320 235 L340 235"/>
+    </g>
+    <circle class="wave" cx="330" cy="165" r="22" fill="none" stroke="#ef7a6e" stroke-width="2"/>
+    <circle class="blink" cx="330" cy="165" r="6" fill="#ef4a3a"/>
+    <!-- village skyline: houses, church, windmill -->
+    <g fill="#0b111b">
+      <path d="M0 500 V400 L40 370 L80 400 V500Z M80 500 V410 L120 380 L160 410 V500Z M160 500 V395 L210 360 L260 395 V500Z"/>
+      <path d="M380 500 V390 L420 360 L460 390 V500Z M460 500 V405 L505 372 L550 405 V500Z"/>
+      <path d="M560 500 V330 H600 V260 L620 210 L640 260 V330 H680 V500Z"/>
+      <path d="M690 500 V400 L735 368 L780 400 V500Z M780 500 V395 L830 362 L880 395 V500Z"/>
+      <path d="M900 500 L920 360 H980 L1000 500Z"/>
+      <path d="M1000 500 V405 L1050 372 L1100 405 V500Z M1100 500 V398 L1150 366 L1200 398 V500Z"/>
+    </g>
+    <g stroke="#0b111b" stroke-width="10" stroke-linecap="round">
+      <path d="M950 350 L950 250 M950 350 L1040 330 M950 350 L860 370 M950 350 L950 450"/>
+    </g>
+    <g fill="#ffd66b">
+      <rect x="30" y="430" width="14" height="14"/><rect x="190" y="420" width="14" height="14"/><rect x="225" y="455" width="14" height="14"/>
+      <rect x="400" y="425" width="14" height="14"/><rect x="510" y="440" width="14" height="14"/><rect x="612" y="290" width="16" height="22"/>
+      <rect x="720" y="430" width="14" height="14"/><rect x="845" y="420" width="14" height="14"/><rect x="1060" y="430" width="14" height="14"/>
+    </g>
+  </svg>
+  <div class="title-card">
+    <div class="extra">Extra! Extra!</div>
+    <h1 class="nameplate">The Midnight Chronicle</h1>
+    <div class="kicker">A journalism game about truth, speed and people</div>
+    <p>You are the reporter at a small village news site. The stories keep coming. Every headline you publish reaches real readers, and real people.</p>
+    <div class="row">
+      <button id="continue" hidden>Continue</button>
+      <button id="start">Start new game</button>
+      <button class="quiet" id="howto-btn" aria-expanded="false">How to play</button>
+    </div>
+    <div class="howto" id="howto" hidden>
+      <ul>
+        <li>Information arrives on your desk in news cycles: police statements, emails, calls, posts online.</li>
+        <li>First judge how reliable each source is. Then write an article, check it first, or don't publish it.</li>
+        <li>The AI editor gives advice on your headline. Readers react to exactly what you write.</li>
+        <li>Watch your readers, public trust and story interest. If readers lose interest, your editor moves you to the next story.</li>
+        <li>See how much media pressure your reporting puts on the people in the story.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Case board ================= -->
+<section id="board" hidden>
+  <div class="board-wrap">
+    <div class="board-top">
+      <button class="quiet" id="board-back">&larr; Main page</button>
+      <div class="board-stats" id="board-stats"></div>
+    </div>
+    <h1 class="nameplate">The Midnight Chronicle</h1>
+    <h2 class="board-title">Case board</h2>
+    <p class="board-sub">Pick a case to work on. Each case keeps its progress, so you can switch between them at any time.</p>
+    <div class="dossiers" id="dossiers" role="listbox" aria-label="Cases"></div>
+    <section class="panel dossier-detail" id="dossier-detail" aria-live="polite"></section>
+    <div class="row" id="board-foot"></div>
+  </div>
+</section>
+
+<!-- ================= Game ================= -->
+<main id="app" hidden>
+  <div class="masthead">
+    <div>
+      <button class="quiet small-btn" id="to-board">&larr; Case board</button>
+      <h1 id="outlet" class="nameplate">The Midnight Chronicle</h1>
+      <div class="story" id="story-line"></div>
+    </div>
+    <span class="clock" id="clock"></span>
+  </div>
+  <p class="status-line" id="status">Checking the AI setup…</p>
+
+  <div class="hud">
+    <div class="meter">
+      <div class="label"><span>Readers</span><span>all cases</span></div>
+      <div class="value" id="readers">0</div>
+    </div>
+    <div class="meter">
+      <div class="label"><span>Public trust in the Chronicle</span><span id="cred">60</span></div>
+      <div class="bar"><i class="fill" id="cred-bar"></i></div>
+    </div>
+    <div class="meter">
+      <div class="label"><span>Story interest</span><span id="interest">50</span></div>
+      <div class="bar"><i class="interest" id="interest-bar"></i><span class="tick" id="interest-tick"></span></div>
+    </div>
+  </div>
+
+  <div class="office t-day" id="office" aria-hidden="true">
+    <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1)"/><stop offset="1" style="stop-color:var(--sky2)"/></linearGradient></defs>
+      <rect width="1200" height="220" fill="#d9d2c3"/>
+      <rect y="0" width="1200" height="8" fill="#c7bfae"/>
+      <!-- window -->
+      <rect x="740" y="22" width="400" height="140" rx="4" fill="url(#sky)"/>
+      <g style="fill:var(--village)">
+        <path d="M740 162 V130 L765 115 L790 130 V162Z M790 162 V122 L820 104 L850 122 V162Z M880 162 V100 H900 V70 L910 52 L920 70 V100 H940 V162Z"/>
+        <path d="M960 162 V128 L990 110 L1020 128 V162Z M1060 162 L1070 112 H1100 L1110 162Z"/>
+        <path d="M1085 112 L1085 86 M1085 112 L1120 104 M1085 112 L1050 120" style="stroke:var(--village)" stroke-width="5" stroke-linecap="round"/>
+      </g>
+      <path d="M800 162 L812 60 L824 162" style="stroke:var(--village)" stroke-width="2" fill="none"/>
+      <circle class="blink" cx="812" cy="58" r="3.5" fill="#ef4a3a"/>
+      <rect x="740" y="22" width="400" height="140" rx="4" fill="none" stroke="#8a7f6b" stroke-width="8"/>
+      <path d="M940 22 V162" stroke="#8a7f6b" stroke-width="6"/>
+      <!-- wall: clock and pinboard -->
+      <circle cx="120" cy="62" r="34" fill="#f4efe4" stroke="#6b604f" stroke-width="5"/>
+      <path d="M120 62 L120 40 M120 62 L136 70" stroke="#3b342a" stroke-width="4" stroke-linecap="round"/>
+      <rect x="230" y="26" width="170" height="104" rx="4" fill="#b98f5e"/>
+      <rect x="244" y="38" width="58" height="44" fill="#f7f3ea" transform="rotate(-4 273 60)"/>
+      <rect x="314" y="40" width="70" height="38" fill="#fde68a" transform="rotate(3 349 59)"/>
+      <rect x="262" y="88" width="80" height="32" fill="#f7f3ea" transform="rotate(2 302 104)"/>
+      <circle cx="273" cy="40" r="3" fill="#b8332a"/><circle cx="349" cy="42" r="3" fill="#2d5f9a"/>
+      <!-- desk -->
+      <rect y="176" width="1200" height="44" fill="#7a5a3c"/>
+      <rect y="170" width="1200" height="10" fill="#8f6b48"/>
+      <!-- lamp -->
+      <path d="M90 170 h70 M125 170 V130 L150 100" stroke="#2f3a45" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M135 92 L175 92 L165 116 L145 116Z" fill="#2f3a45" transform="rotate(25 155 104)"/>
+      <!-- papers / police folder -->
+      <rect x="210" y="150" width="120" height="22" rx="2" fill="#f7f3ea"/>
+      <rect x="216" y="142" width="120" height="12" rx="2" fill="#e8b04b"/>
+      <!-- laptop -->
+      <path d="M440 170 L460 92 H640 L660 170Z" fill="#2f3a45"/>
+      <path d="M470 100 H630 L614 160 H486Z" fill="#9fd3c7"/>
+      <path d="M492 116 H600 M496 128 H590 M500 140 H560" stroke="#2f3a45" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+      <rect x="420" y="168" width="260" height="8" rx="3" fill="#1e2730"/>
+      <!-- coffee -->
+      <rect x="700" y="140" width="34" height="32" rx="5" fill="#f4efe4"/>
+      <path d="M734 148 q14 6 0 16" stroke="#f4efe4" stroke-width="5" fill="none"/>
+      <!-- phone -->
+      <g id="desk-phone"><rect x="790" y="150" width="62" height="22" rx="6" fill="#b8332a"/><rect x="796" y="140" width="50" height="12" rx="6" fill="#8e261f"/></g>
+      <!-- newspaper stack -->
+      <rect x="930" y="152" width="140" height="20" rx="2" fill="#efe9dc"/>
+      <rect x="936" y="146" width="140" height="8" rx="2" fill="#e2dbcb"/>
+    </svg>
+  </div>
+
+  <div class="layout">
+    <div>
+      <section class="panel" id="story-intro" hidden></section>
+      <div id="desk">
+        <section class="panel slide-head" id="slide-head" hidden></section>
+        <p class="cycle-intro" id="cycle-intro"></p>
+        <div class="clipboard">
+          <div class="clip" aria-hidden="true"></div>
+          <div id="inbox"></div>
+        </div>
+        <div class="desk-foot">
+          <span class="hint" id="pending"></span>
+          <button id="end-cycle" disabled>Send this edition to print</button>
+        </div>
+      </div>
+      <div id="report" hidden aria-live="polite"></div>
+      <section class="panel" id="ending" hidden></section>
+    </div>
+    <aside>
+      <section class="panel">
+        <h3>Media pressure on people</h3>
+        <p class="hint" style="margin:-4px 0 10px">How much the coverage weighs on each person in the story.</p>
+        <div id="people"></div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<!-- ================= Notebook (agenda-style) ================= -->
+<button class="agenda-btn" id="agenda-btn" hidden aria-haspopup="dialog">
+  <svg viewBox="0 0 48 56" aria-hidden="true">
+    <rect x="8" y="4" width="34" height="48" rx="4" class="a-cover"/>
+    <rect x="8" y="4" width="8" height="48" rx="3" class="a-spine"/>
+    <rect x="22" y="14" width="14" height="9" rx="2" class="a-label"/>
+    <path d="M36 4 V52" class="a-band"/>
+    <path d="M4 12 h8 M4 22 h8 M4 32 h8 M4 42 h8" class="a-rings"/>
+  </svg>
+  <span>Notebook</span>
+  <span class="agenda-count" id="agenda-count"></span>
+</button>
+<div class="notebook-tip" id="notebook-tip" hidden role="status">
+  <p>Here you will find your notebook with all the notes you make.</p>
+  <button id="notebook-tip-ok" class="small-btn">Got it</button>
+</div>
+<div class="agenda-overlay" id="agenda" hidden>
+  <div class="agenda-book" role="dialog" aria-modal="true" aria-labelledby="agenda-title">
+    <button class="agenda-close quiet" id="agenda-close" aria-label="Close the notebook">&times;</button>
+    <div class="agenda-tabs" id="agenda-tabs" role="tablist" aria-label="Cases"></div>
+    <div class="agenda-page left">
+      <h2 id="agenda-title">Notes</h2>
+      <div id="agenda-notes"></div>
+    </div>
+    <div class="agenda-spiral" aria-hidden="true"></div>
+    <div class="agenda-page right">
+      <h2>Front pages</h2>
+      <div id="agenda-pages"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const $ = (s) => document.querySelector(s);
+  const el = (tag, props = {}, kids = []) => { const n = Object.assign(document.createElement(tag), props); kids.forEach((k) => n.append(k)); return n; };
+  const svgEl = (markup) => { const t = document.createElement("template"); t.innerHTML = markup.trim(); return t.content.firstChild; };
+  async function api(path, body) {
+    const r = await fetch(path, body === undefined ? {} : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || `Server error ${r.status}`);
+    return data;
+  }
+  const STATUS = { confirmed: "Confirmed", claim: "One source", rumour: "Unverified", debunked: "Debunked" };
+  const fmt = (n) => n.toLocaleString("en-GB");
+  // "▼ 4" in red or "▲ 10,080" in green. goodWhenUp is false for pressure, where up is bad.
+  function delta(n, goodWhenUp = true) {
+    if (!n) return el("span", { className: "delta flat", textContent: "no change" });
+    const up = n > 0;
+    const good = up === goodWhenUp;
+    const d = el("span", { className: `delta ${good ? "good" : "bad"}`, textContent: `${up ? "\u25B2" : "\u25BC"} ${fmt(Math.abs(n))}` });
+    d.setAttribute("aria-label", `${up ? "up" : "down"} ${Math.abs(n)}`);
+    return d;
+  }
+  const signed = (n) => (n > 0 ? `+${fmt(n)}` : fmt(n));
+  // Media pressure, shown as a graded scale from low (green) to severe (red)
+  const PRESSURE_LEVELS = ["Low", "Some", "Moderate", "High", "Severe"];
+  const pressureLevel = (total) => Math.min(4, Math.floor(total / 20));
+  const SEGMENTS = 20;   // each segment is 5 points of pressure
+  // Five clearly different colours, one per level, blended smoothly in between:
+  // green, light green, yellow, orange, red.
+  const PRESSURE_STOPS = [[26, 152, 80], [120, 198, 70], [245, 197, 24], [240, 110, 40], [198, 40, 40]];
+  function pressureColour(t) {
+    const pos = t * (PRESSURE_STOPS.length - 1);
+    const i = Math.min(PRESSURE_STOPS.length - 2, Math.floor(pos));
+    const f = pos - i;
+    const [a, b] = [PRESSURE_STOPS[i], PRESSURE_STOPS[i + 1]];
+    return `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * f)).join(",")})`;
+  }
+  function pressureScale(total) {
+    const lit = Math.ceil(Math.max(0, total) / (100 / SEGMENTS));
+    const label = total <= 0 ? "none" : `${PRESSURE_LEVELS[pressureLevel(total)]}, ${total} out of 100`;
+    return el("div", { className: "pressure", role: "img", "aria-label": `Media pressure: ${label}` },
+      Array.from({ length: SEGMENTS }, (_, i) => {
+        const t = i / (SEGMENTS - 1);   // 0 = low, 1 = severe
+        // Unlit segments are plain grey, so the lit part and its colour stand out
+        return el("i", { style: `height:${Math.round(14 + 86 * t)}%${i < lit ? `;background:${pressureColour(t)}` : ""}` });
+      }));
+  }
+  const AVATAR_COLOURS = ["#2d5f9a", "#2e7a57", "#9c6610", "#7a3e8f", "#b8332a"];
+
+  const ICONS = {
+    police: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>',
+    email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>',
+    social: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 15.5s-3-1.8-3-4a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2.2-3 4-3 4z"/></svg>',
+    forum: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 5h12v8H8l-4 3V5z"/><path d="M15 9h6v8l-3-2h-6v-2"/></svg>',
+    letter: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5M9 12h7M9 16h7"/></svg>',
+    council: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 9 12 4l9 5M5 9v9M10 9v9M14 9v9M19 9v9M3 20h18"/></svg>',
+    document: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 2h9l4 4v16H6z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>',
+  };
+  function iconFor(kind) {
+    const k = kind.toLowerCase();
+    const key = k.includes("police") ? "police" : k.includes("email") ? "email" : k.includes("phone") ? "phone"
+      : k.includes("social") ? "social" : k.includes("forum") ? "forum" : k.includes("letter") ? "letter"
+      : k.includes("council") ? "council" : "document";
+    return { key, svg: svgEl(ICONS[key]) };
+  }
+  function timeOfDay(label) {
+    const m = label.match(/(\d{1,2}):\d{2}/);
+    const h = m ? Number(m[1]) : 12;
+    return h < 6 || h >= 21 ? "t-night" : h < 10 ? "t-morning" : h < 17 ? "t-day" : "t-evening";
+  }
+
+  let game = null;
+  let openComposer = null;
+  let inFlight = 0;   // requests in progress; the desk is locked while > 0
+
+  // Only ever show the newest state. Two quick clicks can come back in either
+  // order, so an older answer from the server is ignored.
+  function applyGame(next) {
+    if (!next) return;
+    if (game && next.version < game.version) return;
+    game = next;
+    render();
+  }
+  function lockDesk(on) {
+    inFlight += on ? 1 : -1;
+    $("#desk").classList.toggle("desk-busy", inFlight > 0);
+  }
+  async function resync() {
+    try { applyGame(await api("/api/game")); } catch (e) { /* keep what we have */ }
+  }
+
+  // ---------- Render ----------
+  const API_NEEDED = 6;
+  function checkServerVersion(g) {
+    if ((g.api || 0) >= API_NEEDED) return true;
+    const s = $("#status");
+    s.textContent = "An older game server is answering on port 8000. If you already replaced newsroom.py and server.py, an old server is probably still running: close every terminal running python server.py (or restart your laptop), then start it again from your project folder.";
+    s.className = "status-line warn";
+    s.style.fontWeight = "700";
+    return false;
+  }
+
+  function render() {
+    checkServerVersion(game);
+    $("#outlet").textContent = game.outlet;
+    $("#story-line").textContent = `Case ${String(game.story_number).padStart(2, "0")}: ${game.story_title}`;
+    $("#clock").textContent = game.finished ? "Case closed" : `${game.cycle_label}`;
+    $("#readers").textContent = fmt(game.readers);
+    $("#cred").textContent = game.credibility;
+    $("#cred-bar").style.width = `${game.credibility}%`;
+    $("#interest").textContent = game.interest;
+    $("#interest-bar").style.width = `${game.interest}%`;
+    $("#interest-bar").classList.toggle("low", game.interest < game.interest_threshold + 10);
+    $("#interest-tick").style.left = `${game.interest_threshold}%`;
+    $("#office").className = `office ${timeOfDay(game.cycle_label)}`;
+    const ringing = game.inbox.some((i) => !i.decision && iconFor(i.kind).key === "phone");
+    $("#desk-phone").classList.toggle("ring", ringing && !game.finished);
+
+    $("#people").replaceChildren(...game.people.map((p) => el("div", { className: "person" }, [
+      el("div", { className: "person-head" }, [
+        el("span", {}, [el("strong", { textContent: p.name }), el("span", { className: "hint", textContent: ` ${p.role}` })]),
+        el("span", { className: `level l${p.total <= 0 ? 0 : pressureLevel(p.total)}`, textContent: p.total <= 0 ? "None" : PRESSURE_LEVELS[pressureLevel(p.total)] })]),
+      pressureScale(p.total),
+      el("div", { className: "pressure-scale" }, [el("span", { textContent: "Low" }), el("span", { textContent: "Severe" })]),
+      ...(p.total > 0 ? [el("div", { className: "hint", style: "font-size:0.82rem;margin-top:2px", textContent: `Your reporting: ${p.you}. Other outlets: ${p.others}.` })] : []),
+    ])));
+    const notes = (game.agenda || []).reduce((n, a) => n + a.notes.length, 0);
+    $("#agenda-count").textContent = notes ? `${notes}` : "";
+    $("#agenda-count").hidden = !notes;
+    document.querySelectorAll(".nameplate").forEach((n) => (n.textContent = game.outlet));
+    document.title = game.outlet;
+    renderDesk();
+  }
+
+  // In the presentation case, each news cycle is one "slide" about one idea,
+  // and only the parts of the game that belong to that idea are shown.
+  const slideShows = (part) => !game.presentation || !game.slide || (game.slide.show || []).includes(part);
+  function applySlideLayout() {
+    const meters = document.querySelectorAll(".hud .meter");
+    ["readers", "trust", "interest"].forEach((part, i) => { if (meters[i]) meters[i].hidden = !slideShows(part); });
+    $(".hud").hidden = [...meters].every((m) => m.hidden);
+    const aside = document.querySelector(".layout > aside");
+    aside.hidden = !slideShows("pressure");
+    document.querySelector(".layout").classList.toggle("single", aside.hidden);
+    const head = $("#slide-head");
+    if (game.presentation && game.slide && !game.finished) {
+      const sl = game.slide;
+      head.hidden = false;
+      head.replaceChildren(
+        el("p", { className: "case-no", textContent: `Slide ${sl.number} of ${game.max_cycles}` }),
+        el("h2", { className: "slide-title", textContent: sl.title }),
+        el("p", { className: "slide-sub", textContent: sl.subtitle }),
+        ...(sl.covers ? [el("div", { className: "covers" }, sl.covers.map((t) => el("span", { textContent: t })))] : []),
+        ...(sl.steps ? [el("ol", { className: "steps-flow" }, sl.steps.map((t) => el("li", { textContent: t })))] : []),
+        el("ul", { className: "slide-points" }, sl.points.map((t) => el("li", { textContent: t }))));
+    } else head.hidden = true;
+  }
+
+  function renderDesk() {
+    applySlideLayout();
+    $("#cycle-intro").textContent = game.cycle_intro;
+    $("#cycle-intro").hidden = !game.cycle_intro;
+    $(".clipboard").hidden = !!game.presentation && !game.inbox.length;
+    $("#inbox").replaceChildren(...game.inbox.map((item, i) => itemCard(item, i)));
+    const open = game.inbox.filter((i) => !i.decision).length;
+    const unjudged = game.inbox.filter((i) => !i.decision && !i.verification && !i.skip_judge && !i.judged).length;
+    $("#pending").textContent = !open ? "Every item has a decision."
+      : unjudged ? `Judge each source first. ${unjudged} still to judge, ${open} decision${open === 1 ? "" : "s"} to make.`
+      : `${open} item${open === 1 ? "" : "s"} still need${open === 1 ? "s" : ""} a decision.`;
+    $("#end-cycle").disabled = open > 0;
+    $("#end-cycle").textContent = !game.presentation ? "Send this edition to print"
+      : game.cycle === game.max_cycles ? "See the results" : game.inbox.length ? "Print and continue" : "Next slide";
+    if (game.presentation && !game.inbox.length) $("#pending").textContent = "";
+  }
+
+  const seenCards = new Set();   // cards only slide in the first time they appear
+  function itemCard(item, index) {
+    const card = el("article", { className: "item", style: `animation-delay:${index * 120}ms` });
+    if (seenCards.has(item.key)) card.style.animation = "none"; else seenCards.add(item.key);
+    const icon = iconFor(item.kind);
+    const iconBox = el("div", { className: "icon" }, [icon.svg]);
+    if (icon.key === "phone" && !item.decision) iconBox.classList.add("ring");
+    card.append(el("div", { className: "item-head" }, [iconBox,
+      el("div", { className: "who" }, [el("div", { className: "kind", textContent: item.kind }), el("div", { className: "from", textContent: item.from })]),
+      item.verification && item.status ? el("span", { className: `tag ${item.status}`, textContent: `After checking: ${STATUS[item.status] || item.status}` })
+        : item.skip_judge && item.status ? el("span", { className: `tag ${item.status}`, textContent: STATUS[item.status] || item.status })
+        : item.judged ? el("span", { className: `tag judged ${item.judged}`, textContent: `You: ${STATUS[item.judged]}` })
+        : el("span", { className: "tag pending", textContent: "Not judged yet" })]));
+    if (item.verification) card.append(el("p", { className: "callout check" }, [el("strong", { textContent: "What your check found: " }), item.verification]));
+    card.append(el("p", { className: "source-text", textContent: item.text }));
+    if (item.request) card.append(el("p", { className: "callout", textContent: item.request }));
+
+    const d = item.decision;
+    if (!item.verification && !item.skip_judge && !d && openComposer !== item.key) card.append(judgePicker(item));
+    if (d) {
+      card.style.animation = "none";
+      card.append(el("p", { className: "decided" }, d.action === "publish"
+        ? [el("span", { textContent: "Published: " }), el("span", { className: "q", textContent: `“${d.headline}”` }), d.unconfirmed ? " (labelled unconfirmed)" : ""]
+        : [d.action === "verify" ? "Sent for checking. The result arrives next news cycle."
+          : d.action === "noted" ? "Judged. You'll see whether you were right after printing." : "Not published."]));
+      return card;
+    }
+    if (openComposer === item.key) { card.style.animation = "none"; card.append(composer(item)); return card; }
+
+    if (!item.verification && !item.skip_judge && !item.judged) return card;  // actions appear once the source is judged
+    const buttons = [];
+    if (slideShows("write")) {
+      const write = el("button", { textContent: "Write an article" });
+      write.addEventListener("click", () => { openComposer = item.key; renderDesk(); });
+      buttons.push(write);
+    }
+    if (item.can_verify && slideShows("check")) {
+      const check = el("button", { className: "quiet", textContent: "Check it first" });
+      check.addEventListener("click", () => decide("/api/verify", item.key));
+      buttons.push(check);
+    }
+    if (slideShows("hold")) {
+      const hold = el("button", { className: "quiet", textContent: "Don't publish" });
+      hold.addEventListener("click", () => decide("/api/hold", item.key));
+      buttons.push(hold);
+    }
+    if (buttons.length) card.append(el("div", { className: "row" }, buttons));
+    return card;
+  }
+
+  const JUDGE_OPTIONS = [
+    ["confirmed", "Confirmed", "Official, or backed by an independent record"],
+    ["claim", "One source", "One named person's account or opinion"],
+    ["rumour", "Unverified", "Can't be traced or checked"],
+  ];
+  function judgePicker(item) {
+    const box = el("div", { className: "judge" }, [el("p", { className: "judge-q", textContent: "How reliable is this source?" })]);
+    const row = el("div", { className: "judge-options", role: "radiogroup", "aria-label": "How reliable is this source?" });
+    JUDGE_OPTIONS.forEach(([value, label, help]) => {
+      const b = el("button", { className: `judge-option ${value}${item.judged === value ? " picked" : ""}`, type: "button" },
+        [el("strong", { textContent: label }), el("span", { textContent: help })]);
+      b.setAttribute("role", "radio");
+      b.setAttribute("aria-checked", String(item.judged === value));
+      b.addEventListener("click", () => judge(item.key, value));
+      row.append(b);
+    });
+    box.append(row);
+    return box;
+  }
+  async function judge(key, label) {
+    if (inFlight) return;
+    lockDesk(true);
+    try { applyGame((await api("/api/judge", { key, label })).game); }
+    catch (e) { await resync(); $("#pending").textContent = e.message; }
+    finally { lockDesk(false); }
+  }
+
+  function composer(item) {
+    const box = el("div", { className: "composer" });
+    const area = el("textarea", { placeholder: "Write your headline…", value: item.suggested_headline || "" });
+    area.setAttribute("aria-label", "Headline");
+    const feedback = el("div");
+    const ask = el("button", { className: "quiet", textContent: "Ask the editor" });
+    const pub = el("button", { textContent: "Publish" });
+    const pubU = el("button", { className: "quiet", textContent: "Publish as unconfirmed" });
+    const cancel = el("button", { className: "quiet", textContent: "Cancel" });
+    const busy = (on, label) => { [ask, pub, pubU, cancel].forEach((b) => (b.disabled = on)); if (label) feedback.replaceChildren(el("p", { className: "hint", textContent: label })); };
+    const empty = () => { if (area.value.trim()) return false; feedback.replaceChildren(el("p", { className: "error", textContent: "Write a headline first." })); return true; };
+    ask.addEventListener("click", async () => {
+      if (empty()) return;
+      busy(true, "The editor is reading your headline…");
+      try { feedback.replaceChildren(editorNote(await api("/api/check", { key: item.key, headline: area.value }), item, area.value)); }
+      catch (e) { feedback.replaceChildren(el("p", { className: "error", textContent: e.message })); }
+      finally { busy(false); }
+    });
+    const publish = async (unconfirmed) => {
+      if (empty()) return;
+      busy(true, "Publishing. Readers are reacting…");
+      lockDesk(true);
+      try { const r = await api("/api/publish", { key: item.key, headline: area.value, unconfirmed }); openComposer = null; applyGame(r.game); }
+      catch (e) { busy(false); feedback.replaceChildren(el("p", { className: "error", textContent: e.message })); resync(); }
+      finally { lockDesk(false); }
+    };
+    pub.addEventListener("click", () => publish(false));
+    pubU.addEventListener("click", () => publish(true));
+    cancel.addEventListener("click", () => { openComposer = null; renderDesk(); });
+    area.addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); ask.click(); } });
+    box.append(area, el("div", { className: "row" }, [ask, pub, pubU, cancel]), feedback);
+    requestAnimationFrame(() => area.focus());
+    return box;
+  }
+
+  function editorNote(r, item, headline) {
+    const c = r.claims;
+    const box = el("div", { className: "editor" }, [
+      el("p", { className: `verdict ${c.level}`, textContent: `Editor: ${c.verdict[0].toUpperCase()}${c.verdict.slice(1)}.` })]);
+    if (c.checked_text && headline && c.checked_text.trim() !== headline.trim())
+      box.append(el("p", { className: "hint", style: "margin:0 0 6px", textContent: `Facts checked without the dramatic words: “${c.checked_text}”` }));
+    const warnings = [...(r.flags || []), ...(r.advice || [])];
+    box.append(warnings.length ? el("ul", { className: "error" }, warnings.map((w) => el("li", { textContent: w })))
+                               : el("p", { className: "hint", style: "margin:0", textContent: "No warnings." }));
+    if (r.names.length) box.append(el("p", { className: "hint", style: "margin:8px 0 0", textContent: `People named: ${r.names.join(", ")}.` }));
+    box.append(el("details", {}, [el("summary", { textContent: "How each note relates to this headline" }),
+      el("p", { className: "hint", style: "margin:6px 0", textContent: "How strongly the AI thinks each note backs up, or clashes with, your headline (0 to 1). The verdict above comes from your source; these scores only give advice." }),
+      el("ul", {}, c.per_entry.map((e) => el("li", { textContent: `${e.text === c.source ? "Your source: " : ""}${e.text} (supports ${e.support.toFixed(2)}, clashes ${e.contradiction.toFixed(2)})` })))]));
+    return box;
+  }
+
+  async function decide(path, key) {
+    if (inFlight) return;
+    lockDesk(true);
+    try { applyGame((await api(path, { key })).game); }
+    catch (e) { await resync(); $("#pending").textContent = e.message; }
+    finally { lockDesk(false); }
+  }
+
+  // ---------- After each cycle: the printed paper ----------
+  async function endCycle() {
+    const b = $("#end-cycle");
+    if (inFlight) return;
+    b.disabled = true; b.textContent = "Printing…";
+    lockDesk(true);
+    try {
+      const r = await api("/api/end_cycle", {});
+      applyGame(r.game);
+      showReport(r.report, r.epilogue);
+    } catch (e) { await resync(); $("#pending").textContent = e.message; }
+    finally { lockDesk(false); if (game) renderDesk(); }
+  }
+
+  function showSlideReport(rep, epilogue) {
+    const box = $("#report");
+    if (!(rep.slide.report || []).length) {
+      box.hidden = true;
+      render();
+      if (epilogue) showEnding(epilogue); else { $("#desk").hidden = false; window.scrollTo(0, 0); }
+      return;
+    }
+    const goOn = () => { box.hidden = true; render(); if (epilogue) showEnding(epilogue); else { $("#desk").hidden = false; window.scrollTo(0, 0); } };
+    const next = el("button", { textContent: epilogue ? "See the results" : "Next slide" });
+    next.addEventListener("click", goOn);
+    const parts = [el("section", { className: "panel slide-head" }, [
+      el("p", { className: "case-no", textContent: `Slide ${rep.slide.number}: ${rep.slide.title}` }),
+      el("h2", { className: "slide-title", textContent: { judgements: "Were you right?", paper: "The paper is out", pressure: "Who paid the price?" }[rep.slide.report[0]] || "Printed" })])];
+    (rep.slide.report || []).forEach((part) => {
+      if (part === "judgements") {
+        const right = rep.judgements.filter((j) => j.right).length;
+        parts.push(el("section", { className: "panel" }, [
+          el("p", { className: "slide-big", textContent: `${right} of ${rep.judgements.length} right` }),
+          el("ul", { className: "judgements" }, rep.judgements.map((j) => el("li", { className: j.right ? "right" : "wrong" }, [
+            el("strong", { textContent: j.right ? "\u2713 " : "\u2717 " }), `${j.kind}: you said ${j.yours}${j.right ? "" : `, it was ${j.correct}`}. `,
+            el("span", { className: "hint", textContent: j.why })])))]));
+      }
+      if (part === "paper") {
+        const paper = el("div", { className: "paper" }, [el("div", { className: "paper-mast" }, [el("strong", { textContent: game.outlet }), el("span", { textContent: rep.cycle_label })])]);
+        rep.articles.forEach((a) => paper.append(el("div", { className: "paper-article" }, [
+          el("h2", {}, [...(a.unconfirmed ? [el("span", { className: "label-u", textContent: "UNCONFIRMED" })] : []), a.headline]),
+          el("div", { className: "meta", textContent: `${fmt(a.readers)} readers. Reactions written by the AI, as players are told.` }),
+          el("ul", { className: "feed" }, a.comments.map((c, j) => el("li", {}, [
+            el("span", { className: "avatar", style: `background:${AVATAR_COLOURS[(c.reader.charCodeAt(0) + j) % AVATAR_COLOURS.length]}`, textContent: c.reader[0] }),
+            el("div", {}, [el("b", { textContent: c.reader }), c.text])])))])));
+        if (!rep.articles.length) paper.append(el("p", { textContent: "Nothing published." }));
+        parts.push(paper);
+      }
+      if (part === "pressure") {
+        parts.push(el("section", { className: "panel" }, [el("h2", { textContent: "Media pressure on the team" }),
+          ...rep.people.map((p) => el("div", { className: "person" }, [
+            el("div", { className: "person-head" }, [el("span", {}, [el("strong", { textContent: p.name }), el("span", { className: "hint", textContent: ` ${p.role}` })]),
+              el("span", {}, [el("span", { className: `level l${p.total <= 0 ? 0 : pressureLevel(p.total)}`, textContent: p.total <= 0 ? "None" : PRESSURE_LEVELS[pressureLevel(p.total)] }), " ", delta(p.change, false)])]),
+            pressureScale(p.total)]))]));
+      }
+      if (part === "trust") {
+        parts.push(el("section", { className: "panel" }, [el("h2", { textContent: "Public trust in the paper" }),
+          el("div", { className: "stat-line" }, [el("strong", { textContent: `${rep.credibility_now}` }), delta(rep.credibility_change)]),
+          ...(rep.trust_log.length ? [el("ul", { className: "trust-log", style: "margin-top:8px" }, rep.trust_log.map((t) =>
+            el("li", {}, [el("strong", { className: t.change > 0 ? "up" : "down", textContent: signed(t.change) }), " ", t.reason])))] : [])]));
+      }
+    });
+    parts.push(el("div", { className: "row", style: "margin:4px 0 20px" }, [next]));
+    box.replaceChildren(...parts);
+    window.scrollTo(0, 0);
+  }
+
+  function showReport(rep, epilogue) {
+    $("#desk").hidden = true;
+    if (game.presentation && rep.slide) {
+      $("#report").hidden = false;
+      $("#clock").textContent = rep.cycle_label;
+      return showSlideReport(rep, epilogue);
+    }
+    $("#clock").textContent = `${rep.cycle_label}, the edition is out`;
+    const box = $("#report");
+    box.hidden = false;
+    const goOn = () => { box.hidden = true; render(); if (epilogue) showEnding(epilogue); else { $("#desk").hidden = false; window.scrollTo(0, 0); } };
+    const nextButton = () => { const b = el("button", { textContent: epilogue ? "Close the story" : "Next news cycle" }); b.addEventListener("click", goOn); return b; };
+
+    // 1. The summary: what your editor thinks, and the three numbers that matter
+    const editorText = rep.dropped ? "Nobody is reading this story anymore. Drop it, I have something new for you."
+      : epilogue ? "That's the end of this story. Let's see how it all turned out."
+      : rep.interest < rep.interest_threshold + 10 ? "Readers are losing interest. Give them a reason to keep following this, or we move on."
+      : "People are following this. Keep going.";
+    const warn = rep.dropped || (!epilogue && rep.interest < rep.interest_threshold + 10);
+    const stat = (label, value, change, sub) => el("div", { className: "stat" }, [
+      el("span", { className: "hint", textContent: label }),
+      el("div", { className: "stat-line" }, [el("strong", { textContent: value }), change]), ...(sub ? [sub] : [])]);
+    const interestBar = el("div", { className: "bar", style: "margin-top:6px" }, [
+      el("i", { className: `interest${rep.interest < rep.interest_threshold + 10 ? " low" : ""}`, style: `width:${rep.interest}%` }),
+      el("span", { className: "tick", style: `left:${rep.interest_threshold}%` })]);
+    const summary = el("section", { className: "panel summary" }, [
+      el("p", { className: `editor-says${warn ? "" : " ok"}`, textContent: `Your editor: \u201c${editorText}\u201d` }),
+      el("div", { className: "stats" }, [
+        stat("Readers", fmt(rep.readers_now), delta(rep.readers_change)),
+        stat("Public trust", `${rep.credibility_now}`, delta(rep.credibility_change)),
+        stat("Story interest", `${rep.interest}`, delta(rep.interest_change), interestBar)]),
+      el("div", { className: "row", style: "margin-top:12px" }, [nextButton(),
+        el("span", { className: "hint", textContent: "Or scroll down for the paper and what each decision did." })])]);
+
+    // 2. The printed paper, with readers' reactions
+    const paper = el("div", { className: "paper" }, [el("div", { className: "paper-mast" }, [
+      el("strong", { textContent: game.outlet }), el("span", { textContent: rep.cycle_label })])]);
+    if (!rep.articles.length) paper.append(el("p", { style: "text-align:center;margin:10px 0", textContent: "Nothing from you in this edition." }));
+    rep.articles.forEach((a, i) => paper.append(el("div", { className: `paper-article${i ? " second" : ""}` }, [
+      el("h2", {}, [...(a.unconfirmed ? [el("span", { className: "label-u", textContent: "UNCONFIRMED" })] : []), a.headline]),
+      el("div", { className: "meta", textContent: `${fmt(a.readers)} readers` }),
+      el("ul", { className: "feed" }, a.comments.map((c, j) => el("li", {}, [
+        el("span", { className: "avatar", style: `background:${AVATAR_COLOURS[(c.reader.charCodeAt(0) + j) % AVATAR_COLOURS.length]}`, textContent: c.reader[0] }),
+        el("div", {}, [el("b", { textContent: c.reader }), c.text])]))),
+    ])));
+
+    // 3. Your desk, item by item: how you judged it, what you did, what it caused
+    const stripHeadline = (t) => { const r = t.replace(/^\u201c[^\u201d]*\u201d\s*/, ""); return r[0].toUpperCase() + r.slice(1); };
+    const right = rep.judgements.filter((j) => j.right).length;
+    const desk = el("section", { className: "panel" }, [
+      el("h2", { textContent: "What each decision did" }),
+      ...(rep.judgements.length ? [el("p", { className: "hint", style: "margin-top:-6px", textContent: `You judged ${right} of ${rep.judgements.length} source${rep.judgements.length === 1 ? "" : "s"} right this cycle.` })] : []),
+      ...rep.recap.map((r) => {
+        const icon = iconFor(r.kind);
+        const j = r.judgement;
+        const badge = !j ? el("span", { className: "badge muted", textContent: "Checked earlier" })
+          : j.right ? el("span", { className: "badge good", textContent: `\u2713 ${j.yours}` })
+          : el("span", { className: "badge bad", textContent: `\u2717 You said ${j.yours}, it was ${j.correct}` });
+        const action = r.action === "publish"
+          ? el("p", { className: "recap-action" }, ["You published ", el("span", { className: "q", textContent: `\u201c${r.headline}\u201d` }),
+              r.unconfirmed ? " as unconfirmed" : "", el("span", { className: "hint", textContent: `  ${fmt(r.readers)} readers` })])
+          : el("p", { className: "recap-action", textContent: r.action === "verify" ? "You sent it for checking. The result arrives next news cycle." : "You didn't publish it." });
+        const chips = [];
+        if (r.trust) chips.push(el("span", { className: `chip ${r.trust > 0 ? "good" : "bad"}` }, ["Trust ", delta(r.trust)]));
+        r.pressure.forEach((p) => chips.push(el("span", { className: `chip ${p.change < 0 ? "good" : p.source === "you" ? "bad" : "muted"}` },
+          [`Pressure on ${p.name} `, delta(p.change, false), p.source === "others" ? ` (${rep.competitor_name})` : ""])));
+        if (!chips.length) chips.push(el("span", { className: "chip muted", textContent: "No effect on trust or pressure" }));
+        const notes = r.notes.map(stripHeadline);
+        if (j && !j.right) notes.push(j.why);
+        return el("div", { className: "recap" }, [
+          el("div", { className: "recap-head" }, [el("div", { className: "icon small" }, [icon.svg]),
+            el("div", { className: "who" }, [el("div", { className: "kind", textContent: r.kind }), el("div", { className: "from", textContent: r.from })]), badge]),
+          action,
+          el("div", { className: "chips" }, chips),
+          ...(notes.length ? [el("ul", { className: "recap-notes" }, notes.map((n) => el("li", { textContent: n })))] : []),
+        ]);
+      }),
+    ]);
+
+    // 4. Earlier stories that have now been proven false
+    const parts = [summary, paper];
+    if (rep.competitor.length) parts.push(el("div", { className: "buzz" }, [
+      el("strong", { textContent: `${rep.competitor_name} published` }),
+      el("ul", { style: "margin:6px 0 0;padding-left:1.2em" }, rep.competitor.map((h) => el("li", { textContent: h }))),
+      el("p", { style: "margin:8px 0 0", textContent: "Stories you hold back or check can still be published by others." })]));
+    parts.push(desk);
+    if (rep.earlier.length) parts.push(el("section", { className: "panel" }, [
+      el("h2", { textContent: "Your earlier stories" }),
+      ...rep.earlier.map((e) => el("div", { className: "recap" }, [
+        el("p", { className: "recap-action" }, [el("span", { className: "q", textContent: `\u201c${e.headline}\u201d` }), el("span", { className: "hint", textContent: `  ${e.cycle_label}` })]),
+        el("div", { className: "chips" }, [el("span", { className: "chip bad" }, ["Trust ", delta(e.trust)])]),
+        el("ul", { className: "recap-notes" }, [el("li", { textContent: e.reason })])]))]));
+    parts.push(el("div", { className: "row", style: "margin:4px 0 20px" }, [nextButton()]));
+    box.replaceChildren(...parts);
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- The agenda: notes and front pages per case, by day ----------
+  let agendaCase = null;
+  function openAgenda() {
+    const pages = game.agenda || [];
+    if (!agendaCase || !pages.some((a) => a.case_id === agendaCase)) agendaCase = (pages.find((a) => a.case_id === game.case_id) || pages[0] || {}).case_id;
+    $("#agenda-tabs").replaceChildren(...pages.map((a, i) => {
+      const t = el("button", { className: `agenda-tab t${i % 4}${a.case_id === agendaCase ? " active" : ""}`, type: "button", textContent: `Case ${String(a.number).padStart(2, "0")}` });
+      t.setAttribute("role", "tab"); t.setAttribute("aria-selected", String(a.case_id === agendaCase));
+      t.addEventListener("click", () => { agendaCase = a.case_id; openAgenda(); });
+      return t;
+    }));
+    const a = pages.find((x) => x.case_id === agendaCase);
+    if (!a) {
+      $("#agenda-title").textContent = "Notes";
+      $("#agenda-notes").replaceChildren(el("p", { className: "agenda-empty", textContent: "Nothing yet. Judge a source on your desk and it will be written down here." }));
+      $("#agenda-pages").replaceChildren(el("p", { className: "agenda-empty", textContent: "No front pages yet." }));
+    } else {
+      $("#agenda-title").textContent = a.title;
+      const days = [];
+      a.notes.forEach((n) => { let d = days.find((x) => x.label === n.cycle_label); if (!d) days.push(d = { label: n.cycle_label, notes: [] }); d.notes.push(n); });
+      $("#agenda-notes").replaceChildren(...(days.length ? days.map((d) => el("div", { className: "agenda-day" }, [
+        el("h3", { className: "agenda-date", textContent: d.label }),
+        el("ul", {}, d.notes.map((n) => el("li", {}, [
+          el("span", { className: `tag ${n.status}${n.judged ? " judged" : ""}`, title: n.judged ? "Your judgement" : "Found by your check", textContent: STATUS[n.status] || n.status }),
+          " ", n.text, el("span", { className: "agenda-src", textContent: ` (${n.source})` })])))]))
+        : [el("p", { className: "agenda-empty", textContent: "No notes yet in this case." })]));
+      const status = { in_progress: "In progress", resolved: "Case closed", dropped: "Case dropped" }[a.status];
+      $("#agenda-pages").replaceChildren(
+        el("p", { className: `agenda-status ${a.status}`, textContent: status }),
+        ...(a.front_pages.length ? [el("ul", { className: "agenda-front" }, a.front_pages.map((p) => el("li", {}, [
+          el("span", { className: "agenda-date small", textContent: p.cycle_label }),
+          el("span", { className: "agenda-headline", textContent: `${p.unconfirmed ? "UNCONFIRMED: " : ""}${p.headline}` })])))]
+          : [el("p", { className: "agenda-empty", textContent: "You haven't published anything in this case yet." })]));
+    }
+    $("#agenda").hidden = false;
+    $("#agenda-close").focus();
+  }
+  function closeAgenda() { $("#agenda").hidden = true; $("#agenda-btn").focus(); }
+
+  // A one-time tip pointing at the notebook button
+  const TIP_KEY = "notebookTipSeen";
+  let tipSeen = false;
+  try { tipSeen = localStorage.getItem(TIP_KEY) === "yes"; } catch (e) { /* storage may be blocked; show it once per visit */ }
+  function showNotebookTip() {
+    if (tipSeen || (game && game.presentation)) return;
+    $("#notebook-tip").hidden = false;
+    $("#agenda-btn").classList.add("pulse");
+  }
+  function dismissNotebookTip() {
+    tipSeen = true;
+    try { localStorage.setItem(TIP_KEY, "yes"); } catch (e) { /* fine */ }
+    $("#notebook-tip").hidden = true;
+    $("#agenda-btn").classList.remove("pulse");
+  }
+  $("#notebook-tip-ok").addEventListener("click", dismissNotebookTip);
+  $("#agenda-btn").addEventListener("click", () => { dismissNotebookTip(); openAgenda(); });
+  $("#agenda-close").addEventListener("click", closeAgenda);
+  $("#agenda").addEventListener("click", (e) => { if (e.target.id === "agenda") closeAgenda(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#agenda").hidden) closeAgenda(); });
+
+  // ---------- Charts: how the numbers moved over the news cycles ----------
+  const shortLabel = (l) => l.replace(/^(Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,\s*/, (m, d) => `${d.slice(0, 3)} `).replace(/^Pitch, /, "");
+  function niceMax(v) { if (v <= 0) return 100; const p = 10 ** Math.floor(Math.log10(v)); return [1, 2, 2.5, 5, 10].map((m) => m * p).find((m) => m >= v); }
+  function lineChart({ labels, series, min = 0, max, threshold, bands, dividers = [] }) {
+    const W = 560, H = 230, L = 58, R = 22, T = 16, B = 42;
+    const n = labels.length, top = max ?? niceMax(Math.max(...series.flatMap((s) => s.values), 1));
+    const x = (i) => n < 2 ? (L + W - R) / 2 : L + (i * (W - L - R)) / (n - 1);
+    const y = (v) => T + (1 - (v - min) / (top - min)) * (H - T - B);
+    const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    let svg = `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img">`;
+    if (bands) bands.forEach((c, i) => { const a = (top / bands.length) * i, b = (top / bands.length) * (i + 1);
+      svg += `<rect x="${L}" y="${y(b)}" width="${W - L - R}" height="${y(a) - y(b)}" style="fill:${c};opacity:0.13"/>`; });
+    for (let k = 0; k <= 4; k++) { const v = min + ((top - min) * k) / 4, yy = y(v);
+      svg += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" class="grid"/><text x="${L - 8}" y="${yy + 4}" text-anchor="end" class="axis">${esc(fmt(Math.round(v)))}</text>`; }
+    dividers.forEach((d) => { svg += `<line x1="${x(d.at) - (W - L - R) / Math.max(1, n - 1) / 2}" x2="${x(d.at) - (W - L - R) / Math.max(1, n - 1) / 2}" y1="${T}" y2="${H - B}" class="divider"/>
+      <text x="${x(d.at) - (W - L - R) / Math.max(1, n - 1) / 2 + 4}" y="${T + 10}" class="axis strong">${esc(d.label)}</text>`; });
+    if (threshold != null) svg += `<line x1="${L}" x2="${W - R}" y1="${y(threshold)}" y2="${y(threshold)}" class="threshold"/>
+      <text x="${W - R}" y="${y(threshold) - 6}" text-anchor="end" class="axis threshold-label">Story dropped below ${threshold}</text>`;
+    const every = Math.ceil(n / 7);
+    labels.forEach((l, i) => { if (i % every === 0 || i === n - 1)
+      svg += `<text x="${x(i)}" y="${H - B + 18}" text-anchor="${i === 0 && n > 1 ? "start" : i === n - 1 && n > 1 ? "end" : "middle"}" class="axis">${esc(shortLabel(l))}</text>`; });
+    series.forEach((s) => {
+      svg += `<polyline points="${s.values.map((v, i) => `${x(i)},${y(v)}`).join(" ")}" class="line" style="stroke:${s.color}"/>`;
+      s.values.forEach((v, i) => { svg += `<circle cx="${x(i)}" cy="${y(v)}" r="5" class="dot" style="fill:${s.color}"><title>${esc(`${s.name}, ${labels[i]}: ${fmt(v)}`)}</title></circle>`; });
+      const last = s.values[s.values.length - 1];
+      svg += `<text x="${Math.min(x(n - 1) + 2, W - R)}" y="${y(last) - 10}" text-anchor="end" class="axis strong" style="fill:${s.color}">${esc(fmt(last))}</text>`;
+    });
+    return svgEl(svg + "</svg>");
+  }
+  function biggestChange(values, labels) {
+    let best = null;
+    for (let i = 1; i < values.length; i++) { const d = values[i] - values[i - 1]; if (!best || Math.abs(d) > Math.abs(best.d)) best = { d, label: labels[i] }; }
+    return best && best.d ? best : null;
+  }
+  function chartCard(title, chart, insight, legend) {
+    return el("figure", { className: "chart-card" }, [el("figcaption", { textContent: title }), chart,
+      ...(legend ? [legend] : []), el("p", { className: "hint chart-insight", textContent: insight })]);
+  }
+  const PEOPLE_COLOURS = ["#2d5f9a", "#b8332a", "#2e7a57", "#9c6610", "#7a3e8f"];
+  function caseCharts(timeline) {
+    if (!timeline || timeline.length < 2) return el("p", { className: "hint", textContent: "Play at least one news cycle to see your charts." });
+    const labels = timeline.map((t) => t.label);
+    const line = (key) => timeline.map((t) => t[key]);
+    const say = (name, vals, goodUp = true) => {
+      const b = biggestChange(vals, labels);
+      const from = vals[0], to = vals[vals.length - 1];
+      return `${name} went from ${fmt(from)} to ${fmt(to)}.` + (b ? ` The biggest ${b.d > 0 ? "rise" : "drop"} was ${fmt(Math.abs(b.d))}, at ${b.label}.` : "");
+    };
+    const trust = line("credibility"), readers = line("readers"), interest = line("interest");
+    const names = Object.keys(timeline[0].pressure);
+    const pressure = names.map((nm, i) => ({ name: nm, color: PEOPLE_COLOURS[i % PEOPLE_COLOURS.length], values: timeline.map((t) => t.pressure[nm]) }));
+    const worst = pressure.reduce((a, b) => (Math.max(...b.values) > Math.max(...a.values) ? b : a), pressure[0]);
+    const legend = el("div", { className: "chart-legend" }, pressure.map((p) => el("span", {}, [el("b", { style: `background:${p.color}` }), p.name])));
+    return el("div", { className: "charts" }, [
+      chartCard("Public trust in the paper", lineChart({ labels, series: [{ name: "Public trust", color: "var(--ink)", values: trust }], max: 100 }), say("Public trust", trust)),
+      chartCard("Readers for this case", lineChart({ labels, series: [{ name: "Readers", color: "var(--green)", values: readers }] }), say("Readers", readers)),
+      chartCard("Story interest", lineChart({ labels, series: [{ name: "Story interest", color: "#d98a00", values: interest }], max: 100, threshold: game.interest_threshold }), say("Story interest", interest)),
+      chartCard("Media pressure on people", lineChart({ labels, series: pressure, max: 100, bands: ["#1a9850", "#78c646", "#f5c518", "#f06e28", "#c62828"] }),
+        Math.max(...worst.values) > 0 ? `${worst.name} felt the most pressure, peaking at ${Math.max(...worst.values)} out of 100.` : "Nobody was put under media pressure.", legend),
+    ]);
+  }
+  function careerCharts(timeline) {
+    if (!timeline || timeline.length < 2) return el("p", { className: "hint", textContent: "No news cycles played yet." });
+    const labels = timeline.map((t) => t.label);
+    const dividers = [];
+    timeline.forEach((t, i) => { if (i > 0 && t.case !== timeline[i - 1].case) dividers.push({ at: i, label: t.case }); });
+    return el("div", { className: "charts" }, [
+      chartCard("Public trust over your career", lineChart({ labels, dividers, series: [{ name: "Public trust", color: "var(--ink)", values: timeline.map((t) => t.credibility) }], max: 100 }),
+        `Public trust went from ${timeline[0].credibility} to ${timeline[timeline.length - 1].credibility} over ${timeline.length - 1} news cycles.`),
+      chartCard("Readers over your career", lineChart({ labels, dividers, series: [{ name: "Readers", color: "var(--green)", values: timeline.map((t) => t.readers) }] }),
+        `You reached ${fmt(timeline[timeline.length - 1].readers)} readers in total.`),
+    ]);
+  }
+
+  // ---------- Story ending and career ----------
+  function showEnding(ep) {
+    $("#desk").hidden = true;
+    $("#story-intro").hidden = true;
+    const box = $("#ending");
+    box.hidden = false;
+    const toBoard = el("button", { textContent: "Back to the case board" });
+    toBoard.addEventListener("click", showBoard);
+    const buttons = [toBoard];
+    if (game.all_closed) {
+      const career = el("button", { className: "quiet", textContent: "See your career" });
+      career.addEventListener("click", finishCareer);
+      buttons.push(career);
+    }
+    box.replaceChildren(
+      el("div", { className: `stamp ${ep.ended}`, textContent: ep.ended === "resolved" ? "Case closed" : "Case dropped" }),
+      el("p", { className: "hint", textContent: ep.ending_note }),
+      el("h2", { textContent: ep.ended === "resolved" ? "What really happened" : "What you never got to report" }),
+      el("p", { className: "truth", textContent: ep.truth }),
+      el("h2", { style: "margin-top:22px", textContent: "Your front pages" }),
+      ep.front_pages.length ? el("ul", { className: "pages" }, ep.front_pages.map((p) => el("li", {}, [p.headline,
+        el("small", { textContent: `${p.cycle_label}. ${p.accuracy}${p.unconfirmed ? ", labelled unconfirmed" : ""}.` })])))
+        : el("p", { className: "hint", textContent: "You published nothing." }),
+      el("h2", { style: "margin-top:22px", textContent: "How your coverage played out" }),
+      el("p", { className: "hint", textContent: "Each point is one news cycle. Hover a point to see its exact value." }),
+      caseCharts(ep.timeline),
+      el("h2", { style: "margin-top:22px", textContent: "Where they ended up" }),
+      ...ep.people.map((p) => el("div", { className: "outcome" }, [
+        el("h3", { textContent: `${p.name}, ${p.role}` }),
+        el("div", { style: "max-width:240px;margin-bottom:8px" }, [pressureScale(p.total)]),
+        el("p", { style: "margin:0 0 4px", textContent: p.outcome }),
+        el("p", { className: "hint", style: "margin:0", textContent: `Pressure from your reporting: ${p.you}. From other outlets: ${p.others}.` })])),
+      el("div", { className: "changes", style: "margin-top:18px" }, [
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Readers for this case" }), el("strong", { textContent: fmt(ep.readers) })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Sources judged right" }), el("strong", { textContent: `${ep.judged_right} of ${ep.judged_total}` })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Public trust" }), el("strong", { textContent: `${ep.credibility}` })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Pressure from your reporting" }), el("strong", { textContent: `${ep.harm_you}` })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Pressure from other outlets" }), el("strong", { textContent: `${ep.harm_others}` })]),
+      ]),
+      el("div", { className: "row", style: "margin-top:16px" }, buttons));
+    window.scrollTo(0, 0);
+  }
+
+  async function finishCareer() {
+    try { const r = await api("/api/career", {}); applyGame(r.game); showScreen("app"); showCareer(r.career); }
+    catch (e) { alert(e.message); }
+  }
+
+  function showCareer(c) {
+    ["#desk", "#report", "#story-intro"].forEach((x) => ($(x).hidden = true));
+    const box = $("#ending");
+    box.hidden = false;
+    const again = el("button", { textContent: "Play again" });
+    again.addEventListener("click", async () => { await newGame(); showBoard(); });
+    const home = el("button", { className: "quiet", textContent: "Back to the main page" });
+    home.addEventListener("click", () => showScreen("title"));
+    box.replaceChildren(
+      el("div", { className: "stamp resolved", textContent: "Final edition" }),
+      el("h2", { textContent: `Your time at ${game.outlet}` }),
+      c.stories.length ? el("ul", { className: "pages" }, c.stories.map((s) => el("li", {}, [s.title,
+        el("small", { textContent: `${s.ended === "resolved" ? "Followed to the end" : "Dropped early"} after ${s.cycles} news cycle${s.cycles === 1 ? "" : "s"}. ${fmt(s.readers)} readers. Pressure from your reporting: ${s.harm_you}.` })])))
+        : el("p", { className: "hint", textContent: "You didn't close any cases." }),
+      el("div", { className: "changes", style: "margin-top:16px" }, [
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Readers reached" }), el("strong", { textContent: fmt(c.readers) })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Sources judged right" }), el("strong", { textContent: `${c.judged_right} of ${c.judged_total}` })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Public trust" }), el("strong", { textContent: `${c.credibility}` })]),
+        el("div", { className: "change" }, [el("span", { className: "hint", textContent: "Pressure from your reporting" }), el("strong", { textContent: `${c.harm_you}` })]),
+      ]),
+      el("h2", { style: "margin-top:22px", textContent: "Your career in charts" }),
+      careerCharts(c.timeline),
+      el("div", { className: "row", style: "margin-top:16px" }, [again, home]));
+    window.scrollTo(0, 0);
+  }
+
+  function showStoryIntro() {
+    const box = $("#story-intro");
+    $("#desk").hidden = true;
+    box.hidden = false;
+    const go = el("button", { textContent: game.presentation ? "Start the demo" : "Go to your desk" });
+    go.addEventListener("click", () => { box.hidden = true; $("#desk").hidden = false; window.scrollTo(0, 0); });
+    if (game.team) {
+      box.replaceChildren(
+        el("p", { className: "case-no", textContent: "Who we are" }),
+        el("h2", { className: "case-title", textContent: game.story_title }),
+        el("div", { className: "team" }, game.team.map((m, i) => el("div", { className: "member" }, [
+          el("span", { className: "member-face", style: `background:${AVATAR_COLOURS[i % AVATAR_COLOURS.length]}`, textContent: m.name[0] }),
+          el("strong", { textContent: m.name }), el("span", { className: "hint", textContent: m.role })]))),
+        ...game.intro.map((t) => el("p", { className: "cycle-intro", textContent: t })),
+        go);
+      return;
+    }
+    box.replaceChildren(
+      el("p", { className: "case-no", textContent: `Case ${String(game.story_number).padStart(2, "0")}` }),
+      el("h2", { className: "case-title", textContent: game.story_title }),
+      ...game.intro.map((t) => el("p", { className: "cycle-intro", textContent: t })),
+      el("p", { className: "hint", textContent: `This case can run up to ${game.max_cycles} news cycles, until ${game.final_label}. If story interest drops below ${game.interest_threshold}, your editor drops it early.` }),
+      go);
+  }
+
+  // ---------- Screens ----------
+  function showScreen(name) {
+    $("#title-screen").hidden = name !== "title";
+    $("#board").hidden = name !== "board";
+    $("#app").hidden = name !== "app";
+    $("#agenda-btn").hidden = name !== "app";
+    if (name !== "app") { $("#agenda").hidden = true; $("#notebook-tip").hidden = true; }
+    else showNotebookTip();
+    if (name === "title") $("#continue").hidden = !inProgress(game);
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- The case board: each case is a dossier ----------
+  const CASE_STATUS = { new: ["New", "new"], in_progress: ["In progress", "progress"], resolved: ["Closed", "closed"], dropped: ["Dropped", "dropped"] };
+  let selectedCase = null;
+  function dossierSvg(n) {
+    return svgEl(`<svg viewBox="0 0 160 124" aria-hidden="true">
+      <path class="f-back" d="M8 22 Q8 14 16 14 H58 L70 26 H144 Q152 26 152 34 V108 Q152 116 144 116 H16 Q8 116 8 108 Z"/>
+      <rect class="f-paper" x="22" y="22" width="112" height="70" rx="4" transform="rotate(-4 78 57)"/>
+      <rect class="f-paper" x="30" y="26" width="104" height="66" rx="4" transform="rotate(3 82 59)"/>
+      <path class="f-lines" d="M44 40 H110 M44 50 H100 M44 60 H106"/>
+      <path class="f-front" d="M8 44 Q8 38 14 38 H146 Q152 38 152 44 V108 Q152 116 144 116 H16 Q8 116 8 108 Z"/>
+      <rect class="f-label" x="44" y="62" width="72" height="28" rx="4"/>
+      <text class="f-label-text" x="80" y="81" text-anchor="middle">CASE ${String(n).padStart(2, "0")}</text>
+    </svg>`);
+  }
+  function showBoard() {
+    showScreen("board");
+    const cases = game.cases;
+    if (!selectedCase || !cases.some((c) => c.id === selectedCase))
+      selectedCase = (cases.find((c) => c.status === "in_progress") || cases.find((c) => c.status === "new") || cases[0]).id;
+    $("#board-stats").replaceChildren(
+      el("span", { className: "board-stat" }, [el("span", { className: "hint", textContent: "Readers " }), el("strong", { textContent: fmt(game.readers) })]),
+      el("span", { className: "board-stat" }, [el("span", { className: "hint", textContent: "Public trust " }), el("strong", { textContent: `${game.credibility}` })]));
+    $("#dossiers").replaceChildren(...cases.map((c) => {
+      const [label, cls] = CASE_STATUS[c.status];
+      const b = el("button", { className: `dossier${c.id === selectedCase ? " selected" : ""}`, type: "button" }, [
+        dossierSvg(c.number),
+        el("span", { className: `case-stamp ${cls}`, textContent: label }),
+        el("span", { className: "dossier-name", textContent: c.title })]);
+      b.setAttribute("role", "option");
+      b.setAttribute("aria-selected", String(c.id === selectedCase));
+      b.addEventListener("click", () => { selectedCase = c.id; showBoard(); });
+      b.addEventListener("dblclick", () => openCase(c.id));
+      return b;
+    }));
+    const c = cases.find((x) => x.id === selectedCase);
+    const open = el("button", { textContent: c.status === "new" ? "Open case" : c.status === "in_progress" ? `Continue case (news cycle ${c.cycle})` : "Read the case file" });
+    open.addEventListener("click", () => openCase(c.id));
+    $("#dossier-detail").replaceChildren(
+      el("p", { className: "case-no", textContent: `Case ${String(c.number).padStart(2, "0")}` }),
+      el("h2", { className: "case-title", textContent: c.title }),
+      el("p", { className: "cycle-intro", textContent: c.teaser }),
+      el("p", { className: "hint", textContent: `Up to ${c.max_cycles} news cycles, until ${c.final_label}.` }),
+      open);
+    const foot = [];
+    if (cases.some((x) => x.status === "resolved" || x.status === "dropped")) {
+      const end = el("button", { className: "quiet", textContent: game.all_closed ? "See your career" : "End my career here" });
+      end.addEventListener("click", finishCareer);
+      foot.push(end);
+    }
+    $("#board-foot").replaceChildren(...foot);
+  }
+  async function openCase(id) {
+    try {
+      applyGame((await api("/api/open_case", { case: id })).game);
+      openComposer = null;
+      ["#report", "#ending", "#story-intro"].forEach((x) => ($(x).hidden = true));
+      $("#desk").hidden = false;
+      showScreen("app");
+      if (game.finished && game.epilogue) showEnding(game.epilogue);
+      else if (!game.story_started) showStoryIntro();
+    } catch (e) { alert(e.message); }
+  }
+
+  // ---------- Start ----------
+  async function newGame() {
+    game = await api("/api/new", {});
+    tipSeen = false;   // a new game shows the notebook tip again, which also helps for demos
+    try { localStorage.removeItem(TIP_KEY); } catch (e) { /* fine */ }
+    openComposer = null;
+    selectedCase = null;
+    ["#ending", "#report", "#story-intro"].forEach((x) => ($(x).hidden = true));
+    render();
+  }
+  function inProgress(g) {
+    return !!g && g.cases.some((c) => c.status !== "new");
+  }
+  $("#start").addEventListener("click", async () => { await newGame(); showBoard(); });
+  $("#continue").addEventListener("click", showBoard);
+  $("#board-back").addEventListener("click", () => showScreen("title"));
+  $("#to-board").addEventListener("click", () => { openComposer = null; showBoard(); });
+  $("#howto-btn").addEventListener("click", (e) => { const h = $("#howto"); h.hidden = !h.hidden; e.currentTarget.setAttribute("aria-expanded", String(!h.hidden)); });
+  $("#end-cycle").addEventListener("click", endCycle);
+
+  api("/api/status").then((s) => {
+    if (game && !checkServerVersion(game)) return;
+    const msg = s.message.endsWith(".") ? s.message : `${s.message}.`;
+    $("#status").textContent = s.ollama ? `AI reader reactions ready. ${msg}` : `${msg} Reader reactions will use pre-written comments.`;
+    $("#status").classList.toggle("warn", !s.ollama);
+  }).catch(() => { $("#status").textContent = "Can't reach the game server. Start it with: python server.py"; $("#status").classList.add("warn"); });
+  // Load the current game instead of resetting it, so a page refresh loses nothing.
+  api("/api/game").then((g) => {
+    game = g;
+    render();
+    $("#continue").hidden = !inProgress(g);
+  }).catch((e) => alert(e.message));
+</script>
+</body>
+</html>

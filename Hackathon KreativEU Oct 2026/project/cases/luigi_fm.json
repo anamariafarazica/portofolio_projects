@@ -1,0 +1,792 @@
+{
+  "id": "luigi_fm",
+  "order": 1,
+  "title": "The Luigi FM story",
+  "outlet": "The Midnight Chronicle",
+  "competitor": "Buzz Brabant",
+  "intro": [
+    "You are a reporter at The Midnight Chronicle, the local news site for the village of Made and the towns around it.",
+    "Over the next two days, information about one story will keep arriving: police statements, emails, calls, posts online. For each piece, you decide: publish it, check it first, or hold it back.",
+    "Every article reaches real readers and real people. Watch what your reporting does to them."
+  ],
+  "start_credibility": 60,
+  "truth": "Tom, a 31-year-old technician Jeff had fired two weeks earlier, believed he had been fired unfairly. He still knew the code to the staff entrance, which was never changed. Around 22:00 he confronted Jeff Harlow outside the office and stabbed him. Mark was in Rotterdam all week and had nothing to do with it. The photo of his car was from 2023.",
+  "readers": [
+    {
+      "name": "Ria",
+      "about": "67, has listened to Luigi FM since it started"
+    },
+    {
+      "name": "Dennis",
+      "about": "runs a cafe near the radio station"
+    },
+    {
+      "name": "Noor",
+      "about": "22, a student who shares local news on social media"
+    },
+    {
+      "name": "Pieter",
+      "about": "sceptical about the media"
+    },
+    {
+      "name": "Mehmet",
+      "about": "moved to Made last year"
+    }
+  ],
+  "people": [
+    {
+      "id": "mark",
+      "name": "Mark",
+      "role": "Jeff's business partner",
+      "aliases": [
+        "mark",
+        "business partner",
+        "partner",
+        "co-owner"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Mark keeps running Luigi FM. He later thanks the Chronicle for not joining the rumours."
+        },
+        {
+          "max": 59,
+          "text": "Mark is cleared, but two sponsors leave Luigi FM, and he stops going out in town for months."
+        },
+        {
+          "max": 100,
+          "text": "Mark is cleared, but too late. He is removed from the Luigi FM board, his marriage breaks down, and he moves away. Strangers still recognise him from the headlines."
+        }
+      ]
+    },
+    {
+      "id": "anna",
+      "name": "Anna",
+      "role": "Jeff's wife",
+      "aliases": [
+        "anna",
+        "wife",
+        "widow"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Anna says the coverage was respectful. She speaks at the memorial broadcast on Luigi FM."
+        },
+        {
+          "max": 59,
+          "text": "Anna stops reading the news. She says she learned things about her husband from headlines before anyone told her."
+        },
+        {
+          "max": 100,
+          "text": "Anna feels her husband was put on trial after his death. She refuses all contact with the press and leaves Made."
+        }
+      ]
+    },
+    {
+      "id": "sam",
+      "name": "Sam",
+      "role": "Night receptionist at Luigi FM",
+      "aliases": [
+        "sam",
+        "receptionist",
+        "night receptionist"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Sam keeps his job. A month later, he trusts the Chronicle with another story."
+        },
+        {
+          "max": 59,
+          "text": "Sam is questioned by his manager about talking to the press, and keeps his job, just."
+        },
+        {
+          "max": 100,
+          "text": "Sam is fired the day after your article. Nobody at Luigi FM will talk to a journalist again."
+        }
+      ]
+    },
+    {
+      "id": "tom",
+      "name": "Tom",
+      "role": "Technician fired from Luigi FM",
+      "aliases": [
+        "tom",
+        "technician",
+        "fired technician",
+        "former employee",
+        "fired employee",
+        "ex-employee"
+      ],
+      "outcomes": [
+        {
+          "max": 19,
+          "text": "Tom is arrested on the police's evidence. His trial goes ahead without a media storm around it."
+        },
+        {
+          "max": 59,
+          "text": "Tom is arrested, as the police had planned. His lawyer argues that the online storm before the arrest makes a fair trial harder."
+        },
+        {
+          "max": 100,
+          "text": "Tom is arrested, but his family's address was shared online days before. His younger brother is harassed at school, and the defence asks for the trial to move to another city."
+        }
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "label": "Wednesday, 07:30",
+      "intro": "Your editor drops a police statement on your desk. The first version of this story is yours to write.",
+      "items": [
+        {
+          "id": "c1_police",
+          "kind": "Police statement",
+          "from": "Police press office",
+          "text": "Last night around 22:10, a 58-year-old man, the owner of local radio station Luigi FM, was found dead near the station's office. He had been stabbed. We are investigating and ask witnesses to come forward.",
+          "status": "confirmed",
+          "note": "Jeff Harlow, owner of Luigi FM, was found dead near the station's office last night. He had been stabbed.",
+          "context": "A police statement confirms Jeff Harlow, owner of Luigi FM, was found stabbed to death near the station last night.",
+          "news_value": 4000,
+          "truth": "true",
+          "harm": {
+            "anna": 5
+          },
+          "on_hold": {
+            "credibility": -5,
+            "message": "Every other outlet ran the story. Readers ask why the Chronicle stayed silent."
+          },
+          "competitor": {
+            "headline": "Luigi FM boss stabbed to death outside his own station",
+            "harm": {
+              "anna": 5
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "I can't believe it. Jeff's voice was part of my mornings for thirty years."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Terrible news. Thinking of his family today."
+              },
+              {
+                "reader": "Noor",
+                "text": "Does anyone know if the police have a suspect yet?"
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "This is so scary. Is it even safe to walk around Made at night now?"
+              },
+              {
+                "reader": "Pieter",
+                "text": "Typical. Headline first, facts later."
+              },
+              {
+                "reader": "Ria",
+                "text": "Please remember his family is reading this too."
+              }
+            ]
+          },
+          "why": "An official, on-the-record statement from the police is a confirmed source."
+        },
+        {
+          "id": "c1_social",
+          "kind": "Social media",
+          "from": "Comment under the police post, 214 likes",
+          "text": "Everyone knows Mark and Jeff hated each other. Just saying.",
+          "status": "rumour",
+          "note": "Mark and Jeff hated each other.",
+          "context": "A popular comment online says Jeff and his business partner Mark hated each other.",
+          "news_value": 3000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "mark": 15
+          },
+          "harm_if_named": {
+            "mark": 10
+          },
+          "competitor": {
+            "headline": "Locals point finger at Luigi FM partner",
+            "harm": {
+              "mark": 10
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "At least they called it a rumour. Still, why print it at all?"
+              },
+              {
+                "reader": "Mehmet",
+                "text": "I don't know these people, but this feels unfair to Mark."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Mark comes into my cafe. Let's wait for the police."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "I KNEW it. Sharing this everywhere."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Mark has been in my cafe a hundred times. I'm shocked."
+              },
+              {
+                "reader": "Pieter",
+                "text": "So now a Facebook comment is news?"
+              }
+            ]
+          },
+          "why": "A comment online is not evidence, however many people like it. It's unverified."
+        }
+      ]
+    },
+    {
+      "label": "Wednesday, 12:00",
+      "intro": "Your inbox is filling up. Some of it is useful. Some of it is not.",
+      "items": [
+        {
+          "id": "c2_email",
+          "kind": "Anonymous email",
+          "from": "Sender unknown",
+          "text": "I work near the station. Mark ordered this, I'm sure. They fought about money for months and Mark wanted Jeff out.",
+          "status": "rumour",
+          "note": "Mark ordered the killing.",
+          "context": "An anonymous email claims that Jeff's business partner Mark ordered the killing because of money disputes.",
+          "news_value": 6000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "mark": 30
+          },
+          "harm_if_named": {
+            "mark": 15
+          },
+          "competitor": {
+            "headline": "Partner ordered Luigi FM killing, insider claims",
+            "harm": {
+              "mark": 20
+            }
+          },
+          "verify": {
+            "text": "You can't trace the sender. Mark confirms they argued about money, but calls the accusation disgusting. Nothing links him to the killing.",
+            "status": "rumour",
+            "note": {
+              "text": "Mark and Jeff disagreed about money.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "An anonymous email. Unconfirmed. Why is this a story?"
+              },
+              {
+                "reader": "Ria",
+                "text": "Mark and Jeff built that station together. I won't believe this without proof."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Good that you say it's not confirmed. Rumours spread fast here."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Mark should be arrested NOW."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Someone wrote 'murderer' on Mark's garage door this afternoon. Is this what you wanted?"
+              },
+              {
+                "reader": "Ria",
+                "text": "Money always ruins everything. Poor Jeff."
+              }
+            ]
+          },
+          "why": "An anonymous email from a sender you can't trace is unverified."
+        },
+        {
+          "id": "c2_photo",
+          "kind": "Social media",
+          "from": "@made_watch, 12 followers",
+          "text": "Photo: \"Mark's car outside Luigi FM last night\". The picture shows a grey car parked near the station entrance.",
+          "status": "rumour",
+          "note": "A photo shows Mark's car outside Luigi FM last night.",
+          "context": "A photo posted online claims to show Mark's car outside the radio station on the night of the killing.",
+          "news_value": 7000,
+          "truth": "false",
+          "false_revealed_in": 3,
+          "harm": {
+            "mark": 30
+          },
+          "harm_if_named": {
+            "mark": 10
+          },
+          "competitor": {
+            "headline": "Photo puts partner at Luigi FM murder scene",
+            "harm": {
+              "mark": 20
+            }
+          },
+          "verify": {
+            "text": "A reverse image search shows the photo was first posted in June 2023.",
+            "status": "debunked",
+            "note": {
+              "text": "The photo of Mark's car outside Luigi FM is from 2023, not last night.",
+              "status": "confirmed"
+            },
+            "harm_reduce": {
+              "mark": 10
+            },
+            "context": "The Chronicle reports that a viral photo of Mark's car near the station is from 2023, not the night of the killing."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "An account with 12 followers. Please check before you post this stuff."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Lots of grey cars in Made."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Thanks for saying it isn't confirmed."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "The photo says it all. Case closed."
+              },
+              {
+                "reader": "Ria",
+                "text": "I feel sick. I trusted that man."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Has anyone actually checked when this photo was taken?"
+              }
+            ]
+          },
+          "why": "A photo from an unknown account with 12 followers, with no date or original source, is unverified."
+        },
+        {
+          "id": "c2_anna",
+          "kind": "Phone call",
+          "from": "Anna, Jeff's wife",
+          "text": "\"He always called when he worked late. Always. Last night he didn't, and I knew something was wrong. I just want to know what happened.\"",
+          "status": "claim",
+          "note": "Anna, Jeff's wife, says Jeff always called when he worked late, but last night he did not call.",
+          "context": "Jeff's grieving wife Anna says he always called when working late, but did not call that night.",
+          "news_value": 2500,
+          "truth": "true",
+          "harm": {
+            "anna": 10
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "My heart breaks for her."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "I hope the town looks after her."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Respectful piece. Thank you."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Pieter",
+                "text": "Was it really necessary to call a widow the morning after?"
+              },
+              {
+                "reader": "Noor",
+                "text": "So sad. Did she know about the partner thing?"
+              },
+              {
+                "reader": "Ria",
+                "text": "Leave the poor woman alone."
+              }
+            ]
+          },
+          "why": "A named person speaking on the record about her own experience is one source."
+        }
+      ]
+    },
+    {
+      "label": "Wednesday, 18:00",
+      "intro": "New sources are coming forward, and some of what was said earlier today is being tested.",
+      "items": [
+        {
+          "id": "c3_lotte",
+          "kind": "Email",
+          "from": "Lotte, Jeff's secretary",
+          "text": "You can quote me: \"Jeff could be very harsh. He shouted at people and called them useless. A lot of staff were afraid of him.\"",
+          "status": "claim",
+          "note": "Lotte says Jeff was harsh and shouted at staff.",
+          "context": "Jeff's secretary Lotte says, on the record, that Jeff was harsh and shouted at staff. It is the day after his death.",
+          "news_value": 5000,
+          "truth": "true",
+          "harm": {
+            "anna": 30
+          },
+          "verify": {
+            "text": "Two former staff members confirm that Jeff often shouted at employees.",
+            "status": "confirmed",
+            "note": {
+              "text": "Two former staff members confirm Jeff often shouted at employees.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Mehmet",
+                "text": "Hard to read, but it helps explain things. Nobody deserves to die for being a bad boss."
+              },
+              {
+                "reader": "Ria",
+                "text": "Could this not have waited until after the funeral?"
+              },
+              {
+                "reader": "Dennis",
+                "text": "Some of his staff come into my cafe. They'll feel heard."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "So he had it coming? Wow."
+              },
+              {
+                "reader": "Ria",
+                "text": "The man isn't even buried yet. Shameful."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Kicking a dead man for clicks."
+              }
+            ]
+          },
+          "why": "A named person giving her own view of Jeff is one source. Other staff would have to confirm it."
+        },
+        {
+          "id": "c3_hotel",
+          "kind": "Email",
+          "from": "Hotel Maas, Rotterdam",
+          "text": "We can confirm that Mark stayed with us from Monday to Thursday. The conference organisers confirm he was on stage on Tuesday evening until 22:30.",
+          "status": "confirmed",
+          "note": "Mark was in Rotterdam all week. The hotel and the conference confirm he was on stage until 22:30 on the night of the killing.",
+          "context": "A Rotterdam hotel and conference confirm Mark was in Rotterdam, on stage until 22:30, on the night of the killing.",
+          "news_value": 2000,
+          "truth": "true",
+          "harm_reduce": {
+            "mark": 15
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Dennis",
+                "text": "So Mark didn't do it. I hope the people who spread that rumour feel ashamed."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Good. Facts, finally."
+              },
+              {
+                "reader": "Ria",
+                "text": "I'm relieved. Poor Mark."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Ok but he could still have paid someone?"
+              },
+              {
+                "reader": "Dennis",
+                "text": "Too late for Mark. Half the town already decided."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Funny how the correction never gets as many clicks."
+              }
+            ]
+          },
+          "why": "Independent records from the hotel and the conference organisers are a confirmed source."
+        },
+        {
+          "id": "c3_correction",
+          "kind": "Letter",
+          "from": "Mark's lawyer",
+          "requires_published_any": [
+            "c1_social",
+            "c2_email",
+            "c2_photo"
+          ],
+          "text": "Your reporting about my client is false. He was in Rotterdam all week, which the hotel confirms. We expect a clear correction today.",
+          "status": "claim",
+          "note": "Mark's lawyer says the reports about Mark are false.",
+          "context": "The Chronicle is publishing a correction about its earlier reporting on Mark, who was in Rotterdam all week.",
+          "news_value": 1500,
+          "truth": "true",
+          "credibility_on_publish": 8,
+          "harm_reduce_you_share": {
+            "mark": 0.5
+          },
+          "on_hold": {
+            "credibility": -8,
+            "harm": {
+              "mark": 10
+            },
+            "message": "Mark's lawyer files a complaint with the press council. Your earlier story about him stays online uncorrected.",
+            "softer_if_published": {
+              "item": "c3_hotel",
+              "credibility": -3,
+              "harm": {
+                "mark": 5
+              },
+              "message": "You reported Mark's alibi, but never corrected your own earlier story about him. His lawyer complains to the press council."
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "Respect for correcting it. Most sites never do."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Good. Mark deserved this."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "The rumour went around faster than this correction will."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Wait, so it wasn't him?"
+              },
+              {
+                "reader": "Ria",
+                "text": "Too little, too late."
+              },
+              {
+                "reader": "Pieter",
+                "text": "A correction that still sounds like an accusation."
+              }
+            ]
+          },
+          "why": "A lawyer speaks for one side, even when he points to real evidence. That's one source."
+        }
+      ]
+    },
+    {
+      "label": "Thursday, 08:00",
+      "intro": "A night has passed. The story is moving in a new direction.",
+      "items": [
+        {
+          "id": "c4_sam",
+          "kind": "Phone call",
+          "from": "Caller who asks not to be named",
+          "text": "\"This is Sam, the night receptionist. Please don't use my name, I'll lose my job. The CCTV shows the attacker came out of the staff entrance. You need a code for that door. And they wore one of our staff jackets.\"",
+          "status": "claim",
+          "request": "Sam asked not to be named, because talking to the press could cost him his job.",
+          "note": "The night receptionist says the CCTV shows the attacker came from the staff entrance, wearing a staff jacket.",
+          "context": "A source inside Luigi FM says the CCTV shows the attacker came out of the staff entrance, which needs a door code, wearing a staff jacket.",
+          "news_value": 5000,
+          "truth": "true",
+          "harm_if_named": {
+            "sam": 65
+          },
+          "on_hold": {
+            "credibility": -4,
+            "message": "Readers later ask why nobody reported that the attacker may have had staff access."
+          },
+          "verify": {
+            "text": "The police confirm the attacker came through the staff entrance, which needs a door code. They won't comment on the jacket.",
+            "status": "confirmed",
+            "note": {
+              "text": "Police confirm the attacker came through the staff entrance, which needs a door code.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Mehmet",
+                "text": "So it was someone who knew the building. That changes everything."
+              },
+              {
+                "reader": "Dennis",
+                "text": "I hope Luigi FM changes its door codes today."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Finally some real reporting."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "An inside job!! Who else works there??"
+              },
+              {
+                "reader": "Ria",
+                "text": "I don't feel safe anymore."
+              },
+              {
+                "reader": "Dennis",
+                "text": "The staff must be terrified right now."
+              }
+            ]
+          },
+          "why": "One insider's account, from someone who asked not to be named, is one source until the police confirm it.",
+          "anonymous": "sam"
+        },
+        {
+          "id": "c4_forum",
+          "kind": "Forum post",
+          "from": "User MadeLocal",
+          "text": "It was Tom, the technician Jeff fired two weeks ago. He was always weird. Someone should check him out.",
+          "status": "rumour",
+          "note": "Tom, the technician Jeff fired, committed the murder.",
+          "context": "A forum post claims Tom, a technician fired by Jeff two weeks ago, is the killer. There is no evidence yet.",
+          "news_value": 6500,
+          "truth": "unproven",
+          "harm": {
+            "tom": 25
+          },
+          "harm_if_named": {
+            "tom": 25
+          },
+          "competitor": {
+            "headline": "Fired technician named in Luigi FM murder",
+            "harm": {
+              "tom": 20
+            }
+          },
+          "verify": {
+            "text": "Lotte confirms Tom was fired two weeks ago and left angry. The police won't say whether he is a suspect.",
+            "status": "rumour",
+            "note": {
+              "text": "Tom was fired from Luigi FM two weeks ago and left angry.",
+              "status": "confirmed"
+            }
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Pieter",
+                "text": "Didn't we just do this with Mark?"
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Let the police do their job this time."
+              },
+              {
+                "reader": "Ria",
+                "text": "Whoever it is, I hope they're caught soon."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Found his address, he lives near the church. Sharing."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Two days ago it was Mark. Now it's Tom. Who's next?"
+              },
+              {
+                "reader": "Pieter",
+                "text": "Same mistake, different name."
+              }
+            ]
+          },
+          "why": "An anonymous forum post that names someone without any evidence is unverified."
+        }
+      ]
+    },
+    {
+      "label": "Thursday, 17:00",
+      "intro": "The police have news.",
+      "items": [
+        {
+          "id": "c5_arrest",
+          "kind": "Police statement",
+          "from": "Police press office",
+          "text": "A 31-year-old former employee of Luigi FM has been arrested on suspicion of killing the station's owner. The owner's business partner is not a suspect.",
+          "status": "confirmed",
+          "note": "Police arrested a 31-year-old former Luigi FM employee for the killing. The business partner is not a suspect.",
+          "context": "Police have arrested a 31-year-old former Luigi FM employee. The business partner is not a suspect.",
+          "news_value": 5000,
+          "truth": "true",
+          "harm_reduce": {
+            "mark": 10
+          },
+          "on_hold": {
+            "credibility": -5,
+            "message": "The Chronicle is the only outlet without the arrest."
+          },
+          "fallback": {
+            "careful": [
+              {
+                "reader": "Ria",
+                "text": "Finally. Rest in peace, Jeff."
+              },
+              {
+                "reader": "Dennis",
+                "text": "Someone owes Mark an apology."
+              },
+              {
+                "reader": "Mehmet",
+                "text": "Good work by the police."
+              }
+            ],
+            "sensational": [
+              {
+                "reader": "Noor",
+                "text": "Told you it was an inside job."
+              },
+              {
+                "reader": "Pieter",
+                "text": "Now let's see how many outlets apologise to Mark."
+              },
+              {
+                "reader": "Ria",
+                "text": "What a week for this village."
+              }
+            ]
+          },
+          "why": "An official police statement is a confirmed source."
+        }
+      ]
+    }
+  ],
+  "short_title": "The death at Luigi FM",
+  "final_label": "the arrest",
+  "teaser": "The owner of the village radio station, Luigi FM, is found stabbed outside his office. By morning, the whole village already has a suspect."
+}
